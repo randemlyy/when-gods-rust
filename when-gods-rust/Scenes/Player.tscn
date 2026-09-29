@@ -1,17 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn18v3wjpxxs8"]
+[gd_scene format=3 uid="uid://cn18v3wjpxxs8"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_player"]
-[ext_resource type="Script" path="res://Scripts/PlayerInput.gd" id="2_player_input"]
+[ext_resource type="Script" uid="uid://ohlg2uajjkvs" path="res://Scripts/Player.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://blbievlwwkpxn" path="res://Scripts/InputComponent.gd" id="2_kyqiw"]
+[ext_resource type="Script" uid="uid://c7ool4ticmw75" path="res://Scripts/MovementComponent.gd" id="3_gntrk"]
+[ext_resource type="Script" uid="uid://bf63vqfbn4niu" path="res://Scripts/CameraComponent.gd" id="4_dewec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpaqu"]
 size = Vector2(40, 40)
 
-[node name="Player" type="CharacterBody2D" unique_id=394599201]
+[node name="Player" type="CharacterBody2D" unique_id=394599201 node_paths=PackedStringArray("input")]
 script = ExtResource("1_player")
-move_speed = 180.0
-
-[node name="PlayerInput" type="Node" parent="."]
-script = ExtResource("2_player_input")
+input = NodePath("InputComponent")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1209694024]
 offset_left = -20.0
@@ -21,3 +20,14 @@ offset_bottom = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=648656345]
 shape = SubResource("RectangleShape2D_jpaqu")
+
+[node name="InputComponent" type="Node" parent="." unique_id=580939772]
+script = ExtResource("2_kyqiw")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=447409888]
+script = ExtResource("3_gntrk")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1008247759]
+script = ExtResource("4_dewec")
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1457107730]

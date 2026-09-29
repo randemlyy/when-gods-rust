@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-@export var move_speed: float = 180.0
-@onready var input = "res://Scripts/InputComponent.gd"
+@export var input: InputComponent
+@onready var move: MovementComponent = $MovementComponent
 
-func _physics_process(_delta: float) -> void:
-	pass	
+func _physics_process(delta: float) -> void:
+	move.dir = input.dir
+	move.physics_update(self, delta)
+	

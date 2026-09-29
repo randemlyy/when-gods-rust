@@ -6,3 +6,35 @@
 
 [node name="Player" parent="." unique_id=394599201 instance=ExtResource("1_ko2s7")]
 position = Vector2(76, 54)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1606101689]
+position = Vector2(282, 110)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=78492261]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.34349266, 0.41291684, 0.07345485, 1)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=927024121]
+position = Vector2(282, 110)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2" unique_id=1433637987]
+offset_left = -145.0
+offset_top = 144.0
+offset_right = -105.0
+offset_bottom = 184.0
+color = Color(0.34349266, 0.41291684, 0.07345485, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D2" unique_id=1386777759]
+offset_left = 259.0
+offset_top = 113.0
+offset_right = 299.0
+offset_bottom = 153.0
+color = Color(0.34349266, 0.41291684, 0.07345485, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="StaticBody2D2" unique_id=224978649]
+offset_left = 259.0
+offset_top = -55.0
+offset_right = 299.0
+offset_bottom = -15.0
+color = Color(0.34349266, 0.41291684, 0.07345485, 1)

@@ -1,11 +1,13 @@
+class_name InputComponent
 extends Node
 
+var dir:Vector2
+var attack: bool
+var dodge: bool
+var block: bool
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	dir = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	attack = Input.is_action_just_pressed("attack")
+	block = Input.is_action_just_pressed("block")
+	dodge = Input.is_action_pressed("block")
