@@ -1,7 +1,7 @@
 class_name CameraComponent
 extends Camera2D
 
-@export var follow_speed: = 600.0
+@export var follow_speed: = 60.0
 @export var look_ahead_distance: = 12.0
 @export var look_ahead_response: = 10.0
 @export var look_ahead_start_speed : = 20.0

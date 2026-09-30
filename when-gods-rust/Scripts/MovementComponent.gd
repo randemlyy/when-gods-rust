@@ -1,10 +1,10 @@
 class_name MovementComponent
 extends Node
 
-@export var max_speed: float = 120.0
-@export var acceleration: float = 1000.0
-@export var decceleration: float = 1700.0
-@export var turn_accel: float = 2200.0
+@export var max_speed: float = 60.0
+@export var acceleration: float = 100.0
+@export var decceleration: float = 170.0
+@export var turn_accel: float = 220.0
 
 var dir: Vector2 = Vector2.ZERO
 var speed_multiplier: float = 1.0
