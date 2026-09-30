@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d2i164qcqw4na"]
+
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fx4ke"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1258498601]
+script = ExtResource("1_dkbgn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=62828141]
+shape = SubResource("CapsuleShape3D_fgv4r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1991771657]
+mesh = SubResource("CapsuleMesh_fx4ke")
+
+[node name="InputComponent" type="Node" parent="." unique_id=287546714]
+script = ExtResource("1_fx4ke")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=147245819]
+script = ExtResource("2_que7a")
