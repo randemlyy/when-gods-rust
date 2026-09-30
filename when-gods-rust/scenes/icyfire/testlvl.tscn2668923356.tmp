@@ -2,20 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://scenes/icyfire/player.tscn" id="1_2dbcp"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2dbcp"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_7hibh"]
-size = Vector3(20.138428, 0.8442383, 20.001709)
+size = Vector3(20.138428, 0.2109375, 20.001709)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tm1hr"]
 
 [node name="Testlvl" type="Node3D" unique_id=171825471]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=57987016]
-physics_material_override = SubResource("PhysicsMaterial_2dbcp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1026524776]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3166504, 0)
 shape = SubResource("BoxShape3D_7hibh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=333597395]
@@ -26,4 +22,4 @@ mesh = SubResource("BoxMesh_tm1hr")
 transform = Transform3D(1, 0, 0, 0, 0.43653485, 0.89968735, 0, -0.89968735, 0.43653485, 0, 9.354662, 0)
 
 [node name="Player" parent="." unique_id=1258498601 instance=ExtResource("1_2dbcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0709834, 4.8172655, -3.7885466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5594544, 4.479641, 4.346548)

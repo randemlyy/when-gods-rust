@@ -2,14 +2,13 @@ extends CharacterBody3D
 
 @onready var inputC: InputComponent = $InputComponent
 @onready var movementC: MovementComponent = $MovementComponent
+@onready var attackC: AttackComponent = $AttackComponent
 
 @onready var eyes: Node3D = $eyes
 @onready var idk: Node3D = $eyes/Node3D
 @onready var camera_3d: Camera3D = $eyes/Node3D/Camera3D
 
 @export var mouse_sens:float = 0.002
-
-@onready var Input_dir = inputC.dir
 
 func _unhandled_input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -24,13 +23,11 @@ func _unhandled_input(event:InputEvent) -> void:
 			idk.rotation.x = clamp(idk.rotation.x, deg_to_rad(-50), deg_to_rad(60))
 
 func _physics_process(delta: float) -> void:
-	velocity.y += get_gravity().y * delta
-	# actual movement direction, taking into account everything.
-	
+	if not is_on_floor():
+		velocity.y += get_gravity().y * delta
+	# actual movement direction, taking into account everything
 	inputC.process(delta)
-	var direction := (eyes.transform.basis * Vector3(Input_dir.x, 0, Input_dir.y)).normalized()
-	print (Input_dir)
-	print (direction)
+	attackC.process(delta, inputC.attack)
+	var direction := (eyes.global_basis * Vector3(inputC.dir.x, 0.0, inputC.dir.y)).normalized()
 	movementC.physics_process(delta, direction)
-	
-	pass
+	move_and_slide()

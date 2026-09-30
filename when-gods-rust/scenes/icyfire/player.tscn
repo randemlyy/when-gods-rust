@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
 [ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
 [ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+[ext_resource type="Script" uid="uid://csj5jv0vccu17" path="res://scripts/randem/AttackComponent.gd" id="4_xbex8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fx4ke"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1258498601]
+[node name="Player" type="CharacterBody3D" unique_id=1258498601]
 script = ExtResource("1_dkbgn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=62828141]
@@ -22,3 +23,13 @@ script = ExtResource("1_fx4ke")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=147245819]
 script = ExtResource("2_que7a")
+
+[node name="eyes" type="Node3D" parent="." unique_id=1772891110]
+
+[node name="Node3D" type="Node3D" parent="eyes" unique_id=1733789826]
+
+[node name="Camera3D" type="Camera3D" parent="eyes/Node3D" unique_id=1626153583]
+transform = Transform3D(1, 0, 0, 0, 0.98149043, 0.1915114, 0, -0.1915114, 0.98149043, 0.71349716, 2.1404905, 3.23452)
+
+[node name="AttackComponent" type="Node" parent="." unique_id=1201272949]
+script = ExtResource("4_xbex8")
