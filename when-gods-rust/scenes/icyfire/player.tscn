@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
 [ext_resource type="Script" uid="uid://csj5jv0vccu17" path="res://scripts/randem/AttackComponent.gd" id="4_xbex8"]
 [ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
@@ -39,3 +41,9 @@ script = ExtResource("5_1mpnw")
 offset = Vector3(7.725, 9.254, 9.816)
 rotation = Vector3(-0.805, 0, 0)
 metadata/_custom_type_script = "uid://c3q2bf4w8k2ae"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1763875352]
+script = ExtResource("6_okieb")
+
+[node name="StaggerComponent" type="Node" parent="." unique_id=593057376]
+script = ExtResource("7_vvvn2")

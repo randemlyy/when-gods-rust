@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://cuhhckiweach3" path="res://scripts/F1aze23/EnemyStates/WanderState.gd" id="2_8jpi8"]
 [ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="4_8jpi8"]
 [ext_resource type="Script" uid="uid://c66042wr8m356" path="res://scripts/F1aze23/EnemyStates/AttackState.gd" id="4_phb08"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_74sap"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_gcpxs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8v36v"]
 
@@ -55,3 +57,12 @@ one_shot = true
 [node name="MovementComponent" type="Node" parent="." unique_id=563373914]
 script = ExtResource("4_8jpi8")
 metadata/_custom_type_script = "uid://dtnjxw1vua83h"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1807576033]
+script = ExtResource("6_74sap")
+max_health = 50
+metadata/_custom_type_script = "uid://dq71svuwl2njr"
+
+[node name="StaggerComponent" type="Node" parent="." unique_id=579141596]
+script = ExtResource("7_gcpxs")
+metadata/_custom_type_script = "uid://c5yf8bxmdfcr5"

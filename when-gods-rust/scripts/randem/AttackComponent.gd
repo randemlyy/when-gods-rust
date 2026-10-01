@@ -20,6 +20,10 @@ var current_attack: int = 0
 var attack_time: float = 0.0
 var combo_queued: bool = false
 
+var is_winding_up: bool:
+	get:
+		return state == State.ATTACKING and attack_time < combo_window_starts[current_attack]
+
 var is_attacking: bool: 
 	get: return state != State.IDLE
 
@@ -78,4 +82,10 @@ func _end_combo() -> void:
 	state = State.IDLE
 	body.velocity.x = 0.0
 	body.velocity.z = 0.0
+	
+func cancel_attack() -> void:
+	state = State.IDLE
+	attack_time = 0.0
+	combo_queued = false
+	body.velocity.x = 0.0
 	

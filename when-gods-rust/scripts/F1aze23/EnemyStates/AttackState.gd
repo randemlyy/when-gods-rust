@@ -5,6 +5,7 @@ extends state
 @export var windup_time: float = 0.55
 @export var recovery_time: float = 0.8
 @export var facing_min: float = 0.55
+@export var stagger_duration: float = 0.8
 
 enum Phase {
 	WINDUP,
@@ -32,6 +33,7 @@ func physics_update(delta:float) -> void:
 	timer -= delta
 	
 	if phase == Phase.WINDUP and timer <= 0:
+		print("Zealot windup")
 		_try_hit()
 		phase = Phase.RECOVERY
 		timer = recovery_time
@@ -65,11 +67,14 @@ func _try_hit() -> void:
 	if forward.dot(to_player.normalized()) < facing_min:
 		return
 	
-	if player.has_method("take_damage"):
-		player.call("take_damage", damage)
+	if player.has_method("take_hit"):
+		player.call("take_hit", damage, stagger_duration)
 	print('hits')
 
 func _flat_distance(a: Vector3, b: Vector3) -> float:
 	a.y = 0.0
 	b.y = 0.0
 	return a.distance_to(b)
+	
+func is_winding_up() -> bool:
+	return phase == Phase.WINDUP
