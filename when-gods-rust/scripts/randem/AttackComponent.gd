@@ -8,7 +8,7 @@ enum State {
 }
 
 @onready var body: CharacterBody3D = $".."
-@onready var facing: Node3D = $"../eyes"
+#@onready var facing: Vector3
 
 @export var attack_durations: Array[float] = [0.55, 0.65, 0.8]
 @export var combo_window_starts: Array[float] = [0.25, 0.3, 0.0]
@@ -24,7 +24,8 @@ var is_attacking: bool:
 	get: return state != State.IDLE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func process(delta: float, attack_pressed: bool) -> void:
+func physics_update(delta: float, attack_pressed: bool) -> void:
+	
 	match state:
 		State.IDLE:
 			if attack_pressed:
@@ -62,7 +63,7 @@ func _start_attack(index: int) -> void:
 	combo_queued = false
 	state = State.ATTACKING
 	
-	var forward := -facing.global_basis.z
+	var forward := -body.global_basis.z
 	forward.y = 0.0
 	forward = forward.normalized()
 	

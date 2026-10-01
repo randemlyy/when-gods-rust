@@ -10,8 +10,6 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fx4ke"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_1mpnw"]
-
 [node name="Player" type="CharacterBody3D" unique_id=1258498601]
 script = ExtResource("1_dkbgn")
 
@@ -20,10 +18,6 @@ shape = SubResource("CapsuleShape3D_fgv4r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1991771657]
 mesh = SubResource("CapsuleMesh_fx4ke")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D" unique_id=1557886803]
-transform = Transform3D(-2.4943994e-08, 0, 0.8194542, 0, 0.25397006, 0, -0.57065207, 0, -3.581948e-08, -0.006001532, 0.47441304, -0.29220486)
-mesh = SubResource("BoxMesh_1mpnw")
 
 [node name="AttackComponent" type="Node" parent="." unique_id=1201272949]
 script = ExtResource("4_xbex8")
@@ -34,8 +28,10 @@ script = ExtResource("1_fx4ke")
 [node name="MovementComponent" type="Node" parent="." unique_id=147245819]
 script = ExtResource("2_que7a")
 
-[node name="CameraComponent" type="Node" parent="." unique_id=1924322493]
+[node name="CameraComponent" type="Camera3D" parent="." unique_id=761701801]
+transform = Transform3D(0.9189014, 0.16161524, -0.3598622, 0, 0.9122274, 0.40968415, 0.39448735, -0.37645933, 0.83824706, 0, 4.853552, 4.421533)
+projection = 1
+size = 16.0
 script = ExtResource("5_1mpnw")
-offset = Vector3(7.725, 9.254, 9.816)
-rotation = Vector3(-0.805, 0, 0)
+offset = Vector3(0, 4.853552, 4.421533)
 metadata/_custom_type_script = "uid://c3q2bf4w8k2ae"
