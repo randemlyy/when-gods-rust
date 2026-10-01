@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var cameraC: CameraComponent = $CameraComponent
 
 @export var mouse_sens:float = 0.002
+@export var health = 100
 
 func _ready() -> void:
 	cameraC.start()
@@ -29,3 +30,7 @@ func _physics_process(delta: float) -> void:
 	if not attackC.is_attacking:
 		movementC.physics_update(delta, Vector3(inputC.dir.x, 0, inputC.dir.y), self)
 	move_and_slide()
+
+func take_damage(amount: int):
+	health = max(health - amount, 0)
+	print("healt", health)

@@ -5,6 +5,9 @@ extends CharacterBody3D
 @onready var gCheck: RayCast3D = $GroundCheck
 var dir:Vector3
 
+func set_move_direction(new_dir: Vector3) -> void:
+	dir = new_dir
+
 func _process(delta: float) -> void:
 	pass
 

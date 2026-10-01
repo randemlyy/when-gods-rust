@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d2i164qcqw4na"]
 
-[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://Scripts/icyfire/player.gd" id="1_dkbgn"]
-[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://Scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="2_que7a"]
-[ext_resource type="Script" uid="uid://csj5jv0vccu17" path="res://Scripts/randem/AttackComponent.gd" id="4_xbex8"]
-[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://Scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+[ext_resource type="Script" uid="uid://csj5jv0vccu17" path="res://scripts/randem/AttackComponent.gd" id="4_xbex8"]
+[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
@@ -12,7 +12,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_1mpnw"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1258498601]
+[node name="Player" type="CharacterBody3D" unique_id=1258498601 groups=["player"]]
 script = ExtResource("1_dkbgn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=62828141]

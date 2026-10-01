@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cf6amcblndo4i"]
 
-[ext_resource type="Script" uid="uid://bjjc3prpxfcdt" path="res://Scripts/F1aze23/zealot.gd" id="1_d7kfn"]
-[ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://Scripts/F1aze23/StateMachine.gd" id="1_q00h4"]
-[ext_resource type="Script" uid="uid://cuhhckiweach3" path="res://Scripts/F1aze23/EnemyStates/WanderState.gd" id="2_8jpi8"]
-[ext_resource type="Script" uid="uid://cpwwu1gw7sj85" path="res://Scripts/F1aze23/state.gd" id="3_d7kfn"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="4_8jpi8"]
+[ext_resource type="Script" uid="uid://bjjc3prpxfcdt" path="res://scripts/F1aze23/zealot.gd" id="1_d7kfn"]
+[ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://scripts/F1aze23/StateMachine.gd" id="1_q00h4"]
+[ext_resource type="Script" uid="uid://cuhhckiweach3" path="res://scripts/F1aze23/EnemyStates/WanderState.gd" id="2_8jpi8"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="4_8jpi8"]
+[ext_resource type="Script" uid="uid://c66042wr8m356" path="res://scripts/F1aze23/EnemyStates/AttackState.gd" id="4_phb08"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8v36v"]
 
@@ -34,14 +34,12 @@ script = ExtResource("1_q00h4")
 iState = NodePath("Wander")
 metadata/_custom_type_script = "uid://dyp3dlym7cmbv"
 
-[node name="Wander" type="Node" parent="StateMachine" unique_id=1267670074 node_paths=PackedStringArray("wTimer", "gCheck")]
+[node name="Wander" type="Node" parent="StateMachine" unique_id=1267670074]
 script = ExtResource("2_8jpi8")
-wTimer = NodePath("../../wTimer")
-gCheck = NodePath("../../GroundCheck")
 metadata/_custom_type_script = "uid://cpwwu1gw7sj85"
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=587161510]
-script = ExtResource("3_d7kfn")
+script = ExtResource("4_phb08")
 metadata/_custom_type_script = "uid://cpwwu1gw7sj85"
 
 [node name="GroundCheck" type="RayCast3D" parent="." unique_id=1271536141]
