@@ -33,7 +33,6 @@ func physics_update(delta:float) -> void:
 	timer -= delta
 	
 	if phase == Phase.WINDUP and timer <= 0:
-		print("Zealot windup")
 		_try_hit()
 		phase = Phase.RECOVERY
 		timer = recovery_time

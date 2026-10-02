@@ -6,6 +6,8 @@ extends CharacterBody3D
 @onready var cameraC: CameraComponent = $CameraComponent
 @onready var healthC: HealthComponent = $HealthComponent
 @onready var staggerC: StaggerComponent = $StaggerComponent
+@onready var attack_meter: ProgressBar = $CanvasLayer/AttackMeter
+@onready var crit_marker: ColorRect = $CanvasLayer/AttackMeter/CritMarker
 
 @export var mouse_sens:float = 0.002
 @export var stagger_dura: float = 0.8
@@ -16,6 +18,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	inputC.update(delta)
 	cameraC.update(self)
+	var point_from_player = global_position + Vector3.LEFT
+	attack_meter.position = cameraC.cam.unproject_position(point_from_player) - attack_meter.size / 3
+	attack_meter.visible = attackC.is_attacking and attackC.state != AttackComponent.State.RECOVERY
+	var duration = attackC.attack_durations[attackC.current_attack]
+	if duration > 0.0:
+		attack_meter.value = attackC.attack_time / duration * 100.0
+	var index = attackC.current_attack
+	var start_ratio = attackC.crit_window_starts[index] / duration
+	var end_ratio = attackC.crit_window_ends[index] / duration
+	
+	crit_marker.position = Vector2(start_ratio * attack_meter.size.x, 0)
+	crit_marker.size = Vector2(
+		(end_ratio - start_ratio) * attack_meter.size.x,
+		attack_meter.size.y
+	)
+	crit_marker.visible = end_ratio > start_ratio
 
 func _unhandled_input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
