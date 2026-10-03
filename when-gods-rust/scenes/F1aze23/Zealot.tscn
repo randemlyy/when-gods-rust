@@ -18,6 +18,7 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_uy01w"]
 
 [node name="Zealot" type="CharacterBody3D" unique_id=1378631121]
+collision_layer = 3
 script = ExtResource("1_d7kfn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1162409723]

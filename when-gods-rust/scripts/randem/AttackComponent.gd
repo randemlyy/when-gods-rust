@@ -8,6 +8,8 @@ enum State {
 	RECOVERY
 }
 
+signal attack_started
+
 @onready var body: CharacterBody3D = $".."
 #@onready var facing: Vector3
 
@@ -62,7 +64,6 @@ func _update_combo_window(delta: float, attack_pressed: bool) -> void:
 	if attack_pressed and current_attack < attack_durations.size() - 1 and attack_time <= combo_window_ends[current_attack]:
 		if attack_time >= crit_window_starts[current_attack] and attack_time <= crit_window_ends[current_attack]:
 			is_queued_crit = true
-			print("crit baby")
 		combo_queued = true
 	if attack_time >= attack_durations[current_attack] and not recovery_time >= attack_forgiveness:
 		state = State.RECOVERY
@@ -82,6 +83,7 @@ func _start_attack(index: int, attack_is_crit: bool = false) -> void:
 	recovery_time = 0.0
 	combo_queued = false
 	state = State.ATTACKING
+	attack_started.emit()
 	
 	var forward := -body.global_basis.z
 	forward.y = 0.0
@@ -90,8 +92,6 @@ func _start_attack(index: int, attack_is_crit: bool = false) -> void:
 	var lunge_speed := lunge_distances[index] / attack_durations[index]
 	body.velocity.x = forward.x * lunge_speed
 	body.velocity.z = forward.z * lunge_speed
-	
-	print("attacking")
 
 func _update_recovery(delta: float, attack_pressed: bool) -> void:
 	recovery_time += delta

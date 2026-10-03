@@ -8,12 +8,16 @@ extends CharacterBody3D
 @onready var staggerC: StaggerComponent = $StaggerComponent
 @onready var attack_meter: ProgressBar = $CanvasLayer/AttackMeter
 @onready var crit_marker: ColorRect = $CanvasLayer/AttackMeter/CritMarker
-
+@onready var attack_hitbox: Area3D = $Area3D
 @export var mouse_sens:float = 0.002
 @export var stagger_dura: float = 0.8
 
+var	bodies_hit_this_swing: Array[Node3D] = []
+
 func _ready() -> void:
 	cameraC.start()
+	attack_hitbox.body_entered.connect(_on_attack_hitbox_body_entered)
+	attackC.attack_started.connect(_on_attack_started)
 
 func _process(delta: float) -> void:
 	inputC.update(delta)
@@ -55,13 +59,36 @@ func _physics_process(delta: float) -> void:
 	
 	# actual movement direction, taking into account everything
 	attackC.physics_update(delta, inputC.attack)
+	var should_hit = (attackC.state == AttackComponent.State.ATTACKING or attackC.state == AttackComponent.State.COMBO_WINDOW)
+	
+	if attack_hitbox.monitoring != should_hit:
+		attack_hitbox.set_deferred("monitoring", should_hit)
+	
 	if not attackC.is_attacking:
 		movementC.physics_update(delta, Vector3(inputC.dir.x, 0, inputC.dir.y), self)
 	move_and_slide()
 
 func take_hit(damage: int, hit_stagger_duration: float = 0.8) -> void:
 	healthC.take_damage(damage)
-	
 	if attackC.is_winding_up:
 		attackC.cancel_attack()
+		attack_hitbox.set_deferred("monitoring", false)
 		staggerC.apply_stagger(hit_stagger_duration)
+
+func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	if not body.has_method("take_hit"):
+		return
+	if body in bodies_hit_this_swing:
+		print("Repeat hit blocked: ", body.name)
+		return
+	
+	bodies_hit_this_swing.append(body)
+	
+	var damage = 10
+	if attackC.is_current_crit:
+		damage += 5
+	body.call("take_hit", damage)
+
+func _on_attack_started() -> void:
+	print("New swing. Clearing ", bodies_hit_this_swing.size(), " recorded hits.")
+	bodies_hit_this_swing.clear()
