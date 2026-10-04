@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c51gnbjamppg"
-path="res://.godot/imported/jet_brains_mono_nl-regular-2.304.ttf-96fa438503371775be3cc744a4450fc2.fontdata"
+uid="uid://be2ygu4u3hve7"
+path="res://.godot/imported/SourceCodePro-Light.ttf-216299d09089764ee3a458fc86fe2546.fontdata"
 
 [deps]
 
-source_file="res://addons/godot_xterm/themes/fonts/jet_brains_mono/jet_brains_mono_nl-regular-2.304.ttf"
-dest_files=["res://.godot/imported/jet_brains_mono_nl-regular-2.304.ttf-96fa438503371775be3cc744a4450fc2.fontdata"]
+source_file="res://add/gdterm/fonts/SourceCodePro-Light.ttf"
+dest_files=["res://.godot/imported/SourceCodePro-Light.ttf-216299d09089764ee3a458fc86fe2546.fontdata"]
 
 [params]
 

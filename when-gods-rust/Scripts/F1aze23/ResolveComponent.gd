@@ -6,7 +6,7 @@ extends Node
 @export var resolveBar:ProgressBar
 @export var resolveDecay:float = 0.01
 var canDecay:bool = true
-@onready var progress_bar: ProgressBar = $"../CanvasLayer/Control/ProgressBar"
+@onready var progress_bar: ProgressBar = $"../CanvasLayer/Control/ResolveBar"
 
 func start():
 	resolveBar.max_value = maxResolve

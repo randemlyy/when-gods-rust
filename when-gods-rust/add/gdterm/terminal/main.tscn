@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bybyru7sqjtp7"]
+[gd_scene format=3 uid="uid://bybyru7sqjtp7"]
 
-[ext_resource type="Theme" uid="uid://dg6omohogcvmn" path="res://addons/gdterm/themes/light.tres" id="1_na4fp"]
-[ext_resource type="Script" path="res://addons/gdterm/terminal/term_container.gd" id="1_ptxgd"]
-[ext_resource type="Script" path="res://addons/gdterm/terminal/main.gd" id="2_eh8tx"]
-[ext_resource type="PackedScene" uid="uid://b62ioxhftvwg7" path="res://addons/gdterm/terminal/term.tscn" id="3_u81lm"]
-[ext_resource type="AudioStream" uid="uid://dxb1sddgekrg5" path="res://addons/gdterm/audio/bell.mp3" id="5_8xiy1"]
+[ext_resource type="Theme" uid="uid://dg6omohogcvmn" path="res://add/gdterm/themes/light.tres" id="1_na4fp"]
+[ext_resource type="Script" uid="uid://qaj5igg1vd7i" path="res://add/gdterm/terminal/term_container.gd" id="1_ptxgd"]
+[ext_resource type="Script" uid="uid://skyewewvprmj" path="res://add/gdterm/terminal/main.gd" id="2_eh8tx"]
+[ext_resource type="PackedScene" uid="uid://b62ioxhftvwg7" path="res://add/gdterm/terminal/term.tscn" id="3_u81lm"]
+[ext_resource type="AudioStream" uid="uid://dxb1sddgekrg5" path="res://add/gdterm/audio/bell.mp3" id="5_8xiy1"]
 
 [node name="main" type="MarginContainer"]
 anchors_preset = 15

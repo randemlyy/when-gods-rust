@@ -8,7 +8,7 @@ func start():
 	cam = Camera3D.new()
 	
 	get_tree().root.add_child.call_deferred(cam)
-	
+
 	cam.projection = Camera3D.PROJECTION_PERSPECTIVE
 	cam.size = 14
 	

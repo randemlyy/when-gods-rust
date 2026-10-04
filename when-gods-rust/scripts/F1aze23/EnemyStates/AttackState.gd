@@ -1,11 +1,14 @@
 extends state
 
 @export var attack_range: float = 1.8
-@export var damage: int = 10
+@export var damage: float = 10
 @export var windup_time: float = 0.55
 @export var recovery_time: float = 0.8
 @export var facing_min: float = 0.55
 @export var stagger_duration: float = 0.8
+
+var TimeSinceDmg:float = 0
+var DmgTime:float = 2
 
 enum Phase {
 	WINDUP,
@@ -25,6 +28,7 @@ func enter() -> void:
 	body.call("set_move_direction", Vector3.ZERO)
 
 func physics_update(delta:float) -> void:
+	TimeSinceDmg += delta
 	if not is_instance_valid(player):
 		player = get_tree().get_first_node_in_group("player") as Node3D
 		get_parent().change_state("wander")
@@ -36,6 +40,7 @@ func physics_update(delta:float) -> void:
 		_try_hit()
 		phase = Phase.RECOVERY
 		timer = recovery_time
+		
 	elif phase == Phase.RECOVERY and timer <= 0:
 		if _flat_distance(body.global_position, player.global_position) <= attack_range * 1.2:
 			phase = Phase.WINDUP
@@ -58,7 +63,6 @@ func _try_hit() -> void:
 	
 	if to_player.length() > attack_range:
 		return
-	
 	var forward = -body.global_basis.z
 	forward.y = 0.0
 	forward = forward.normalized()
@@ -66,8 +70,9 @@ func _try_hit() -> void:
 	if forward.dot(to_player.normalized()) < facing_min:
 		return
 	
-	if player.has_method("take_hit"):
-		player.call("take_hit", damage, stagger_duration)
+	if player.has_method("take_hit") && TimeSinceDmg>=DmgTime:
+		TimeSinceDmg = 0
+		player.call("take_hit", damage, stagger_duration, to_player)
 	print('hits')
 
 func _flat_distance(a: Vector3, b: Vector3) -> float:

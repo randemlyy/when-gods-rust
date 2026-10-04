@@ -21,6 +21,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	
+	if healthC.current_health <= 0:
+		queue_free()
+	
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 	if staggerC.is_staggered:
@@ -30,12 +34,17 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	# actual movement direction, taking into account everything
-	moveC.physics_update(delta, dir, self)
+	if !staggerC.is_staggered:
+		moveC.physics_update(delta, dir, self)
+	else:
+		velocity.move_toward(Vector3.ZERO, 1)
 	move_and_slide()
 
-func take_hit(damage: int, hit_stagger_duration: float = 0.65) -> void:
+func take_hit(damage: int, hit_stagger_duration: float = 0.65, hit_direction = Vector3.RIGHT) -> void:
 	healthC.take_damage(damage)
 	print("took damage", damage)
+	velocity = hit_direction
+	print (velocity)
 	var current_state = sMachine.cState
 	if current_state != null and current_state.has_method("is_winding_up") and current_state.call("is_winding_up"):
 		sMachine.change_state("wander")

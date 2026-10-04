@@ -1,14 +1,14 @@
-[gd_scene format=3 uid="uid://d2i164qcqw4na"]
+[gd_scene format=3 uid="uid://m4qtcq1tnb3t"]
 
-[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
-[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
-[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://Scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
-[ext_resource type="Script" uid="uid://ciublmng1hl7q" path="res://scripts/F1aze23/AttackComponent.gd" id="3_ahkby"]
-[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
-[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://Scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_eyxuf"]
+[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://Scripts/F1aze23/InventoryComponent.gd" id="2_56sb7"]
+[ext_resource type="Script" uid="uid://ciublmng1hl7q" path="res://scripts/F1aze23/AttackComponent.gd" id="3_4lara"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="4_bhxb1"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="5_ofirf"]
+[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="6_cmwa4"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="7_dpm7y"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="8_3hmox"]
+[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://Scripts/F1aze23/ResolveComponent.gd" id="9_6po5q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
@@ -245,7 +245,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahkby"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1258498601 groups=["player"]]
-script = ExtResource("1_dkbgn")
+script = ExtResource("1_eyxuf")
 canCombo = true
 canCrit = true
 canStagger = true
@@ -262,35 +262,35 @@ transform = Transform3D(-2.4943994e-08, 0, 0.8194542, 0, 0.25397006, 0, -0.57065
 mesh = SubResource("BoxMesh_1mpnw")
 
 [node name="InventoryComponent" type="Node" parent="." unique_id=332656653 node_paths=PackedStringArray("hand_slot", "iArea", "anim")]
-script = ExtResource("2_vjlaq")
+script = ExtResource("2_56sb7")
 hand_slot = NodePath("../Hand")
 iArea = NodePath("../InteractArea")
 anim = NodePath("../TestAnimPlayer")
 metadata/_custom_type_script = "uid://2ykk4lgaj6yg"
 
 [node name="AttackComponent" type="Node" parent="." unique_id=1201272949]
-script = ExtResource("3_ahkby")
+script = ExtResource("3_4lara")
 
 [node name="InputComponent" type="Node" parent="." unique_id=287546714]
-script = ExtResource("1_fx4ke")
+script = ExtResource("4_bhxb1")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=147245819]
-script = ExtResource("2_que7a")
+script = ExtResource("5_ofirf")
 
 [node name="CameraComponent" type="Node" parent="." unique_id=1924322493]
-script = ExtResource("5_1mpnw")
+script = ExtResource("6_cmwa4")
 offset = Vector3(7.725, 9.254, 9.816)
 rotation = Vector3(-0.805, 0, 0)
 metadata/_custom_type_script = "uid://c3q2bf4w8k2ae"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1763875352]
-script = ExtResource("6_okieb")
+script = ExtResource("7_dpm7y")
 
 [node name="StaggerComponent" type="Node" parent="." unique_id=593057376]
-script = ExtResource("7_vvvn2")
+script = ExtResource("8_3hmox")
 
 [node name="ResolveComponent" type="Node" parent="." unique_id=378317454 node_paths=PackedStringArray("resolveBar")]
-script = ExtResource("7_8qorh")
+script = ExtResource("9_6po5q")
 resolveBar = NodePath("Resolve/ResolveBar")
 metadata/_custom_type_script = "uid://c6h2bauklbph"
 

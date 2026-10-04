@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b62ioxhftvwg7"]
+[gd_scene format=3 uid="uid://b62ioxhftvwg7"]
 
-[ext_resource type="Script" path="res://addons/gdterm/terminal/term.gd" id="1_o0o4i"]
-[ext_resource type="FontFile" uid="uid://be4ro0vum8y1d" path="res://addons/gdterm/fonts/SourceCodePro-Medium.ttf" id="2_vxjtp"]
-[ext_resource type="FontFile" uid="uid://be2ygu4u3hve7" path="res://addons/gdterm/fonts/SourceCodePro-Light.ttf" id="3_308uo"]
-[ext_resource type="FontFile" uid="uid://dro74qegmjqgl" path="res://addons/gdterm/fonts/SourceCodePro-Bold.ttf" id="4_roq5w"]
+[ext_resource type="Script" uid="uid://ovnoh3euq3cf" path="res://add/gdterm/terminal/term.gd" id="1_o0o4i"]
+[ext_resource type="FontFile" uid="uid://be4ro0vum8y1d" path="res://add/gdterm/fonts/SourceCodePro-Medium.ttf" id="2_vxjtp"]
+[ext_resource type="FontFile" uid="uid://be2ygu4u3hve7" path="res://add/gdterm/fonts/SourceCodePro-Light.ttf" id="3_308uo"]
+[ext_resource type="FontFile" uid="uid://dro74qegmjqgl" path="res://add/gdterm/fonts/SourceCodePro-Bold.ttf" id="4_roq5w"]
 
 [node name="term" type="HBoxContainer"]
 script = ExtResource("1_o0o4i")

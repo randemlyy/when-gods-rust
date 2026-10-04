@@ -11,10 +11,10 @@ func _ready() -> void:
 		if child is state:
 			states[child.name.to_lower()] = child
 			child.sm = self
-	
+
 	if iState:
 		change_state(iState.name.to_lower())
- 
+
 func _process(delta: float) -> void:
 	if cState and not staggerC.is_staggered:
 		cState.update(delta)
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if cState and not staggerC.is_staggered:
 		cState.physics_update(delta)
-	
+
 func change_state(newStateName:String):
 	if cState:
 		cState.exit()
@@ -31,4 +31,3 @@ func change_state(newStateName:String):
 	
 	if cState:
 		cState.enter()
-	

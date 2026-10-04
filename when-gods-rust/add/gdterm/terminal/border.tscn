@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://mreef38eayen"]
+[gd_scene format=3 uid="uid://mreef38eayen"]
 
-[ext_resource type="PackedScene" uid="uid://bybyru7sqjtp7" path="res://addons/gdterm/terminal/main.tscn" id="1_102el"]
-[ext_resource type="Script" path="res://addons/gdterm/terminal/border.gd" id="1_dlllo"]
+[ext_resource type="PackedScene" uid="uid://bybyru7sqjtp7" path="res://add/gdterm/terminal/main.tscn" id="1_102el"]
+[ext_resource type="Script" uid="uid://criaaektowq5s" path="res://add/gdterm/terminal/border.gd" id="1_dlllo"]
 
 [node name="border" type="PanelContainer"]
 anchors_preset = 15
