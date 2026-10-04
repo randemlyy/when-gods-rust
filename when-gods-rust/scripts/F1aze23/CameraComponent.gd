@@ -9,7 +9,7 @@ func start():
 	
 	get_tree().root.add_child.call_deferred(cam)
 	
-	cam.projection = Camera3D.PROJECTION_PERSPECTIVE
+	cam.projection = Camera3D.PROJECTION_ORTHOGONAL
 	cam.size = 14
 	
 	cam.make_current() 

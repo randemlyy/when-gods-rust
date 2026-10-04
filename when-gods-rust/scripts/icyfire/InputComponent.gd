@@ -16,3 +16,4 @@ func update(delta: float) -> void:
 	dodge = Input.is_action_just_pressed("dodge")
 	block = Input.is_action_just_pressed("block")
 	attack = Input.is_action_just_pressed("attack")
+	interact = Input.is_action_just_pressed("PickUp")

@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://d2i164qcqw4na"]
 
-[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
-[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
-[ext_resource type="Script" uid="uid://csj5jv0vccu17" path="res://scripts/randem/AttackComponent.gd" id="4_xbex8"]
-[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://Scripts/icyfire/player.gd" id="1_dkbgn"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://Scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://Scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
+[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://Scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="6_okieb"]
+[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://Scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
@@ -17,24 +18,373 @@ albedo_color = Color(0, 0.24313726, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1mpnw"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_okieb"]
+[sub_resource type="GDScript" id="GDScript_wnojd"]
+script/source = "class_name AttackComponent
+extends Node
+
+enum State {
+	IDLE,
+	ATTACKING,
+	COMBO_WINDOW,
+	RECOVERY
+}
+
+signal attack_started
+
+@onready var body: CharacterBody3D = $\"..\"
+#@onready var facing: Vector3
+
+@export var attack_durations: Array[float] = [0.55, 0.65, 0.8]
+@export var combo_window_starts: Array[float] = [0.25, 0.3, 0.0]
+@export var combo_window_ends: Array[float] = [0.5, 0.55, 0.0]
+@export var crit_window_starts: Array[float] = [0.34, 0.4, 0]
+@export var crit_window_ends: Array[float] = [0.42, 0.48, 0]
+@export var lunge_distances: Array[float] = [1.0, 1.2, 1.5]
+
+var state = State.IDLE
+var current_attack: int = 0
+var attack_time: float = 0.0
+var combo_queued: bool = false
+var attack_forgiveness: float = 0.15
+var recovery_time: float = 0.0
+var is_current_crit: bool = false
+var is_queued_crit: bool = false
+
+var is_winding_up: bool:
+	get:
+		return state == State.ATTACKING and attack_time < combo_window_starts[current_attack]
+
+var is_attacking: bool: 
+	get: return state != State.IDLE
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func physics_update(delta: float, attack_pressed: bool) -> void:
+	
+	match state:
+		State.IDLE:
+			if attack_pressed:
+				_start_attack(0)
+		State.ATTACKING:
+			_update_attack(delta)
+		State.COMBO_WINDOW:
+			_update_combo_window(delta, attack_pressed)
+		State.RECOVERY:
+			_update_recovery(delta, attack_pressed)
+
+func _update_attack(delta: float) -> void:
+	attack_time += delta
+	
+	if attack_time >= combo_window_starts[current_attack]:
+		state = State.COMBO_WINDOW
+	if attack_time >= attack_durations[current_attack] and not recovery_time >= attack_forgiveness:
+		state = State.RECOVERY
+
+func _update_combo_window(delta: float, attack_pressed: bool) -> void:
+	attack_time += delta
+	
+	if attack_pressed and current_attack < attack_durations.size() - 1 and attack_time <= combo_window_ends[current_attack]:
+		if attack_time >= crit_window_starts[current_attack] and attack_time <= crit_window_ends[current_attack]:
+			is_queued_crit = true
+		combo_queued = true
+	if attack_time >= attack_durations[current_attack] and not recovery_time >= attack_forgiveness:
+		state = State.RECOVERY
+
+func _finish_current_attack() -> void:
+	if combo_queued and current_attack < attack_durations.size() - 1:
+		_start_attack(current_attack + 1, is_queued_crit)
+	else:
+		_end_combo()
+
+func _start_attack(index: int, attack_is_crit: bool = false) -> void:
+	current_attack = index
+	is_current_crit = attack_is_crit
+	print(\"attack \", index + 1, \" crit: \", is_current_crit)
+	is_queued_crit = false
+	attack_time = 0.0
+	recovery_time = 0.0
+	combo_queued = false
+	state = State.ATTACKING
+	attack_started.emit()
+	
+	var forward := -body.global_basis.z
+	forward.y = 0.0
+	forward = forward.normalized()
+	
+	var lunge_speed := lunge_distances[index] / attack_durations[index]
+	body.velocity.x = forward.x * lunge_speed
+	body.velocity.z = forward.z * lunge_speed
+
+func _update_recovery(delta: float, attack_pressed: bool) -> void:
+	recovery_time += delta
+	
+	if attack_pressed and current_attack < attack_durations.size() - 1:
+		_start_attack(current_attack + 1, is_queued_crit)
+		return
+	
+	if recovery_time >= attack_forgiveness:
+		_finish_current_attack()
+		
+func _end_combo() -> void:
+	print(\"attack combo finished\")
+	state = State.IDLE
+	body.velocity.x = 0.0
+	body.velocity.z = 0.0
+	
+func cancel_attack() -> void:
+	state = State.IDLE
+	attack_time = 0.0
+	combo_queued = false
+	body.velocity.x = 0.0
+	
+"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wnojd"]
+viewport_path = NodePath("ResolveComponent/Resolve")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8qorh"]
+radius = 0.70654297
+height = 2.8999023
+
+[sub_resource type="BoxMesh" id="BoxMesh_8qorh"]
+
+[sub_resource type="Animation" id="Animation_vjlaq"]
+resource_name = "Attack_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:canStagger")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:canCombo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:canCrit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.1102563, 0, 0), Vector3(-1.3155943, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u7fmy"]
+resource_name = "Attack_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:canStagger")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:canCombo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:canCrit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.1102563, 0, 0), Vector3(-1.3155943, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kdaxr"]
+resource_name = "Attack_3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:canStagger")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:canCombo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:canCrit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.1102563, 0, 0), Vector3(-1.3155943, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_enw72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:canStagger")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:canCombo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:canCrit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7fmy"]
+_data = {
+&"Attack_1": SubResource("Animation_vjlaq"),
+&"Attack_2": SubResource("Animation_u7fmy"),
+&"Attack_3": SubResource("Animation_kdaxr"),
+&"RESET": SubResource("Animation_enw72")
+}
 
 [node name="Player" type="CharacterBody3D" unique_id=1258498601 groups=["player"]]
 script = ExtResource("1_dkbgn")
+canCombo = true
+canCrit = true
+canStagger = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=62828141]
 shape = SubResource("CapsuleShape3D_fgv4r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1991771657]
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1991771657]
 mesh = SubResource("CapsuleMesh_fx4ke")
 surface_material_override/0 = SubResource("StandardMaterial3D_okieb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D" unique_id=1557886803]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=1557886803]
 transform = Transform3D(-2.4943994e-08, 0, 0.8194542, 0, 0.25397006, 0, -0.57065207, 0, -3.581948e-08, -0.006001532, 0.47441304, -0.29220486)
 mesh = SubResource("BoxMesh_1mpnw")
 
+[node name="InventoryComponent" type="Node" parent="." unique_id=332656653 node_paths=PackedStringArray("hand_slot", "iArea", "anim")]
+script = ExtResource("2_vjlaq")
+hand_slot = NodePath("../Hand")
+iArea = NodePath("../InteractArea")
+anim = NodePath("../TestAnimPlayer")
+metadata/_custom_type_script = "uid://2ykk4lgaj6yg"
+
 [node name="AttackComponent" type="Node" parent="." unique_id=1201272949]
-script = ExtResource("4_xbex8")
+script = SubResource("GDScript_wnojd")
 
 [node name="InputComponent" type="Node" parent="." unique_id=287546714]
 script = ExtResource("1_fx4ke")
@@ -54,25 +404,40 @@ script = ExtResource("6_okieb")
 [node name="StaggerComponent" type="Node" parent="." unique_id=593057376]
 script = ExtResource("7_vvvn2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2015149974]
+[node name="ResolveComponent" type="Node" parent="." unique_id=378317454 node_paths=PackedStringArray("resolveBar")]
+script = ExtResource("7_8qorh")
+resolveBar = NodePath("Resolve/ResolveBar")
+metadata/_custom_type_script = "uid://c6h2bauklbph"
 
-[node name="AttackMeter" type="ProgressBar" parent="CanvasLayer" unique_id=1033373285]
-custom_minimum_size = Vector2(50, 9)
-offset_right = 50.0
-offset_bottom = 13.3397255
-rotation = 4.712389
-show_percentage = false
+[node name="ResolveSprite" type="Sprite3D" parent="ResolveComponent" unique_id=1649259392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3153229, 0)
+texture = SubResource("ViewportTexture_wnojd")
 
-[node name="CritMarker" type="ColorRect" parent="CanvasLayer/AttackMeter" unique_id=1195336133]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-color = Color(1, 1, 0, 1)
+[node name="Resolve" type="SubViewport" parent="ResolveComponent" unique_id=1276362489]
+transparent_bg = true
+size = Vector2i(200, 40)
+render_target_update_mode = 4
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1192882319]
-collision_mask = 2
+[node name="ResolveBar" type="ProgressBar" parent="ResolveComponent/Resolve" unique_id=926350882]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="AttackHitbox" type="CollisionShape3D" parent="Area3D" unique_id=988981804]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.95)
-shape = SubResource("BoxShape3D_okieb")
+[node name="InteractArea" type="Area3D" parent="." unique_id=1817867001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1964796884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.072753906, 0)
+shape = SubResource("CapsuleShape3D_8qorh")
+
+[node name="Hand" type="Node3D" parent="." unique_id=169300047]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.6128334, 0, -0.6945792)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hand" unique_id=1531921442]
+transform = Transform3D(0.1128499, 0, 0, 0, 0.13321495, 0, 0, 0, 0.12648994, 0, 0, 0)
+mesh = SubResource("BoxMesh_8qorh")
+
+[node name="TestAnimPlayer" type="AnimationPlayer" parent="." unique_id=841370186]
+libraries/ = SubResource("AnimationLibrary_u7fmy")

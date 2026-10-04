@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://8ki1um74b20t"]
+
+[ext_resource type="Script" uid="uid://dkwoimokieoao" path="res://Scripts/F1aze23/ItemWeapon.gd" id="1_7c70k"]
+[ext_resource type="PackedScene" uid="uid://ddkuk1on7vabs" path="res://Scenes/F1aze23/TestWeapon.tscn" id="2_daekf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_daekf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eo5vb"]
+
+[node name="TestWeaponItem" type="StaticBody3D" unique_id=102225822]
+
+[node name="ItemWeapon" type="Node" parent="." unique_id=141921985]
+script = ExtResource("1_7c70k")
+Weapon = ExtResource("2_daekf")
+metadata/_custom_type_script = "uid://dkwoimokieoao"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1962031601]
+mesh = SubResource("BoxMesh_daekf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1210122213]
+shape = SubResource("BoxShape3D_eo5vb")
