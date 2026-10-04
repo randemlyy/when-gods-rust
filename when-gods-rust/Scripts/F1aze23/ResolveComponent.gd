@@ -6,6 +6,7 @@ extends Node
 @export var resolveBar:ProgressBar
 @export var resolveDecay:float = 0.01
 var canDecay:bool = true
+@onready var progress_bar: ProgressBar = $"../CanvasLayer/Control/ProgressBar"
 
 func start():
 	resolveBar.max_value = maxResolve
@@ -20,7 +21,9 @@ func update(delta:float):
 		
 	if canDecay:
 		cResolve-=resolveDecay
-		
+	
+	progress_bar.value = (cResolve/maxResolve) * 100
+	
 func gainResolve(amt:float):
 	cResolve += amt
 	canDecay = false
