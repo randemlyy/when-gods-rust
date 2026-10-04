@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://d2i164qcqw4na"]
 
-[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://Scripts/icyfire/player.gd" id="1_dkbgn"]
-[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://Scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="2_que7a"]
-[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://Scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
-[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://Scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="6_okieb"]
-[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://Scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
+[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
+[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 

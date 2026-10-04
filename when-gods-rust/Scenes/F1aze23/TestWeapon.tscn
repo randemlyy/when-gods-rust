@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://ddkuk1on7vabs"]
 
-[ext_resource type="Script" uid="uid://b18s23qf7gufi" path="res://Scripts/F1aze23/Weapon.gd" id="1_cnxv3"]
+[ext_resource type="Script" uid="uid://b18s23qf7gufi" path="res://scripts/F1aze23/Weapon.gd" id="1_cnxv3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oggyb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cnxv3"]
 size = Vector3(0.28656006, 1.2193604, 0.33764648)
 
-[node name="TestWeapon" type="Node3D" unique_id=180455758]
+[node name="TestWeapon" type="Node3D" unique_id=180455758 node_paths=PackedStringArray("attackArea")]
 script = ExtResource("1_cnxv3")
+attackArea = NodePath("Area3D")
+damage = 50.0
 metadata/_custom_type_script = "uid://b18s23qf7gufi"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2127104799]

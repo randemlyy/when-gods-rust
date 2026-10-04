@@ -8,6 +8,12 @@ extends CharacterBody3D
 
 var dir:Vector3
 
+func _ready() -> void:
+	healthC.died.connect(_on_died)
+	
+func _on_died() -> void:
+	queue_free()
+
 func set_move_direction(new_dir: Vector3) -> void:
 	dir = new_dir
 
@@ -29,7 +35,7 @@ func _physics_process(delta: float) -> void:
 
 func take_hit(damage: int, hit_stagger_duration: float = 0.65) -> void:
 	healthC.take_damage(damage)
-	
+	print("took damage", damage)
 	var current_state = sMachine.cState
 	if current_state != null and current_state.has_method("is_winding_up") and current_state.call("is_winding_up"):
 		sMachine.change_state("wander")
