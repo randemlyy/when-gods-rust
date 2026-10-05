@@ -28,6 +28,7 @@ func Attack(resolve:ResolveComponent, anim:AnimationPlayer):
 		comboStep+=1
 		resolve.gainResolve(10)
 		print("crit")
+		damage *= 1.1
 		startAttack(anim)
 	elif canCombo:
 		comboStep+=1

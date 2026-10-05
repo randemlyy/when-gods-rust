@@ -25,6 +25,7 @@ var	bodies_hit_this_swing: Array[Node3D] = []
 func _ready() -> void:
 	cameraC.start()
 	resolveC.start()
+	healthC.died.connect(onDeath)
 
 func _process(delta: float) -> void:
 	inventoryC.isEquip = inputC.interact
@@ -74,3 +75,7 @@ func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vect
 	staggerC.apply_stagger(hit_stagger_duration)
 	print(hit_direction)
 	velocity = hit_direction
+	
+func onDeath():
+	queue_free()
+	print("Wow ma so bad you are")
