@@ -4,7 +4,7 @@ extends Node
 @export var maxResolve:float = 100.0
 @export var cResolve:float = 100.0
 @export var resolveBar:ProgressBar
-@export var resolveDecay:float = 0.01
+@export var resolveDecay:float = 0.05
 var canDecay:bool = true
 @onready var progress_bar: ProgressBar = $"../CanvasLayer/Control/ResolveBar"
 

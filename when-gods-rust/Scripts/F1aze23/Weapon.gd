@@ -23,19 +23,19 @@ func _ready() -> void:
 
 func Attack(resolve:ResolveComponent, anim:AnimationPlayer):
 	if not isAttacking:
-		startAttack(anim)
+		startAttack(anim, resolve)
 	elif canCrit:
 		comboStep+=1
 		resolve.gainResolve(10)
 		print("crit")
 		damage *= 1.1
-		startAttack(anim)
+		startAttack(anim, resolve)
 	elif canCombo:
 		comboStep+=1
 		print("combo continued")
-		startAttack(anim)
+		startAttack(anim, resolve)
 		
-func startAttack(anim:AnimationPlayer):
+func startAttack(anim:AnimationPlayer, resolve:ResolveComponent):
 	if attackArea == null or anim == null:
 		return
 	isAttacking = true
@@ -43,6 +43,7 @@ func startAttack(anim:AnimationPlayer):
 	attackArea.set_deferred("monitoring", true)
 	if comboStep >= maxCombo:
 		comboStep = 0
+		resolve.gainResolve(15)
 	var animName = "Attack_" + str(comboStep+1)
 	anim.play(animName)
 	anim.animation_finished.connect(func(name:StringName):

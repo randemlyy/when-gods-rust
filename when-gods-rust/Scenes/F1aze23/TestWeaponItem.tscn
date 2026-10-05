@@ -7,6 +7,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eo5vb"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_daekf"]
+viewport_path = NodePath("SubViewport")
+
 [node name="TestWeaponItem" type="StaticBody3D" unique_id=102225822]
 
 [node name="ItemWeapon" type="Node" parent="." unique_id=141921985]
@@ -19,3 +22,16 @@ mesh = SubResource("BoxMesh_daekf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1210122213]
 shape = SubResource("BoxShape3D_eo5vb")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=781059702]
+transparent_bg = true
+size = Vector2i(95, 23)
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=1424915551]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "E to Interact"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1402877695]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.94337356, 0)
+texture = SubResource("ViewportTexture_daekf")

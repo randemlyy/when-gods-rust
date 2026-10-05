@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1vu1ugm3m8u6"]
 
-[ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://scenes/icyfire/player.tscn" id="1_2dbcp"]
-[ext_resource type="PackedScene" uid="uid://cf6amcblndo4i" path="res://scenes/F1aze23/Zealot.tscn" id="2_25x4d"]
+[ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://Scenes/icyfire/player.tscn" id="1_2dbcp"]
+[ext_resource type="PackedScene" uid="uid://cf6amcblndo4i" path="res://Scenes/F1aze23/Zealot.tscn" id="2_25x4d"]
 [ext_resource type="PackedScene" uid="uid://8ki1um74b20t" path="res://Scenes/F1aze23/TestWeaponItem.tscn" id="3_0jgn4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2dbcp"]

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://d2i164qcqw4na"]
 
-[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
-[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://Scripts/icyfire/player.gd" id="1_dkbgn"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://Scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="2_que7a"]
 [ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://Scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
-[ext_resource type="Script" uid="uid://ciublmng1hl7q" path="res://scripts/F1aze23/AttackComponent.gd" id="3_ahkby"]
-[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
+[ext_resource type="Script" uid="uid://ciublmng1hl7q" path="res://Scripts/F1aze23/AttackComponent.gd" id="3_ahkby"]
+[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://Scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="6_okieb"]
 [ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://Scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
@@ -27,8 +27,6 @@ radius = 0.70654297
 height = 2.8999023
 
 [sub_resource type="BoxMesh" id="BoxMesh_8qorh"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ahkby"]
 
 [sub_resource type="Animation" id="Animation_vjlaq"]
 resource_name = "Attack_1"
@@ -325,10 +323,6 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.6128334, 
 transform = Transform3D(0.1128499, 0, 0, 0, 0.13321495, 0, 0, 0, 0.12648994, 0, 0, 0)
 mesh = SubResource("BoxMesh_8qorh")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Hand" unique_id=410417849]
-transform = Transform3D(0.07353276, 0, 0, 0, 0.9999999, 0, 0, 0, 0.102942094, 0, 0, 0)
-mesh = SubResource("BoxMesh_ahkby")
-
 [node name="TestAnimPlayer" type="AnimationPlayer" parent="." unique_id=841370186]
 libraries/ = SubResource("AnimationLibrary_u7fmy")
 
@@ -374,8 +368,8 @@ offset_right = 92.0
 offset_bottom = 43.0
 text = "HEALTH"
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1335698653]
+[node name="AttackArea" type="Area3D" parent="." unique_id=1936723331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2551017)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1562608460]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=891047973]
 shape = SubResource("BoxShape3D_ahkby")

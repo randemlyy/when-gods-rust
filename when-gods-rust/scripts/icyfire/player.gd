@@ -14,10 +14,11 @@ extends CharacterBody3D
 @export var mouse_sens:float = 0.002
 @export var stagger_dura: float = 0.8
 @onready var health_bar: ProgressBar = $CanvasLayer/Control/HealthBar
+@onready var iArea: Area3D = $InteractArea
 
 var TimeSinceDmg:float = 0
 var DmgTime:float = 1
-@onready var area_3d: Area3D = $Area3D
+@onready var attackArea: Area3D = $AttackArea
 
 
 var	bodies_hit_this_swing: Array[Node3D] = []
@@ -47,7 +48,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	TimeSinceDmg += delta
 	if inputC.attack && TimeSinceDmg>= DmgTime:
-		for obj in area_3d.get_overlapping_bodies():
+		for obj in attackArea.get_overlapping_bodies():
 			if obj.get_node_or_null("HealthComponent"):
 				TimeSinceDmg = 0
 				var dir = obj.global_position - global_position
