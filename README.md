@@ -1,2 +1,2 @@
 # when-gods-rust
-2D Topdown Soulslike
+3D Topdown Soulslike
