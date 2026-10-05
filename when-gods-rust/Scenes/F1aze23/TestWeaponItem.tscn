@@ -33,5 +33,5 @@ offset_bottom = 23.0
 text = "E to Interact"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1402877695]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.94337356, 0)
+transform = Transform3D(3.6444778, 0, 0, 0, 2.659582, 2.4917548, 0, -2.4917548, 2.659582, 0, 0.94337356, 0)
 texture = SubResource("ViewportTexture_daekf")

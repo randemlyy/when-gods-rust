@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://o73v2cty65b6"]
+
+[ext_resource type="Script" uid="uid://oe0nin6c2r7t" path="res://scripts/icyfire/MainMenuManager.gd" id="1_hvww4"]
+
+[node name="Mainmenu" type="Node" unique_id=1457896708]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1755251101]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1239630950]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 8.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hvww4")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=1222119685]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 88.0
+offset_right = 381.0
+offset_bottom = 139.0
+text = "PLAY GAME"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control" unique_id=926568798]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 214.0
+offset_right = 351.0
+offset_bottom = 255.0
+text = "QUIT"
+
+[connection signal="button_down" from="CanvasLayer/Control/Button" to="CanvasLayer/Control" method="_on_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/Button2" to="CanvasLayer/Control" method="_on_button_2_button_down"]

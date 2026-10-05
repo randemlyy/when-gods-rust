@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://1vu1ugm3m8u6"]
 
-[ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://Scenes/icyfire/player.tscn" id="1_2dbcp"]
-[ext_resource type="PackedScene" uid="uid://cf6amcblndo4i" path="res://Scenes/F1aze23/Zealot.tscn" id="2_25x4d"]
+[ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://scenes/icyfire/player.tscn" id="1_2dbcp"]
+[ext_resource type="PackedScene" uid="uid://cf6amcblndo4i" path="res://scenes/F1aze23/Zealot.tscn" id="2_25x4d"]
 [ext_resource type="PackedScene" uid="uid://8ki1um74b20t" path="res://Scenes/F1aze23/TestWeaponItem.tscn" id="3_0jgn4"]
+[ext_resource type="Script" uid="uid://bo6mdnv4kfwx3" path="res://scripts/icyfire/control.gd" id="4_0rvhb"]
+[ext_resource type="Script" uid="uid://ceaptm6x6iqxo" path="res://scenes/icyfire/worldboundary.gd" id="5_10rk6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2dbcp"]
 
@@ -20,6 +22,8 @@ albedo_color = Color(0, 0.5921569, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tm1hr"]
 size = Vector3(19.94043, 64.627686, 19.4104)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0rvhb"]
+
 [node name="Testlvl" type="Node3D" unique_id=171825471]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=57987016]
@@ -31,6 +35,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.042, 0)
 shape = SubResource("BoxShape3D_7hibh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=333597395]
+transform = Transform3D(19.794, 0, 0, 0, 0.93, 0, 0, 0, 19.686, 0, 0, 0)
+mesh = SubResource("BoxMesh_tm1hr")
+surface_material_override/0 = SubResource("StandardMaterial3D_7hibh")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=34894889]
+transform = Transform3D(2.433356, -0.068137184, 0, 0.16618825, 0.99767596, 0, 0, 0, 1, 88.0811, -10.882927, 0)
+physics_material_override = SubResource("PhysicsMaterial_2dbcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=585959869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.042, 0)
+shape = SubResource("BoxShape3D_7hibh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3/CollisionShape3D" unique_id=5445511]
+transform = Transform3D(19.794, 0, 0, 0, 0.93, 0, 0, 0, 19.686, 0, 0, 0)
+mesh = SubResource("BoxMesh_tm1hr")
+surface_material_override/0 = SubResource("StandardMaterial3D_7hibh")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=559321827]
+transform = Transform3D(1.8292685, 0, 0, 0, 1, 0, 0, 0, 1, 53.41484, -3.5513763, 21.847893)
+physics_material_override = SubResource("PhysicsMaterial_2dbcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=993230453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.042, 0)
+shape = SubResource("BoxShape3D_7hibh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4/CollisionShape3D" unique_id=733214727]
+transform = Transform3D(19.794, 0, 0, 0, 0.93, 0, 0, 0, 19.686, 0, 0, 0)
+mesh = SubResource("BoxMesh_tm1hr")
+surface_material_override/0 = SubResource("StandardMaterial3D_7hibh")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="." unique_id=1451636338]
+transform = Transform3D(1.8292685, 0, 0, 0, 1, 0, 0, 0, 1, 124.952675, -23.671452, 5.964634)
+physics_material_override = SubResource("PhysicsMaterial_2dbcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5" unique_id=295913582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.042, 0)
+shape = SubResource("BoxShape3D_7hibh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D5/CollisionShape3D" unique_id=1269996374]
 transform = Transform3D(19.794, 0, 0, 0, 0.93, 0, 0, 0, 19.686, 0, 0, 0)
 mesh = SubResource("BoxMesh_tm1hr")
 surface_material_override/0 = SubResource("StandardMaterial3D_7hibh")
@@ -49,14 +92,80 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024206638, -45.395157, 0.19
 shape = SubResource("BoxShape3D_tm1hr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=187828018]
-transform = Transform3D(1, 0, 0, 0, 0.43653485, 0.89968735, 0, -0.89968735, 0.43653485, 0, 9.354662, 0)
+transform = Transform3D(1, 0, 0, 0, 0.33041558, 0.94383556, 0, -0.94383556, 0.33041558, -0.47148275, 11.8642, -0.74199104)
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1258498601 instance=ExtResource("1_2dbcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0709834, 4.8172655, -3.7885466)
 
-[node name="Zealot" parent="." unique_id=1378631121 instance=ExtResource("2_25x4d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.261845, 3.1718616, 0)
-
 [node name="TestWeaponItem" parent="." unique_id=102225822 instance=ExtResource("3_0jgn4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.501633, 1.0095048, 0)
+
+[node name="Control" type="Control" parent="." unique_id=756796931]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_0rvhb")
+
+[node name="Label" type="Label" parent="Control" unique_id=148572570]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 227.0
+offset_right = 51.0
+offset_bottom = 250.0
+text = "CONTROLS:
+MOVE: WASD
+ATTACK: MOUSE 1
+INTERACT: E"
+
+[node name="Label2" type="Label" parent="Control" unique_id=661581264]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 224.0
+offset_right = 639.0
+offset_bottom = 325.0
+text = "REPEATEDLY ATTACKING
+GIVES MORE RESOLVE"
+
+[node name="enemies" type="Node3D" parent="." unique_id=1908741127]
+
+[node name="Zealot" parent="enemies" unique_id=1378631121 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.261845, 3.1718616, 0)
+
+[node name="Zealot6" parent="enemies" unique_id=527654263 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.002815, 3.1718616, 3.7682934)
+
+[node name="Zealot7" parent="enemies" unique_id=942593760 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.112255, 3.1718616, 0.04377365)
+
+[node name="Zealot2" parent="enemies" unique_id=2013569586 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.90965, -5.89023, 0)
+
+[node name="Zealot3" parent="enemies" unique_id=808826536 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.8483, -5.89023, 0)
+
+[node name="Zealot8" parent="enemies" unique_id=1296218028 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.40775, -19.74226, 3.6197376)
+
+[node name="Zealot9" parent="enemies" unique_id=638982139 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.3464, -19.74226, 3.6197376)
+
+[node name="Zealot4" parent="enemies" unique_id=1775715605 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4456, -1.046442, 19.252977)
+
+[node name="Zealot5" parent="enemies" unique_id=125789042 instance=ExtResource("2_25x4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.384247, -1.046442, 19.252977)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1957598855]
+
+[node name="Area3D" type="Area3D" parent="Node3D" unique_id=1264220780]
+script = ExtResource("5_10rk6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D" unique_id=897713695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.31281, 16.160782)
+shape = SubResource("WorldBoundaryShape3D_0rvhb")
+
+[connection signal="body_entered" from="Node3D/Area3D" to="Node3D/Area3D" method="_on_body_entered"]

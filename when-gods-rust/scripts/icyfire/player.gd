@@ -36,8 +36,6 @@ func _process(delta: float) -> void:
 	resolveC.update(delta)
 	inventoryC.update(delta, canCombo, canCrit, canStagger, resolveC)
 	health_bar.value = healthC.current_health
-	if healthC.current_health <= 0:
-		get_tree().change_scene_to_packed(load("uid://m4qtcq1tnb3t"))
 #func _unhandled_input(event:InputEvent) -> void:
 	#if event is InputEventMouseButton:
 		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -76,7 +74,9 @@ func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vect
 	staggerC.apply_stagger(hit_stagger_duration)
 	print(hit_direction)
 	velocity = hit_direction
-	
+
 func onDeath():
 	queue_free()
 	print("Wow ma so bad you are")
+	print("changed")
+	get_tree().change_scene_to_packed(load("uid://o73v2cty65b6"))

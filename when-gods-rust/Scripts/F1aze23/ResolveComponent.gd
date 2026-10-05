@@ -18,12 +18,12 @@ func update(delta:float):
 		cResolve = maxResolve
 	elif cResolve <= 0.0:
 		cResolve = 0
-		
+
 	if canDecay:
 		cResolve-=resolveDecay
 	
 	progress_bar.value = (cResolve/maxResolve) * 100
-	
+
 func gainResolve(amt:float):
 	cResolve += amt
 	canDecay = false
@@ -35,6 +35,6 @@ func gainResolve(amt:float):
 		canDecay = true
 		)
 	timer.start()
-	
+
 func useResolve(amt:float):
 	cResolve -= amt

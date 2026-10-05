@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://d2i164qcqw4na"]
 
-[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://Scripts/icyfire/player.gd" id="1_dkbgn"]
-[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://Scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
 [ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://Scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
-[ext_resource type="Script" uid="uid://ciublmng1hl7q" path="res://Scripts/F1aze23/AttackComponent.gd" id="3_ahkby"]
-[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://Scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="6_okieb"]
+[ext_resource type="Script" uid="uid://ciublmng1hl7q" path="res://scripts/F1aze23/AttackComponent.gd" id="3_ahkby"]
+[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
 [ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://Scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
@@ -30,6 +30,7 @@ height = 2.8999023
 
 [sub_resource type="Animation" id="Animation_vjlaq"]
 resource_name = "Attack_1"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -73,10 +74,10 @@ tracks/3/path = NodePath("Hand:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 1, 1.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.1102563, 0, 0), Vector3(-1.3155943, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(1.1102563, 0, 0), Vector3(-1.3155943, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_u7fmy"]
@@ -274,6 +275,7 @@ script = ExtResource("1_fx4ke")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=147245819]
 script = ExtResource("2_que7a")
+speed = 10.0
 
 [node name="CameraComponent" type="Node" parent="." unique_id=1924322493]
 script = ExtResource("5_1mpnw")
@@ -317,7 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.072753906, 0)
 shape = SubResource("CapsuleShape3D_8qorh")
 
 [node name="Hand" type="Node3D" parent="." unique_id=169300047]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.6128334, 0, -0.6945792)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.6128334, 0, -0.69317394)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hand" unique_id=1531921442]
 transform = Transform3D(0.1128499, 0, 0, 0, 0.13321495, 0, 0, 0, 0.12648994, 0, 0, 0)
@@ -339,33 +341,33 @@ grow_vertical = 2
 [node name="ResolveBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=1692755755]
 layout_mode = 0
 offset_left = 9.0
-offset_top = 101.99999
+offset_top = 88.99999
 offset_right = 229.0
-offset_bottom = 129.0
+offset_bottom = 116.0
 rounded = true
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=1354678866]
 layout_mode = 0
 offset_left = 10.000003
-offset_top = 49.0
+offset_top = 36.0
 offset_right = 270.0
-offset_bottom = 76.0
+offset_bottom = 63.0
 rounded = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=681222580]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 78.0
+offset_top = 65.0
 offset_right = 90.000015
-offset_bottom = 101.0
+offset_bottom = 88.0
 text = "RESOLVE"
 
 [node name="Label2" type="Label" parent="CanvasLayer/Control" unique_id=757419324]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 20.0
+offset_top = 7.0
 offset_right = 92.0
-offset_bottom = 43.0
+offset_bottom = 30.0
 text = "HEALTH"
 
 [node name="AttackArea" type="Area3D" parent="." unique_id=1936723331]

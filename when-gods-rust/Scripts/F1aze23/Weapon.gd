@@ -34,7 +34,7 @@ func Attack(resolve:ResolveComponent, anim:AnimationPlayer):
 		comboStep+=1
 		print("combo continued")
 		startAttack(anim, resolve)
-		
+
 func startAttack(anim:AnimationPlayer, resolve:ResolveComponent):
 	if attackArea == null or anim == null:
 		return
@@ -64,10 +64,9 @@ func _physics_process(delta: float) -> void:
 func _try_hit(target: Node3D) -> void:
 	if target in bodies_hit_this_swing or target.is_in_group("player"):
 		return
-	
 	if not target.has_method("take_hit"):
 		return
-	
+
 	bodies_hit_this_swing.append(target)
 	target.call("take_hit", damage, hit_stagger_duration)
 	print("Body ", target, " has taken", damage)

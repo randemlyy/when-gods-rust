@@ -19,7 +19,7 @@ func update(delta, canCombo:bool, canCrit:bool, canStagger:bool, resolve:Resolve
 			if i.has_node("ItemWeapon"):
 				equip(i.get_node("ItemWeapon"))
 				i.queue_free()
-				
+
 	if isAttack:
 		if is_instance_valid(cWeapon):
 			cWeapon.Attack(resolve, anim)
@@ -33,7 +33,7 @@ func equip(itemWeapon:Node):
 	hand_slot.add_child(new_weapon)
 	cWeapon = new_weapon
 	print(cWeapon)
-	
+
 func drop():
 	cWeapon.queue_free()
 	#Imma do this for now ill implement drop logic later

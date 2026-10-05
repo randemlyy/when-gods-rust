@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cf6amcblndo4i"]
 
-[ext_resource type="Script" uid="uid://bjjc3prpxfcdt" path="res://Scripts/F1aze23/zealot.gd" id="1_d7kfn"]
-[ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://Scripts/F1aze23/StateMachine.gd" id="1_q00h4"]
-[ext_resource type="Script" uid="uid://cuhhckiweach3" path="res://Scripts/F1aze23/EnemyStates/WanderState.gd" id="2_8jpi8"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="4_8jpi8"]
-[ext_resource type="Script" uid="uid://c66042wr8m356" path="res://Scripts/F1aze23/EnemyStates/AttackState.gd" id="4_phb08"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="6_74sap"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="7_gcpxs"]
+[ext_resource type="Script" uid="uid://bjjc3prpxfcdt" path="res://scripts/F1aze23/zealot.gd" id="1_d7kfn"]
+[ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://scripts/F1aze23/StateMachine.gd" id="1_q00h4"]
+[ext_resource type="Script" uid="uid://cuhhckiweach3" path="res://scripts/F1aze23/EnemyStates/WanderState.gd" id="2_8jpi8"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="4_8jpi8"]
+[ext_resource type="Script" uid="uid://c66042wr8m356" path="res://scripts/F1aze23/EnemyStates/AttackState.gd" id="4_phb08"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_74sap"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_gcpxs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8v36v"]
 
