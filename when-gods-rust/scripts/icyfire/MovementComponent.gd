@@ -3,7 +3,7 @@ extends Node
 
 
 @onready var body: CharacterBody3D = $".."
-@export var speed:float = 5.0
+@export var speed:float = 2.0
 
 var grounded:bool
 

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dka5yakbmvhiv"]
+
+[ext_resource type="PackedScene" uid="uid://ddkuk1on7vabs" path="res://scenes/F1aze23/TestWeapon.tscn" id="1_5tr28"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tr28"]
+albedo_color = Color(0.3137255, 0.5529412, 0.41568628, 1)
+
+[node name="TestWeapon" unique_id=180455758 instance=ExtResource("1_5tr28")]
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=2127104799]
+surface_material_override/0 = SubResource("StandardMaterial3D_5tr28")

@@ -11,9 +11,10 @@ var isAttacking = false
 @export var maxCombo:int = 3
 @export var hit_stagger_duration: float = 0.65
 @export var damage: float = 10.0
+@export var target_group: StringName = &"Enemy"
 
 var bodies_hit_this_swing: Array[Node3D] = []
-var anim: AnimationPlayer
+var connected_anim: AnimationPlayer
 
 func _ready() -> void:
 	if attackArea == null:
@@ -27,32 +28,51 @@ func Attack(resolve:ResolveComponent, anim:AnimationPlayer):
 	elif canCrit:
 		comboStep+=1
 		resolve.gainResolve(10)
-		print("crit")
 		damage *= 1.1
 		startAttack(anim, resolve)
 	elif canCombo:
 		comboStep+=1
-		print("combo continued")
 		startAttack(anim, resolve)
 
-func startAttack(anim:AnimationPlayer, resolve:ResolveComponent):
-	if attackArea == null or anim == null:
+func startAttack(anim_player:AnimationPlayer, resolve:ResolveComponent = null):
+	if attackArea == null or anim_player == null:
 		return
+	_connect_animation_signal(anim_player)
+	
 	isAttacking = true
 	bodies_hit_this_swing.clear()
 	attackArea.set_deferred("monitoring", true)
+	
 	if comboStep >= maxCombo:
 		comboStep = 0
 		resolve.gainResolve(15)
+		
 	var animName = "Attack_" + str(comboStep+1)
-	anim.play(animName)
-	anim.animation_finished.connect(func(name:StringName):
-		isAttacking = false
-		bodies_hit_this_swing.clear()
-		attackArea.set_deferred("monitoring", false)
-		comboStep = 0
-		)
-	print(animName)
+	anim_player.play(animName)
+
+func cancel_attack() -> void:
+	isAttacking = false
+	comboStep = 0
+	bodies_hit_this_swing.clear()
+	attackArea.set_deferred("monitoring", false)
+	connected_anim.stop()
+
+func _connect_animation_signal(anim_player: AnimationPlayer) -> void:
+	if connected_anim == anim_player:
+		return	
+	if is_instance_valid(connected_anim):	
+		if connected_anim.animation_finished.is_connected(_on_animation_finished):
+			connected_anim.animation_finished.disconnect(_on_animation_finished)
+	
+	connected_anim = anim_player
+	connected_anim.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished(anim_name: String) -> void:
+	isAttacking = false
+	comboStep = 0
+	bodies_hit_this_swing.clear()
+	
+	attackArea.set_deferred("monitoring", false)
 
 func _physics_process(delta: float) -> void:
 	if not isAttacking or attackArea == null or not attackArea.monitoring:
@@ -62,9 +82,9 @@ func _physics_process(delta: float) -> void:
 		_try_hit(target)
 
 func _try_hit(target: Node3D) -> void:
-	if target in bodies_hit_this_swing or target.is_in_group("player"):
+	if target in bodies_hit_this_swing:
 		return
-	if not target.has_method("take_hit"):
+	if not target.is_in_group(target_group):
 		return
 
 	bodies_hit_this_swing.append(target)

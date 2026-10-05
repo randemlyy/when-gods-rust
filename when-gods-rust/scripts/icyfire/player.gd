@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var resolveC: ResolveComponent = $ResolveComponent
 @onready var inventoryC: InventoryComponent = $InventoryComponent
 @onready var attackC: AttackComponent = $AttackComponent
+
 @export var canCombo:bool = false
 @export var canCrit:bool = false
 @export var canStagger:bool = false
@@ -45,12 +46,12 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	TimeSinceDmg += delta
-	if inputC.attack && TimeSinceDmg>= DmgTime:
-		for obj in attackArea.get_overlapping_bodies():
-			if obj.get_node_or_null("HealthComponent"):
-				TimeSinceDmg = 0
-				var dir = obj.global_position - global_position
-				obj.take_hit(10, 0.65, dir * 10)
+	#if inputC.attack && TimeSinceDmg>= DmgTime:
+		#for obj in attackArea.get_overlapping_bodies():
+			#if obj.get_node_or_null("HealthComponent"):
+				#TimeSinceDmg = 0
+				#var dir = obj.global_position - global_position
+				#obj.take_hit(10, 0.65, dir * 10)
 	
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
@@ -72,6 +73,10 @@ func _physics_process(delta: float) -> void:
 func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vector3 = Vector3.LEFT) -> void:
 	healthC.take_damage(damage)
 	staggerC.apply_stagger(hit_stagger_duration)
+	if attackC and attackC.is_winding_up:
+		attackC.state = AttackComponent.State.IDLE
+		staggerC.apply_stagger(hit_stagger_duration+0.3)
+	
 	print(hit_direction)
 	velocity = hit_direction
 
