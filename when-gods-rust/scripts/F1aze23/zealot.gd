@@ -56,8 +56,13 @@ func _physics_process(delta: float) -> void:
 
 func take_hit(damage: int, hit_stagger_duration: float = 0.65, hit_direction = Vector3.RIGHT) -> void:
 	healthC.take_damage(damage)
-	staggerC.apply_stagger(hit_stagger_duration)
 	var current_state = sMachine.cState
-	if current_state != null and current_state.has_method("is_winding_up") and current_state.call("is_winding_up"):
+	var was_winding_up = (current_state != null and current_state.has_method("is_winding_up") and current_state.call("is_winding_up"))
+	staggerC.apply_stagger(hit_stagger_duration)
+	cancel_attack()
+	
+	if current_state != null and current_state.has_method("is_winding_up"):
 		sMachine.change_state("wander")
-		staggerC.apply_stagger(hit_stagger_duration+0.3)
+	
+	if was_winding_up:
+		staggerC.apply_stagger(hit_stagger_duration + 0.35)

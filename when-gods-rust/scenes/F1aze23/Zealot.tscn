@@ -110,7 +110,7 @@ metadata/_custom_type_script = "uid://dtnjxw1vua83h"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1807576033]
 script = ExtResource("6_74sap")
-max_health = 75
+max_health = 150
 metadata/_custom_type_script = "uid://dq71svuwl2njr"
 
 [node name="StaggerComponent" type="Node" parent="." unique_id=579141596]
@@ -127,7 +127,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_h2p1g")
 
 [node name="TestWeapon" parent="Hand" unique_id=180455758 instance=ExtResource("8_h2p1g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25447303, 0)
-damage = 25.0
+damage = 10.0
 target_group = &"player"
 
 [node name="TestAnimPlayer" type="AnimationPlayer" parent="." unique_id=763895185]

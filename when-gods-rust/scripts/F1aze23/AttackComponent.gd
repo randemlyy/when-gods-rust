@@ -8,7 +8,7 @@ enum State {
 	RECOVERY
 }
 
-signal attack_started
+signal attack_started(attack_index: int, is_crit: bool) 
 
 @onready var body: CharacterBody3D = $".."
 #@onready var facing: Vector3
@@ -28,6 +28,12 @@ var attack_forgiveness: float = 0.15
 var recovery_time: float = 0.0
 var is_current_crit: bool = false
 var is_queued_crit: bool = false
+var animation_finished_pending: bool = false
+
+func check_animation_finished(anim_name: String) -> void:
+	var name = "Attack_" + str(current_attack+1)
+	if anim_name == name:
+		animation_finished_pending = true
 
 var is_winding_up: bool:
 	get:
@@ -73,6 +79,7 @@ func _finish_current_attack() -> void:
 		_start_attack(current_attack + 1, is_queued_crit)
 	else:
 		_end_combo()
+		
 func _start_attack(index: int, attack_is_crit: bool = false) -> void:
 	current_attack = index
 	is_current_crit = attack_is_crit
@@ -82,7 +89,8 @@ func _start_attack(index: int, attack_is_crit: bool = false) -> void:
 	recovery_time = 0.0
 	combo_queued = false
 	state = State.ATTACKING
-	attack_started.emit()
+	animation_finished_pending = false
+	attack_started.emit(index, attack_is_crit)
 	
 	var forward := -body.global_basis.z
 	forward.y = 0.0
@@ -96,10 +104,9 @@ func _update_recovery(delta: float, attack_pressed: bool) -> void:
 	recovery_time += delta
 
 	if attack_pressed and current_attack < attack_durations.size() - 1:
-		_start_attack(current_attack + 1, is_queued_crit)
-		return
+		combo_queued = true
 
-	if recovery_time >= attack_forgiveness:
+	if recovery_time >= attack_forgiveness and animation_finished_pending:
 		_finish_current_attack()
 
 

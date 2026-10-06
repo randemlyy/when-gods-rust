@@ -27,15 +27,16 @@ var	bodies_hit_this_swing: Array[Node3D] = []
 func _ready() -> void:
 	cameraC.start()
 	resolveC.start()
+	attackC.attack_started.connect(_on_attack_started)
+	inventoryC.anim.animation_finished.connect(attackC.check_animation_finished)
 	healthC.died.connect(onDeath)
 
 func _process(delta: float) -> void:
 	inventoryC.isEquip = inputC.interact
-	inventoryC.isAttack = inputC.attack
+	inventoryC.update()
 	inputC.update(delta)
 	cameraC.update(self)
 	resolveC.update(delta)
-	inventoryC.update(delta, canCombo, canCrit, canStagger, resolveC)
 	health_bar.value = healthC.current_health
 #func _unhandled_input(event:InputEvent) -> void:
 	#if event is InputEventMouseButton:
@@ -46,13 +47,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	TimeSinceDmg += delta
-	#if inputC.attack && TimeSinceDmg>= DmgTime:
-		#for obj in attackArea.get_overlapping_bodies():
-			#if obj.get_node_or_null("HealthComponent"):
-				#TimeSinceDmg = 0
-				#var dir = obj.global_position - global_position
-				#obj.take_hit(10, 0.65, dir * 10)
-	
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 	
@@ -79,6 +73,11 @@ func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vect
 	
 	print(hit_direction)
 	velocity = hit_direction
+
+func _on_attack_started(attack_index: int, is_crit: bool) -> void:
+	if is_crit:
+		resolveC.gainResolve(10)
+	inventoryC.play_attack(attack_index, is_crit)
 
 func onDeath():
 	queue_free()

@@ -14,6 +14,7 @@ var isAttacking = false
 @export var target_group: StringName = &"Enemy"
 
 var bodies_hit_this_swing: Array[Node3D] = []
+var is_current_attack_crit: bool = false
 var connected_anim: AnimationPlayer
 
 func _ready() -> void:
@@ -45,17 +46,33 @@ func startAttack(anim_player:AnimationPlayer, resolve:ResolveComponent = null):
 	
 	if comboStep >= maxCombo:
 		comboStep = 0
-		resolve.gainResolve(15)
+		if is_instance_valid(resolve):
+			resolve.gainResolve(15)
 		
 	var animName = "Attack_" + str(comboStep+1)
 	anim_player.play(animName)
 
+func play_attack(attack_index: int, is_crit: bool, anim_player: AnimationPlayer) -> void:
+	if attackArea == null or anim_player == null:
+		return
+	
+	_connect_animation_signal(anim_player)
+	
+	isAttacking = true
+	is_current_attack_crit = is_crit
+	bodies_hit_this_swing.clear()
+	attackArea.set_deferred("monitoring", true)
+	
+	anim_player.play("Attack_" + str(attack_index + 1))
+	
 func cancel_attack() -> void:
 	isAttacking = false
 	comboStep = 0
 	bodies_hit_this_swing.clear()
-	attackArea.set_deferred("monitoring", false)
-	connected_anim.stop()
+	if attackArea != null:
+		attackArea.set_deferred("monitoring", false)
+	if is_instance_valid(connected_anim):
+		connected_anim.stop()
 
 func _connect_animation_signal(anim_player: AnimationPlayer) -> void:
 	if connected_anim == anim_player:
@@ -88,5 +105,6 @@ func _try_hit(target: Node3D) -> void:
 		return
 
 	bodies_hit_this_swing.append(target)
-	target.call("take_hit", damage, hit_stagger_duration)
+	var final_damage := roundi(damage * (1.1 if is_current_attack_crit else 1.0))
+	target.call("take_hit", final_damage, hit_stagger_duration)
 	print("Body ", target, " has taken", damage)

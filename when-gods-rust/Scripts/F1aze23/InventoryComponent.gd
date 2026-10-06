@@ -1,38 +1,42 @@
 class_name InventoryComponent
 extends Node
 
-var cWeapon:Weapon = null
 @export var hand_slot: Node3D
-var isEquip:bool = false
 @export var iArea:Area3D
-var isAttack:bool = false
 @export var anim: AnimationPlayer
 
-func update(delta, canCombo:bool, canCrit:bool, canStagger:bool, resolve:ResolveComponent):
-	if is_instance_valid(cWeapon):
-		cWeapon.canCombo = canCombo
-		cWeapon.canCrit = canCrit
-		cWeapon.canStagger = canStagger
-	if isEquip:
-		print("equip")
-		for i in iArea.get_overlapping_bodies():
-			if i.has_node("ItemWeapon"):
-				equip(i.get_node("ItemWeapon"))
-				i.queue_free()
+var cWeapon:Weapon = null
+var isEquip:bool = false
 
-	if isAttack:
-		if is_instance_valid(cWeapon):
-			cWeapon.Attack(resolve, anim)
+func update():
+	if not isEquip or iArea == null:
+		return
+	
+	for item in iArea.get_overlapping_bodies():
+		if not item.has_node("ItemWeapon"):
+			continue
+		
+		equip(item.get_node("ItemWeapon"))
+		item.queue_free()
+		return
 
 func equip(itemWeapon:Node):
 	if not itemWeapon or not itemWeapon.Weapon or itemWeapon is not ItemWeapon:
 		return
 	if is_instance_valid(cWeapon):
 		drop()
-	var new_weapon = itemWeapon.Weapon.instantiate()
+	var new_weapon = itemWeapon.Weapon.instantiate() as Weapon
 	hand_slot.add_child(new_weapon)
 	cWeapon = new_weapon
 	print(cWeapon)
+
+func play_attack(attack_index: int, is_crit: bool) -> void:
+	if is_instance_valid(cWeapon):
+		cWeapon.play_attack(attack_index, is_crit, anim)
+
+func cancel_attack() -> void:
+	if is_instance_valid(cWeapon):
+		cWeapon.cancel_attack()
 
 func drop():
 	cWeapon.queue_free()
