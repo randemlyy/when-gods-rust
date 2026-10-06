@@ -7,8 +7,16 @@ extends Node
 
 var cWeapon:Weapon = null
 var isEquip:bool = false
+var isAttack:bool = false
 
-func update():
+
+func update(resolve:ResolveComponent, anim:AnimationPlayer, canStagger:bool, canCombo:bool, canCrit:bool):
+	if is_instance_valid(cWeapon):
+		if isAttack:
+			cWeapon.Attack(resolve, anim)
+		cWeapon.canCombo = canCombo
+		cWeapon.canCrit = canCrit
+		cWeapon.canStagger = canStagger
 	if not isEquip or iArea == null:
 		return
 	
@@ -29,14 +37,6 @@ func equip(itemWeapon:Node):
 	hand_slot.add_child(new_weapon)
 	cWeapon = new_weapon
 	print(cWeapon)
-
-func play_attack(attack_index: int, is_crit: bool) -> void:
-	if is_instance_valid(cWeapon):
-		cWeapon.play_attack(attack_index, is_crit, anim)
-
-func cancel_attack() -> void:
-	if is_instance_valid(cWeapon):
-		cWeapon.cancel_attack()
 
 func drop():
 	cWeapon.queue_free()

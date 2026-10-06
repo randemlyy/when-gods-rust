@@ -43,7 +43,6 @@ func physics_update(delta:float) -> void:
 
 func exit() -> void:
 	if is_instance_valid(body):
-		body.call("cancel_attack")
 		body.call("set_move_direction", Vector3.ZERO)
 
 func _face_player() -> void:

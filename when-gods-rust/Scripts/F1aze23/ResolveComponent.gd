@@ -35,6 +35,8 @@ func gainResolve(amt:float):
 		canDecay = true
 		)
 	timer.start()
+	print(amt, " Resolve Gained")
 
 func useResolve(amt:float):
 	cResolve -= amt
+	print(amt, " Resolve Lost")

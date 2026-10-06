@@ -4,9 +4,9 @@ extends Node
 signal health_changed(current: int, maximum: int)
 signal died
 
-@export var max_health: int = 100
+var max_health: int = 100
 
-var current_health: int
+@export var current_health: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

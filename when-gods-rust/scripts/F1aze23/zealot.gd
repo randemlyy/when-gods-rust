@@ -28,9 +28,6 @@ func start_attack() -> void:
 func is_attacking() -> bool:
 	return is_instance_valid(weapon) and weapon.isAttacking
 
-func cancel_attack() -> void:
-	if is_instance_valid(weapon):
-		weapon.cancel_attack()
 		
 func _process(delta: float) -> void:
 	pass
@@ -59,7 +56,6 @@ func take_hit(damage: int, hit_stagger_duration: float = 0.65, hit_direction = V
 	var current_state = sMachine.cState
 	var was_winding_up = (current_state != null and current_state.has_method("is_winding_up") and current_state.call("is_winding_up"))
 	staggerC.apply_stagger(hit_stagger_duration)
-	cancel_attack()
 	
 	if current_state != null and current_state.has_method("is_winding_up"):
 		sMachine.change_state("wander")
