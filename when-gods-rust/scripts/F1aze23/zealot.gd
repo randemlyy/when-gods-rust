@@ -5,9 +5,6 @@ extends CharacterBody3D
 @onready var gCheck: RayCast3D = $GroundCheck
 @onready var healthC: HealthComponent = $HealthComponent
 @onready var staggerC: StaggerComponent = $StaggerComponent
-@onready var hand: Node3D = $Hand
-@onready var attack_anim: AnimationPlayer = $TestAnimPlayer
-@onready var weapon: Weapon = $Hand/TestWeapon
 
 var dir:Vector3
 
@@ -20,14 +17,6 @@ func _on_died() -> void:
 
 func set_move_direction(new_dir: Vector3) -> void:
 	dir = new_dir
-
-func start_attack() -> void:
-	if is_instance_valid(weapon):
-		weapon.startAttack(attack_anim)
-
-func is_attacking() -> bool:
-	return is_instance_valid(weapon) and weapon.isAttacking
-
 		
 func _process(delta: float) -> void:
 	pass
