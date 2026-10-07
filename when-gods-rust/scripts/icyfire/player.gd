@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var staggerC: StaggerComponent = $StaggerComponent
 @onready var resolveC: ResolveComponent = $ResolveComponent
 @onready var inventoryC: InventoryComponent = $InventoryComponent
+@onready var blockC: BlockComponent = $BlockComponent
 
 @export var canCombo:bool = false
 @export var canCrit:bool = false
@@ -28,8 +29,9 @@ func _ready() -> void:
 	healthC.died.connect(onDeath)
 
 func _process(delta: float) -> void:
-	inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
 	inputC.update(delta)
+	blockC.update(inputC.block_held, inputC.block, delta)
+	inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
 	cameraC.update(self)
 	resolveC.update(delta)
 	health_bar.value = healthC.current_health
@@ -61,9 +63,24 @@ func _physics_process(delta: float) -> void:
 
 
 func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vector3 = Vector3.LEFT) -> void:
+	var impact_time = float(Time.get_ticks_usec()) / 1_000_000.0
+	var was_blocking_at_impact = blockC.is_blocking
+	
+	await get_tree().create_timer(blockC.late_parry_window).timeout
+	await get_tree().process_frame
+	
+	if not is_inside_tree():
+		return
+		
+	if blockC.check_parry_press(impact_time):
+		resolveC.gainResolve(blockC.resolve_on_parry)
+		print("parried")
+	
+	if was_blocking_at_impact:
+		print("blocked")
+		return
 	healthC.take_damage(damage)
 	staggerC.apply_stagger(hit_stagger_duration)
-	
 	print(hit_direction)
 	velocity = hit_direction
 

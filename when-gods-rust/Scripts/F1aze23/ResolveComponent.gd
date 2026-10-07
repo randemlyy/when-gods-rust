@@ -38,5 +38,4 @@ func gainResolve(amt:float):
 	print(amt, " Resolve Gained")
 
 func useResolve(amt:float):
-	cResolve -= amt
-	print(amt, " Resolve Lost")
+	cResolve = maxf(cResolve - amt, 0.0)
