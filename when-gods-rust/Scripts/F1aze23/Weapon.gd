@@ -15,7 +15,6 @@ var isAttacking = false
 var bodies_hit_this_swing: Array[Node3D] = []
 var is_current_attack_crit: bool = false
 
-
 func _ready() -> void:
 	if attackArea == null:
 		push_error('bradar put attack area')

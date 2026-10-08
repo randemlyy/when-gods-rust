@@ -6,7 +6,7 @@ signal blocking_ended
 
 @onready var resolveC: ResolveComponent = $"../ResolveComponent"
 
-@export var resolve_drain: float = 20.0
+@export var block_resolve_cost: float = 10.0
 @export var early_parry_window: float = 0.15
 @export var late_parry_window: float = 0.04
 @export var resolve_on_parry: float = 40.0
@@ -23,11 +23,20 @@ func update(block_held: bool, block_pressed: bool, delta: float) -> void:
 		return
 	
 	_set_blocking(true)
-	var cost = minf(resolve_drain * delta, resolveC.cResolve)
-	resolveC.useResolve(cost)
+	if resolveC.cResolve <= 0.0:
+		_set_blocking(false)
+
+func spend_for_block() -> bool:
+	if resolveC.cResolve < block_resolve_cost:
+		_set_blocking(false)
+		return false
+	
+	resolveC.useResolve(block_resolve_cost)
 	
 	if resolveC.cResolve <= 0.0:
 		_set_blocking(false)
+	
+	return true 
 
 func _set_blocking(value: bool) -> void:
 	if is_blocking == value:

@@ -79,7 +79,7 @@ func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vect
 		print("parried")
 		return
 		
-	if was_blocking_at_impact:
+	if was_blocking_at_impact and blockC.spend_for_block():
 		print("blocked")
 		return
 	healthC.take_damage(damage)
