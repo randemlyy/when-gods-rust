@@ -1,6 +1,9 @@
 class_name BlockComponent
 extends Node
 
+signal blocking_started
+signal blocking_ended
+
 @onready var resolveC: ResolveComponent = $"../ResolveComponent"
 
 @export var resolve_drain: float = 20.0
@@ -16,15 +19,26 @@ func update(block_held: bool, block_pressed: bool, delta: float) -> void:
 		last_block_press_time = float(Time.get_ticks_usec()) / 1_000_000.0
 		
 	if not block_held or resolveC.cResolve <= 0.0:
-		is_blocking = false
+		_set_blocking(false)
 		return
 	
-	is_blocking = true
+	_set_blocking(true)
 	var cost = minf(resolve_drain * delta, resolveC.cResolve)
 	resolveC.useResolve(cost)
 	
 	if resolveC.cResolve <= 0.0:
-		is_blocking = false
+		_set_blocking(false)
+
+func _set_blocking(value: bool) -> void:
+	if is_blocking == value:
+		return
+	
+	is_blocking = value
+	
+	if is_blocking:
+		blocking_started.emit()
+	else:
+		blocking_ended.emit()	
 
 func check_parry_press(impact_time: float) -> bool:
 	var parry_offset = last_block_press_time - impact_time

@@ -8,35 +8,37 @@ extends CharacterBody3D
 @onready var resolveC: ResolveComponent = $ResolveComponent
 @onready var inventoryC: InventoryComponent = $InventoryComponent
 @onready var blockC: BlockComponent = $BlockComponent
+@onready var anim: AnimationPlayer = $TestAnimPlayer
+@onready var health_bar: ProgressBar = $CanvasLayer/Control/HealthBar
+@onready var iArea: Area3D = $InteractArea
 
 @export var canCombo:bool = false
 @export var canCrit:bool = false
 @export var canStagger:bool = false
 @export var mouse_sens:float = 0.002
 @export var stagger_dura: float = 0.8
-@onready var health_bar: ProgressBar = $CanvasLayer/Control/HealthBar
-@onready var iArea: Area3D = $InteractArea
 
 var TimeSinceDmg:float = 0
 var DmgTime:float = 1
-
-@onready var anim: AnimationPlayer = $TestAnimPlayer
+var block_animation_started := false
 var	bodies_hit_this_swing: Array[Node3D] = []
 
 func _ready() -> void:
 	cameraC.start()
 	resolveC.start()
 	healthC.died.connect(onDeath)
+	blockC.blocking_started.connect(_on_blocking_started)
+	blockC.blocking_ended.connect(_on_blocking_ended)
 
 func _process(delta: float) -> void:
 	inputC.update(delta)
-	blockC.update(inputC.block_held, inputC.block, delta)
+	blockC.update(inputC.block_held and not _weapon_is_attacking() and not staggerC.is_staggered, inputC.block, delta)
+	inventoryC.isEquip = inputC.interact
+	inventoryC.isAttack = inputC.attack
 	inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
 	cameraC.update(self)
 	resolveC.update(delta)
 	health_bar.value = healthC.current_health
-	inventoryC.isEquip = inputC.interact
-	inventoryC.isAttack = inputC.attack
 #func _unhandled_input(event:InputEvent) -> void:
 	#if event is InputEventMouseButton:
 		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -75,7 +77,8 @@ func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vect
 	if blockC.check_parry_press(impact_time):
 		resolveC.gainResolve(blockC.resolve_on_parry)
 		print("parried")
-	
+		return
+		
 	if was_blocking_at_impact:
 		print("blocked")
 		return
@@ -83,6 +86,16 @@ func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vect
 	staggerC.apply_stagger(hit_stagger_duration)
 	print(hit_direction)
 	velocity = hit_direction
+
+func _on_blocking_started() -> void:
+	anim.play("Block")
+
+func _on_blocking_ended() -> void:
+	if anim.current_animation == "Block":
+		anim.play("Unblock")
+
+func _weapon_is_attacking() -> bool:
+	return is_instance_valid(inventoryC.cWeapon) and inventoryC.cWeapon.isAttacking
 
 func onDeath():
 	queue_free()
