@@ -13,6 +13,13 @@ func physics_update(delta: float, movedir:Vector3, body:CharacterBody3D) -> void
 	if grounded:
 		body.velocity.x = speed * movedir.x
 		body.velocity.z = speed * movedir.z
-	if movedir.length() > 0:
-		var look_target = body.global_transform.origin + movedir
+		body.velocity.y = -0.1
+	else:
+		body.velocity.y = body.get_gravity().y
+	
+	var look_dir: Vector3 = movedir
+	look_dir.y = 0
+	
+	if look_dir.length_squared() > 0.05:
+		var look_target = body.global_position + look_dir.normalized()
 		body.look_at(look_target, Vector3.UP)
