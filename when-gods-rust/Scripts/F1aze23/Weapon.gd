@@ -26,7 +26,8 @@ func Attack(resolve:ResolveComponent, anim:AnimationPlayer):
 		startAttack(anim, resolve)
 	elif canCrit:
 		comboStep+=1
-		resolve.gainResolve(10)
+		if bodies_hit_this_swing.size() != 0:
+			resolve.gainResolve(10)
 		startAttack(anim, resolve)
 	elif canCombo:
 		comboStep+=1
@@ -36,13 +37,14 @@ func startAttack(anim:AnimationPlayer, resolve:ResolveComponent = null):
 	if attackArea == null or anim == null:
 		return
 	isAttacking = true
-	bodies_hit_this_swing.clear()
 	
 	if comboStep >= maxCombo:
 		comboStep = 0
 		if is_instance_valid(resolve):
-			resolve.gainResolve(15)
-		
+			if bodies_hit_this_swing.size() != 0:
+				resolve.gainResolve(15)
+	bodies_hit_this_swing.clear()
+	
 	var animName = "Attack_" + str(comboStep+1)
 	anim.play(animName)
 	print(animName)

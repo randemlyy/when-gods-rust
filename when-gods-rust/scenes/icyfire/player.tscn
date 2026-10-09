@@ -307,7 +307,9 @@ script = ExtResource("1_fx4ke")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=147245819]
 script = ExtResource("2_que7a")
-speed = 4.5
+accel = 60.0
+deccel = 100.0
+speed = 6.5
 
 [node name="CameraComponent" type="Node" parent="." unique_id=1924322493]
 script = ExtResource("5_1mpnw")
