@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://1vu1ugm3m8u6"]
 
-[ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://Scenes/icyfire/player.tscn" id="1_2dbcp"]
-[ext_resource type="PackedScene" uid="uid://cf6amcblndo4i" path="res://Scenes/F1aze23/Zealot.tscn" id="2_25x4d"]
+[ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://scenes/icyfire/player.tscn" id="1_2dbcp"]
+[ext_resource type="PackedScene" uid="uid://cf6amcblndo4i" path="res://scenes/F1aze23/Zealot.tscn" id="2_25x4d"]
 [ext_resource type="PackedScene" uid="uid://8ki1um74b20t" path="res://Scenes/F1aze23/TestWeaponItem.tscn" id="3_0jgn4"]
-[ext_resource type="Script" uid="uid://bo6mdnv4kfwx3" path="res://Scripts/icyfire/control.gd" id="4_0rvhb"]
-[ext_resource type="Script" uid="uid://ceaptm6x6iqxo" path="res://Scenes/icyfire/worldboundary.gd" id="5_10rk6"]
+[ext_resource type="Script" uid="uid://bo6mdnv4kfwx3" path="res://scripts/icyfire/control.gd" id="4_0rvhb"]
+[ext_resource type="Script" uid="uid://ceaptm6x6iqxo" path="res://scenes/icyfire/worldboundary.gd" id="5_10rk6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_l0j3u"]
 vertices = PackedVector3Array(0.10235214, 0.82154846, 9.4991455, 0.10235214, 0.82154846, 1.4991455, -1.6476479, 0.82154846, 1.2491455, -59.897648, 0.82154846, 9.4991455, -1.6476479, 0.82154846, -1.2508545, 0.10235214, 0.82154846, -1.5008545, 0.10235214, 0.82154846, -9.5008545, -59.897648, 0.82154846, -9.5008545, 1.6023521, 0.82154846, 1.2491455, 59.852352, 0.82154846, 9.4991455, 1.6023521, 0.82154846, -1.2508545, 59.852352, 0.82154846, -9.5008545, 64.352356, -11.678452, -9.5008545, 64.352356, -11.678452, 9.4991455, 111.852356, -8.428452, 9.4991455, 111.852356, -8.428452, -9.5008545, 107.102356, -22.928452, -3.5008545, 107.102356, -22.928452, 15.4991455, 142.60236, -22.928452, 15.4991455, 142.60236, -22.928452, -3.5008545, -0.64764786, 3.8215485, -0.5008545, -0.64764786, 3.8215485, 0.4991455, 0.60235214, 3.8215485, 0.4991455, 0.60235214, 3.8215485, -0.5008545, -0.39764786, 0.82154846, -0.2508545, -0.39764786, 0.82154846, 0.24914551, 0.35235214, 0.82154846, 0.24914551, 0.35235214, 0.82154846, -0.2508545, 35.602352, -2.6784515, 12.4991455, 35.602352, -2.6784515, 31.249146, 71.102356, -2.6784515, 31.249146, 71.102356, -2.6784515, 12.4991455)
