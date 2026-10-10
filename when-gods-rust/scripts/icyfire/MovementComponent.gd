@@ -27,7 +27,7 @@ func physics_update(delta: float, movedir:Vector3, body:CharacterBody3D) -> void
 		body.velocity.z = horizontal_velocity.y
 		body.velocity.y = -0.1
 	else:
-		body.velocity.y = body.get_gravity().y
+		body.velocity.y += body.get_gravity().y * delta
 	
 	var look_dir: Vector3 = movedir
 	look_dir.y = 0
