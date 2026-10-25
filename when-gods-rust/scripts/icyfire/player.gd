@@ -108,6 +108,9 @@ func _process(delta: float) -> void:
 		
 	#inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
 
+	if inputC.attack:
+		attackC.Attack()
+
 	if inputC.lock_on and not menu_open:
 		lockOnC.toggle_target()
 	

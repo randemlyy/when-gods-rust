@@ -3,7 +3,7 @@ extends Node
 
 @onready var upgradeC: UpgradeComponent = $"../UpgradeComponent"
 
-@export var cWeapon: Weapon = null
+@export var cWeapon: Weapon
 @onready var hand: Node3D = $"../Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand"
 
 var Heals:int = 3
@@ -16,7 +16,7 @@ func UseHeal() -> void:
 #@onready var upgradeC: UpgradeComponent = $"../UpgradeComponent"
 #
 #@export var hand_slot: Node3D
-#@export var iArea:Area3D
+@export var iArea:Area3D
 #@export var anim: AnimationPlayer
 #@onready var label_4: Label = $"../CanvasLayer/Control/Label4"
 #

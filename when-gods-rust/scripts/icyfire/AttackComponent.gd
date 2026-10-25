@@ -22,8 +22,10 @@ func Attack():
 	match comboStep:
 		0:
 			animC.play_anim("Attack1")
+			comboStep += 1
 		1:
 			animC.play_anim("Attack2")
+			comboStep += 1
 		2:
 			animC.play_anim("Attack3")
 			comboStep = 0

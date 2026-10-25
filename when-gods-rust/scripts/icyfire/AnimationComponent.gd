@@ -10,3 +10,6 @@ extends Node
 
 func play_anim(animName:String) -> void:
 	animation_player.play(animName)
+
+func IsAnimPlaying() -> bool:
+	return animation_player.is_playing()
