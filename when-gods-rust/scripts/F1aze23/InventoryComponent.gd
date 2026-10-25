@@ -6,8 +6,12 @@ extends Node
 @export var cWeapon: Weapon = null
 @onready var hand: Node3D = $"../Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand"
 
+var Heals:int = 3
 
 
+func UseHeal() -> void:
+	if Heals > 0:
+		Heals -= 1
 #
 #@onready var upgradeC: UpgradeComponent = $"../UpgradeComponent"
 #
@@ -20,8 +24,7 @@ extends Node
 #var isEquip:bool = false
 #var isAttack:bool = false
 #
-#var Heals:int = 3
-#
+
 #func update(resolve:ResolveComponent, anim:AnimationPlayer, canStagger:bool, canCombo:bool, canCrit:bool):
 	#if is_instance_valid(cWeapon):
 		#if isAttack:
@@ -53,6 +56,3 @@ extends Node
 	#cWeapon.queue_free()
 	##Imma do this for now ill implement drop logic later
 #
-#func UseHeal() -> void:
-	#if Heals > 0:
-		#Heals -= 1

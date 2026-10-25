@@ -3,7 +3,7 @@ extends Node3D
 
 @export var hurtbox: Area3D
 @export var collider: CollisionShape3D
-@export var rawDamage: float = 10.0
+@export var rawDamage: int = 10
 
 func _ready() -> void:
 	deactivate_hurtbox()

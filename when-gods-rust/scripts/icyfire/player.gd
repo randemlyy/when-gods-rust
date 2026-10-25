@@ -23,6 +23,9 @@ signal parry_succeeded(target: Node3D, target_staggered: StaggerComponent)
 @onready var lockOnC: LockOnComponent = $LockOnComponent
 @onready var uiC: PlayerUIController = $PlayerUIController
 @onready var hitReponse: PlayerHitResponse = $PlayerHitResponse
+@onready var attackC: AttackComponent = $AttackComponent
+
+
 
 @export var canCombo:bool = false
 @export var canCrit:bool = false
@@ -97,13 +100,13 @@ func _process(delta: float) -> void:
 		not staggerC.is_staggered
 	)
 
-	inventoryC.isAttack = (inputC.attack and 
-		not menu_open and not dodgeC.is_dashing and 
-		not riposte_consumed_attack and 
-		not riposteC.is_active()
-	)
+	#inventoryC.isAttack = (inputC.attack and 
+		#not menu_open and not dodgeC.is_dashing and 
+		#not riposte_consumed_attack and 
+		#not riposteC.is_active()
+	#)
 		
-	inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
+	#inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
 
 	if inputC.lock_on and not menu_open:
 		lockOnC.toggle_target()
@@ -201,10 +204,10 @@ func _physics_process(delta: float) -> void:
 	
 
 
-	if inputC.dir != Vector2.ZERO:
-		animC.process(true, false)
-	else:
-		animC.process(false, false)
+	#if inputC.dir != Vector2.ZERO:
+		#animC.process(true, false)
+	#else:
+		#animC.process(false, false)
 
 	move_and_slide()
 	
@@ -260,3 +263,8 @@ func onDeath():
 	print("changed")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_packed(load("uid://o73v2cty65b6")) 
+	
+func activate_hurtbox() -> void:
+	inventoryC.cWeapon.activate_hurtbox()
+func deactivate_hurtbox() -> void:
+	inventoryC.cWeapon.deactivate_hurtbox()
