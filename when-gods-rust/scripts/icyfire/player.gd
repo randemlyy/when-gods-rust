@@ -58,19 +58,19 @@ func _process(delta: float) -> void:
 	
 	uiC.handle_menu_input(inputC.upgrade_menu)
 
-	inventoryC.isEquip = false
-	
+	#inventoryC.isEquip = false
+	#
 	var menu_open = uiC.is_menu_open
-	
-	if inputC.interact and not menu_open:
-		var handled := interactC.process(delta, true)
-		if not handled:
-			inventoryC.isEquip = true
-				
-			for item in iArea.get_overlapping_bodies():
-				if item.is_in_group("Gear"):
-					upgradeC.pickupGear(item.gearData)
-					item.queue_free()
+	#
+	#if inputC.interact and not menu_open:
+		#var handled := interactC.process(delta, true)
+		#if not handled:
+			#inventoryC.isEquip = true
+				#
+			#for item in iArea.get_overlapping_bodies():
+				#if item.is_in_group("Gear"):
+					#upgradeC.pickupGear(item.gearData)
+					#item.queue_free()
 	
 	menu_open = uiC.is_menu_open
 	
@@ -232,7 +232,8 @@ func _on_blocking_ended() -> void:
 		anim.play("Unblock")
 		
 func _weapon_is_attacking() -> bool:
-	return is_instance_valid(inventoryC.cWeapon) and inventoryC.cWeapon.isAttacking
+	return false
+	#return is_instance_valid(inventoryC.cWeapon) and inventoryC.cWeapon.isAttacking
 
 func open_campfire_menu() -> void:
 	uiC.open_campfire_menu()

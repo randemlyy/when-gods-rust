@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://ddkuk1on7vabs"]
 
 [ext_resource type="Script" uid="uid://b18s23qf7gufi" path="res://scripts/F1aze23/Weapon.gd" id="1_cnxv3"]
+[ext_resource type="Script" uid="uid://15l05nby8vew" path="res://scripts/icyfire/WeaponCollider.gd" id="2_t36a0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oggyb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cnxv3"]
+size = Vector3(0.7167969, 1.5089111, 0.7753906)
 
-[node name="TestWeapon" type="Node3D" unique_id=180455758 node_paths=PackedStringArray("attackArea")]
+[node name="TestWeapon" type="Node3D" unique_id=180455758 node_paths=PackedStringArray("hurtbox", "collider")]
 script = ExtResource("1_cnxv3")
-attackArea = NodePath("Area3D")
-damage = 15.0
+hurtbox = NodePath("Area3D")
+collider = NodePath("Area3D/CollisionShape3D")
 metadata/_custom_type_script = "uid://b18s23qf7gufi"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2127104799]
@@ -21,8 +23,9 @@ transform = Transform3D(0.10029909, 0, 0, 0, 1, 0, 0, 0, 0.18440878, 0, 0.178869
 mesh = SubResource("BoxMesh_oggyb")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1089587882]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28006, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.663388, 0, 0)
+script = ExtResource("2_t36a0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1398291440]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6424926, 0.5984497, 0.0032958984)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6424926, 0.4202881, 0.0032958984)
 shape = SubResource("BoxShape3D_cnxv3")

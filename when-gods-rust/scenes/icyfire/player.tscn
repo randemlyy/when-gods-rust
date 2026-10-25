@@ -1,41 +1,36 @@
 [gd_scene format=4 uid="uid://d2i164qcqw4na"]
 
-[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://Scripts/icyfire/player.gd" id="1_dkbgn"]
-[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://Scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="2_que7a"]
-[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://Scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
-[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://Scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="6_okieb"]
-[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://Scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
-[ext_resource type="Script" uid="uid://baudgajyg4pmb" path="res://Scripts/randem/BlockComponent.gd" id="9_ahkby"]
-[ext_resource type="Script" uid="uid://cmxokty7h552d" path="res://Scripts/randem/UpgradeComponent.gd" id="10_7anrw"]
-[ext_resource type="PackedScene" uid="uid://b8ccocassarbd" path="res://Scenes/randemlyy/UpgradeMenu.tscn" id="10_taabd"]
-[ext_resource type="Resource" uid="uid://53cnmwlkucl1" path="res://Scripts/randem/Resources/StarterArm.tres" id="11_c1vle"]
-[ext_resource type="PackedScene" uid="uid://bk73iiws550cg" path="res://Scenes/randemlyy/CampfireMenu.tscn" id="11_huo1t"]
-[ext_resource type="Resource" uid="uid://n2jh37nkpt5m" path="res://Scripts/randem/Resources/Gears/TestArmGear.tres" id="11_jep08"]
-[ext_resource type="Script" uid="uid://oshbw25w75od" path="res://Scripts/randem/SpamPenaltyComponent.gd" id="11_y8aiu"]
-[ext_resource type="Resource" uid="uid://b8h8cieynl118" path="res://Scripts/randem/Resources/Gears/TestCoreGear.tres" id="12_eol4w"]
-[ext_resource type="Resource" uid="uid://53kot2lsjgh" path="res://Scripts/randem/Resources/StarterCore.tres" id="12_taabd"]
-[ext_resource type="Script" uid="uid://o1qk5pbh6kq6" path="res://Scripts/randem/GearData.gd" id="13_vbyrk"]
-[ext_resource type="Script" uid="uid://dk366pulvy7f7" path="res://Scripts/randem/LoadPenaltyComponent.gd" id="18_vbyrk"]
-[ext_resource type="Script" uid="uid://cym6bodw36out" path="res://Scripts/icyfire/AnimationComponent.gd" id="19_1cd4j"]
-[ext_resource type="Script" uid="uid://ci65tdq6gqlvu" path="res://Scripts/F1aze23/DodgeComponent.gd" id="19_d4y3p"]
-[ext_resource type="Script" uid="uid://dihlsl8jcher0" path="res://Scripts/icyfire/InteractComponent.gd" id="21_jcpvw"]
-[ext_resource type="Script" uid="uid://b5h1cv4lg5ont" path="res://Scenes/randemlyy/RiposteComponent.gd" id="23_ety63"]
-[ext_resource type="Script" uid="uid://df673tn7qmw3r" path="res://Scripts/randem/LockOnComponent.gd" id="24_u05ug"]
-[ext_resource type="Script" uid="uid://drcrnaa3iusy1" path="res://Scripts/randem/PlayerUIController.gd" id="25_850lv"]
-[ext_resource type="Script" uid="uid://bweu12mxk2cot" path="res://Scripts/randem/PlayerHitResponse.gd" id="26_3p70t"]
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
+[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
+[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
+[ext_resource type="Script" uid="uid://baudgajyg4pmb" path="res://scripts/randem/BlockComponent.gd" id="9_ahkby"]
+[ext_resource type="Script" uid="uid://cmxokty7h552d" path="res://scripts/randem/UpgradeComponent.gd" id="10_7anrw"]
+[ext_resource type="PackedScene" uid="uid://b8ccocassarbd" path="res://scenes/randemlyy/UpgradeMenu.tscn" id="10_taabd"]
+[ext_resource type="Resource" uid="uid://53cnmwlkucl1" path="res://scripts/randem/Resources/StarterArm.tres" id="11_c1vle"]
+[ext_resource type="PackedScene" uid="uid://bk73iiws550cg" path="res://scenes/randemlyy/CampfireMenu.tscn" id="11_huo1t"]
+[ext_resource type="Resource" uid="uid://n2jh37nkpt5m" path="res://scripts/randem/Resources/Gears/TestArmGear.tres" id="11_jep08"]
+[ext_resource type="Script" uid="uid://oshbw25w75od" path="res://scripts/randem/SpamPenaltyComponent.gd" id="11_y8aiu"]
+[ext_resource type="Resource" uid="uid://b8h8cieynl118" path="res://scripts/randem/Resources/Gears/TestCoreGear.tres" id="12_eol4w"]
+[ext_resource type="Resource" uid="uid://53kot2lsjgh" path="res://scripts/randem/Resources/StarterCore.tres" id="12_taabd"]
+[ext_resource type="Script" uid="uid://o1qk5pbh6kq6" path="res://scripts/randem/GearData.gd" id="13_vbyrk"]
+[ext_resource type="Script" uid="uid://dk366pulvy7f7" path="res://scripts/randem/LoadPenaltyComponent.gd" id="18_vbyrk"]
+[ext_resource type="Script" uid="uid://cym6bodw36out" path="res://scripts/icyfire/AnimationComponent.gd" id="19_1cd4j"]
+[ext_resource type="Script" uid="uid://ci65tdq6gqlvu" path="res://scripts/F1aze23/DodgeComponent.gd" id="19_d4y3p"]
+[ext_resource type="Script" uid="uid://dihlsl8jcher0" path="res://scripts/icyfire/InteractComponent.gd" id="21_jcpvw"]
+[ext_resource type="Script" uid="uid://b5h1cv4lg5ont" path="res://scenes/randemlyy/RiposteComponent.gd" id="23_ety63"]
+[ext_resource type="Script" uid="uid://df673tn7qmw3r" path="res://scripts/randem/LockOnComponent.gd" id="24_u05ug"]
+[ext_resource type="Script" uid="uid://drcrnaa3iusy1" path="res://scripts/randem/PlayerUIController.gd" id="25_850lv"]
+[ext_resource type="Script" uid="uid://bweu12mxk2cot" path="res://scripts/randem/PlayerHitResponse.gd" id="26_3p70t"]
 [ext_resource type="Script" uid="uid://dmgedsuko4rgm" path="res://Scripts/randem/ResolveUIController.gd" id="27_6jq66"]
+[ext_resource type="Script" uid="uid://diob31wnjpyrh" path="res://scripts/icyfire/AttackComponent.gd" id="28_6v10k"]
+[ext_resource type="Script" uid="uid://dpwf5l0ln4dx3" path="res://scripts/icyfire/ModifierComponent.gd" id="30_crioq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fx4ke"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okieb"]
-albedo_color = Color(0, 0.24313726, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1mpnw"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ahkby"]
 viewport_path = NodePath("ResolveComponent/Resolve")
@@ -43,6 +38,19 @@ viewport_path = NodePath("ResolveComponent/Resolve")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8qorh"]
 radius = 0.9296875
 height = 2.8999023
+
+[sub_resource type="Animation" id="Animation_jvadc"]
+resource_name = "Attack1"
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model2/WGR4/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray(),
+"times": PackedFloat32Array()
+}
 
 [sub_resource type="Animation" id="Animation_vjlaq"]
 resource_name = "Attack_1"
@@ -280,6 +288,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u7fmy"]
 _data = {
+&"Attack1": SubResource("Animation_jvadc"),
 &"Attack_1": SubResource("Animation_vjlaq"),
 &"Attack_2": SubResource("Animation_u7fmy"),
 &"Attack_3": SubResource("Animation_kdaxr"),
@@ -2417,25 +2426,16 @@ canStagger = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=62828141]
 shape = SubResource("CapsuleShape3D_fgv4r")
 
-[node name="Model" type="MeshInstance3D" parent="." unique_id=1991771657]
-visible = false
-mesh = SubResource("CapsuleMesh_fx4ke")
-surface_material_override/0 = SubResource("StandardMaterial3D_okieb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=1557886803]
-transform = Transform3D(-2.4943994e-08, 0, 0.8194542, 0, 0.25397006, 0, -0.57065207, 0, -3.581948e-08, -0.006001532, 0.47441304, -0.29220486)
-mesh = SubResource("BoxMesh_1mpnw")
+[node name="AttackComponent" type="Node" parent="." unique_id=1641375664]
+script = ExtResource("28_6v10k")
 
 [node name="BlockComponent" type="Node" parent="." unique_id=2078383352]
 script = ExtResource("9_ahkby")
 block_resolve_cost = 15.0
 resolve_on_parry = 20.0
 
-[node name="InventoryComponent" type="Node" parent="." unique_id=332656653 node_paths=PackedStringArray("hand_slot", "iArea", "anim")]
+[node name="InventoryComponent" type="Node" parent="." unique_id=332656653]
 script = ExtResource("2_vjlaq")
-hand_slot = NodePath("../Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand")
-iArea = NodePath("../InteractArea")
-anim = NodePath("../TestAnimPlayer")
 metadata/_custom_type_script = "uid://2ykk4lgaj6yg"
 
 [node name="InputComponent" type="Node" parent="." unique_id=287546714]
@@ -2590,8 +2590,8 @@ bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -7.105427e-15, 2.3841854e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841855e-07, -5.9604645e-08, 0.99999994, 0, -2.7243657, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, -2.7243657, 0)
-bones/0/rotation = Quaternion(-2.9802326e-08, 1.19209275e-07, -2.1175824e-22, 1)
+bones/0/position = Vector3(0, -2.724366, 0)
+bones/0/rotation = Quaternion(0.043412462, 1.19096875e-07, 5.175171e-09, 0.9990573)
 bones/0/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
@@ -2605,81 +2605,81 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(0.99998945, 0.0045871087, 4.8168683e-08, -0.0045871083, 0.9999895, -1.0936516e-09, -4.817319e-08, 8.7268515e-10, 1, -3.178755e-09, 3.0749516, -9.1430294e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(-3.178755e-09, 3.0749516, -9.1430294e-08)
-bones/2/rotation = Quaternion(4.915855e-10, 2.4085534e-08, -0.0022935604, 0.9999974)
+bones/2/rotation = Quaternion(4.2168993e-09, 2.4091502e-08, -0.0022935602, 0.9999974)
 bones/2/scale = Vector3(0.99999994, 1, 1)
 bones/3/name = "Bone.003.L"
 bones/3/parent = 1
 bones/3/rest = Transform3D(-0.061397668, 0.99811333, -4.3501072e-07, -0.99811333, -0.061397668, -6.1725785e-07, -6.42802e-07, 3.962918e-07, 1, 2.3206758, 2.2302134, 3.4292952e-07)
 bones/3/enabled = true
-bones/3/position = Vector3(2.3206758, 2.2302134, 3.4292952e-07)
-bones/3/rotation = Quaternion(3.6987865e-07, 7.5830094e-08, -0.72849077, 0.6850556)
+bones/3/position = Vector3(2.3206756, 2.2302134, 3.4360895e-07)
+bones/3/rotation = Quaternion(0.27093983, 0.24158587, -0.9273218, 0.09111621)
 bones/3/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/4/name = "Bone.004.L"
 bones/4/parent = 3
 bones/4/rest = Transform3D(0.998036, -0.062641576, -3.8700616e-08, 0.062641576, 0.998036, 2.7433558e-07, 2.1439796e-08, -2.7622104e-07, 1, -3.6889787e-08, 2.4328349, 4.312392e-08)
 bones/4/enabled = true
 bones/4/position = Vector3(-3.6889787e-08, 2.4328349, 4.312392e-08)
-bones/4/rotation = Quaternion(-1.3770679e-07, -1.5042492e-08, 0.031336185, 0.9995089)
+bones/4/rotation = Quaternion(0.1964651, -0.017499993, 0.047769748, 0.9791901)
 bones/4/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/5/name = "Bone.003.R"
 bones/5/parent = 1
 bones/5/rest = Transform3D(-0.05223846, -0.99863464, 4.884298e-08, 0.99863464, -0.05223846, -6.194773e-07, 6.2118295e-07, 1.6415752e-08, 1, -2.3001184, 2.2514098, -5.361645e-07)
 bones/5/enabled = true
-bones/5/position = Vector3(-2.3001184, 2.2514098, -5.361645e-07)
-bones/5/rotation = Quaternion(2.3093489e-07, -2.0785455e-07, 0.7253408, 0.68838996)
+bones/5/position = Vector3(-2.3001184, 2.25141, -3.5643188e-07)
+bones/5/rotation = Quaternion(-0.018329652, 0.878753, 0.4730268, 0.060851805)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Bone.004.R"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.998036, 0.06264157, 3.870067e-08, -0.06264157, 0.998036, 2.743356e-07, -2.1439849e-08, -2.7622107e-07, 1, -5.2517123e-08, 2.4328344, 1.7036996e-08)
 bones/6/enabled = true
 bones/6/position = Vector3(-5.2517123e-08, 2.4328344, 1.7036996e-08)
-bones/6/rotation = Quaternion(-1.377068e-07, 1.5042518e-08, -0.031336177, 0.9995089)
+bones/6/rotation = Quaternion(0.24771501, -0.016930705, -0.009860435, 0.96863484)
 bones/6/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/7/name = "Bone.005.L"
 bones/7/parent = 0
 bones/7/rest = Transform3D(-0.99999034, 0.0044052037, -3.8089434e-05, -0.00440494, -0.9999765, -0.0052863127, -6.137582e-05, -0.0052860943, 0.99998605, 1.3117776, 0.042925473, -5.7729636e-08)
 bones/7/enabled = true
-bones/7/position = Vector3(1.3117776, 0.042925473, -5.7729636e-08)
-bones/7/rotation = Quaternion(-2.486646e-05, -0.0026431174, 0.9999941, -0.002202549)
+bones/7/position = Vector3(1.3117777, 0.0429252, -1.8617301e-07)
+bones/7/rotation = Quaternion(-0.0001365261, -0.05334981, 0.9985735, -0.0021984666)
 bones/7/scale = Vector3(1, 1.0000001, 1)
 bones/8/name = "Bone.006.L"
 bones/8/parent = 7
 bones/8/rest = Transform3D(0.9999458, 0.010359526, 0.0008930351, -0.010397801, 0.9966895, 0.08063434, -5.47452e-05, -0.08063927, 0.9967433, -1.5905243e-08, 3.2019413, -6.0463208e-09)
 bones/8/enabled = true
 bones/8/position = Vector3(-1.5905243e-08, 3.2019413, -6.0463208e-09)
-bones/8/rotation = Quaternion(-0.040351816, 0.00023714142, -0.005193632, 0.99917203)
+bones/8/rotation = Quaternion(-0.42991716, -9.2725786e-05, -0.004813659, 0.90285546)
 bones/8/scale = Vector3(0.9999999, 1, 0.99999994)
 bones/9/name = "Bone.007.L"
 bones/9/parent = 8
 bones/9/rest = Transform3D(0.9985334, -0.052209385, 0.014323346, 0.053938214, 0.9366539, -0.34607857, 0.0046525286, 0.34634358, 0.93809634, 3.1199306e-08, 2.3643413, 5.8556907e-08)
 bones/9/enabled = true
 bones/9/position = Vector3(3.1199306e-08, 2.3643413, 5.8556907e-08)
-bones/9/rotation = Quaternion(0.17591435, 0.0024569337, 0.026967486, 0.984033)
+bones/9/rotation = Quaternion(0.17629133, 0.0024488897, 0.026968237, 0.9839656)
 bones/9/scale = Vector3(0.99999994, 1.0000001, 1.0000001)
 bones/10/name = "Bone.005.R"
 bones/10/parent = 0
 bones/10/rest = Transform3D(-0.99999034, -0.0044052033, 3.7612605e-05, 0.0044049425, -0.9999765, -0.005286314, 6.089899e-05, -0.005286097, 0.9999862, -1.3117776, 0.042925473, -6.832339e-07)
 bones/10/enabled = true
-bones/10/position = Vector3(-1.3117776, 0.042925473, -6.832339e-07)
-bones/10/rotation = Quaternion(2.4628045e-05, -0.0026431184, 0.9999941, 0.0022025495)
+bones/10/position = Vector3(-1.3117776, 0.042925198, -8.0887634e-07)
+bones/10/rotation = Quaternion(-0.00043512622, 0.20590505, 0.9785695, 0.002159331)
 bones/10/scale = Vector3(1, 1.0000001, 1.0000001)
 bones/11/name = "Bone.006.R"
 bones/11/parent = 10
 bones/11/rest = Transform3D(0.9999458, -0.0103595285, -0.0008930353, 0.010397804, 0.9966895, 0.08063434, 5.47452e-05, -0.08063927, 0.9967433, -8.5128704e-10, 3.2019413, -3.4458935e-08)
 bones/11/enabled = true
 bones/11/position = Vector3(-8.5128704e-10, 3.2019413, -3.4458935e-08)
-bones/11/rotation = Quaternion(-0.040351816, -0.00023714147, 0.005193633, 0.99917203)
+bones/11/rotation = Quaternion(-0.17911585, -0.00012473657, 0.0051565566, 0.9838145)
 bones/11/scale = Vector3(0.9999999, 1, 0.99999994)
 bones/12/name = "Bone.007.R"
 bones/12/parent = 11
 bones/12/rest = Transform3D(0.9985334, 0.052209377, -0.0143233435, -0.053938214, 0.9366538, -0.34607852, -0.004652528, 0.34634352, 0.9380962, -3.488458e-08, 2.3643403, 1.0768417e-07)
 bones/12/enabled = true
 bones/12/position = Vector3(-3.488458e-08, 2.3643403, 1.0768417e-07)
-bones/12/rotation = Quaternion(0.17591433, -0.0024569335, -0.026967488, 0.984033)
+bones/12/rotation = Quaternion(0.18936993, -0.0021693034, -0.026991975, 0.98153234)
 bones/12/scale = Vector3(0.99999994, 1, 1)
 
 [node name="Bone_002" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=1810230855]
-transform = Transform3D(0.9999998, -4.6566112e-10, 2.3841858e-07, -4.6565773e-10, 0.9999999, -7.47542e-08, -2.3841858e-07, 7.4754205e-08, 0.99999994, -0.014105139, 4.0749187, 2.2798751e-08)
+transform = Transform3D(0.9999998, -9.3132096e-10, 2.3844757e-07, 2.0479359e-08, 0.99623066, -0.0867432, -2.3751556e-07, 0.08674319, 0.99623066, -0.014105139, 4.04929, 0.5897912)
 bone_name = "Bone.002"
 bone_idx = 2
 
@@ -2688,7 +2688,7 @@ transform = Transform3D(1.0000001, 2.3285351e-10, -2.384186e-07, -2.3283575e-10,
 mesh = SubResource("ArrayMesh_3p70t")
 
 [node name="Bone_004_L" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=1820557940]
-transform = Transform3D(0.005833525, 0.9999827, 3.4161957e-08, -0.9999827, 0.0058335215, -6.7007755e-07, -6.702654e-07, -3.025258e-08, 0.99999994, 4.7393255, 3.1026049, 4.8824046e-07)
+transform = Transform3D(-0.82992494, 0.1882671, -0.5251478, -0.0958817, -0.97546494, -0.19817919, -0.5495737, -0.114121884, 0.8276139, 3.0496883, 1.2053275, -0.63143325)
 bone_name = "Bone.004.L"
 bone_idx = 4
 
@@ -2697,7 +2697,7 @@ transform = Transform3D(0, -1.0000001, -4.419125e-07, 0.99999994, -2.1195444e-14
 mesh = SubResource("ArrayMesh_7hf0v")
 
 [node name="Bone_003_L" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=893907013]
-transform = Transform3D(-0.05681844, 0.99838436, -2.4192929e-07, -0.99838436, -0.056818444, -6.931283e-07, -7.0575464e-07, 2.0215587e-07, 0.99999994, 2.310421, 3.2408347, -4.6695313e-08)
+transform = Transform3D(-0.8363956, 0.30387083, -0.45618534, 0.005650293, -0.8274391, -0.5615272, -0.54809725, -0.47223645, 0.6903492, 2.3104208, 3.2183502, 0.5174401)
 bone_name = "Bone.003.L"
 bone_idx = 3
 
@@ -2706,7 +2706,7 @@ transform = Transform3D(-0.038223267, -0.99926955, -3.622875e-07, 0.9992693, -0.
 mesh = SubResource("ArrayMesh_6v10k")
 
 [node name="Bone_004_R" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=1952715495]
-transform = Transform3D(0.005833205, -0.99998283, -3.416187e-08, 0.99998283, 0.005833205, -6.7007744e-07, 6.702653e-07, -3.025255e-08, 0.99999994, -4.7393255, 3.102604, 4.6215368e-07)
+transform = Transform3D(-0.9863339, -0.050400876, 0.15685874, 0.042870827, 0.8407527, 0.53971905, -0.15908176, 0.539068, -0.8271024, -2.5350056, 4.379793, 2.6433036)
 bone_name = "Bone.004.R"
 bone_idx = 6
 
@@ -2719,11 +2719,12 @@ transform = Transform3D(8.333335, 0, 0, 0, 8.333334, 0, 0, 0, 8.333333, -0.01280
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand" unique_id=1531921442]
 transform = Transform3D(0.1128499, 0, 0, 0, 0.13321495, 0, 0, 0, 0.12648994, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_8qorh")
 surface_material_override/0 = SubResource("StandardMaterial3D_ahkby")
 
 [node name="Bone_003_R" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=2138913233]
-transform = Transform3D(-0.056818753, -0.9983844, 2.4192946e-07, 0.9983844, -0.056818753, -6.931282e-07, 7.057546e-07, 2.0215593e-07, 0.99999994, -2.3104217, 3.2408347, -4.6695142e-08)
+transform = Transform3D(-0.9920279, -0.09231368, 0.0857818, 0.031506993, 0.47740304, 0.8781193, -0.12201493, 0.8738217, -0.4706887, -2.3104217, 3.2183504, 0.51744026)
 bone_name = "Bone.003.R"
 bone_idx = 5
 
@@ -2732,7 +2733,7 @@ transform = Transform3D(0.03822327, 0.99926955, 3.5200802e-07, 0.9992694, -0.038
 mesh = SubResource("ArrayMesh_6v10k")
 
 [node name="Bone_007_L" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=288016986]
-transform = Transform3D(-0.9988398, 0.046421256, -0.012798382, -0.048153177, -0.9632403, 0.26429132, -5.9185084e-05, 0.2646009, 0.96435803, 1.3117777, -8.238865, -0.22004008)
+transform = Transform3D(-0.99883956, 0.04642123, -0.012798374, -0.026144525, -0.74600685, -0.665425, -0.040437527, -0.6643185, 0.74635506, 1.3117778, -6.9330287, -2.7002)
 bone_name = "Bone.007.L"
 bone_idx = 9
 
@@ -2741,7 +2742,7 @@ transform = Transform3D(-0.99884, -0.048153166, -5.9188762e-05, 0.046421245, -0.
 mesh = SubResource("ArrayMesh_jvadc")
 
 [node name="Bone_006_L" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=1982249630]
-transform = Transform3D(-0.99998194, -0.005965754, -0.0005755435, 0.0059931423, -0.9962854, -0.0859054, -6.0915056e-05, -0.08590731, 0.996303, 1.3258828, -5.8833065, -0.016925953)
+transform = Transform3D(-0.99998176, -0.0059657544, -0.00057554303, 0.003307417, -0.46919462, -0.8830885, 0.004998248, -0.88307464, 0.4692058, 1.3258829, -5.8236923, -0.6123101)
 bone_name = "Bone.006.L"
 bone_idx = 8
 
@@ -2750,7 +2751,7 @@ transform = Transform3D(-0.9999822, 0.005993148, -6.0915212e-05, -0.005965759, -
 mesh = SubResource("ArrayMesh_crioq")
 
 [node name="Bone_005_L" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=1797645658]
-transform = Transform3D(-0.99999034, 0.0044052023, -3.785102e-05, -0.00440494, -0.99997646, -0.005286253, -6.113713e-05, -0.0052860356, 0.999986, 1.3117776, -2.6814404, -3.730403e-07)
+transform = Transform3D(-0.9999901, 0.0044052023, -3.785006e-05, -0.004315619, -0.98130786, -0.19239566, -0.0008846844, -0.19239363, 0.9813174, 1.3117777, -2.6816025, 0.0037229662)
 bone_name = "Bone.005.L"
 bone_idx = 7
 
@@ -2759,7 +2760,7 @@ transform = Transform3D(-0.99999034, -0.004404939, -6.113692e-05, 0.0044052014, 
 mesh = SubResource("ArrayMesh_4l44k")
 
 [node name="Bone_007_R" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=1988182703]
-transform = Transform3D(-0.9988398, -0.046421252, 0.01279838, 0.04815318, -0.9632402, 0.26429126, 5.9185084e-05, 0.26460087, 0.964358, -1.3117777, -8.238864, -0.22004004)
+transform = Transform3D(-0.9988398, -0.046421237, 0.012798372, 0.04799953, -0.9386248, 0.3415842, -0.0038438928, 0.34180224, 0.9397641, -1.3117777, -8.075959, 0.9587529)
 bone_name = "Bone.007.R"
 bone_idx = 12
 
@@ -2768,7 +2769,7 @@ transform = Transform3D(0.99884, 0.048153155, 5.9185077e-05, 0.046421237, -0.963
 mesh = SubResource("ArrayMesh_jvadc")
 
 [node name="Bone_006_R" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=754541471]
-transform = Transform3D(-0.99998194, 0.005965753, 0.0005755435, -0.0059931423, -0.9962854, -0.0859054, 6.0915096e-05, -0.085907325, 0.99630314, -1.3258828, -5.8833065, -0.016925985)
+transform = Transform3D(-0.99998194, 0.0059657576, 0.000575542, -0.005981215, -0.99946225, -0.03224379, 0.0003828751, -0.03224662, 0.9994799, -1.3258828, -5.7128906, 1.0349947)
 bone_name = "Bone.006.R"
 bone_idx = 11
 
@@ -2777,7 +2778,7 @@ transform = Transform3D(0.999982, -0.005993147, 6.0915267e-05, -0.0059657567, -0
 mesh = SubResource("ArrayMesh_crioq")
 
 [node name="Bone_005_R" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=173601416]
-transform = Transform3D(-0.99999034, -0.004405205, 3.785102e-05, 0.004404942, -0.99997646, -0.0052862545, 6.113715e-05, -0.0052860365, 0.9999861, -1.3117776, -2.6814404, -3.7304028e-07)
+transform = Transform3D(-0.99999034, -0.0044052047, 3.7849983e-05, 0.0041826526, -0.9467033, 0.32208, -0.0013829952, 0.32207704, 0.9467125, -1.3117776, -2.6816025, 0.0037229685)
 bone_name = "Bone.005.R"
 bone_idx = 10
 
@@ -2786,7 +2787,7 @@ transform = Transform3D(0.9999903, 0.004404941, 6.113704e-05, 0.0044052037, -0.9
 mesh = SubResource("ArrayMesh_4l44k")
 
 [node name="Bone" type="BoneAttachment3D" parent="Model2/WGR4/Armature/Skeleton3D" unique_id=407279527]
-transform = Transform3D(1, -7.1054265e-15, 2.3841854e-07, -7.1054274e-15, 0.99999994, 5.9604645e-08, -2.3841855e-07, -5.9604645e-08, 0.99999994, 0, -2.7243657, 0)
+transform = Transform3D(1, -7.993605e-15, 2.384185e-07, 2.068116e-08, 0.99623066, -0.08674306, -2.3751984e-07, 0.08674306, 0.99623066, 0, -2.724366, 0)
 bone_name = "Bone"
 bone_idx = 0
 
@@ -2802,6 +2803,9 @@ script = ExtResource("10_7anrw")
 arm_part = ExtResource("11_c1vle")
 core_part = ExtResource("12_taabd")
 owned_gears = Array[ExtResource("13_vbyrk")]([ExtResource("11_jep08"), ExtResource("12_eol4w")])
+
+[node name="ModifierComponent" type="Node" parent="." unique_id=2112585069]
+script = ExtResource("30_crioq")
 
 [node name="SpamPenaltyComponent" type="Node" parent="." unique_id=668005136]
 script = ExtResource("11_y8aiu")
