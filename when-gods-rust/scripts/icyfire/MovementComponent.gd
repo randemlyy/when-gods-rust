@@ -1,7 +1,7 @@
 class_name MovementComponent
 extends Node
 
-@onready var body: CharacterBody3D = $".."
+@export var body: CharacterBody3D
 
 @export var accel: float
 @export var deccel: float

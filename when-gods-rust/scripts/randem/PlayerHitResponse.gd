@@ -7,7 +7,7 @@ const PARRY_SPARK = preload("res://Assets/Randemlyy/ParrySpark.tscn")
 
 @export var parry_stagger_duration: float = 1.2
 
-@onready var player: CharacterBody3D = get_parent() as CharacterBody3D
+@onready var player: CharacterBody3D = get_parent().get_parent() as CharacterBody3D
 @onready var healthC: HealthComponent = $"../HealthComponent"
 @onready var blockC: BlockComponent = $"../BlockComponent"
 @onready var resolveC: ResolveComponent = $"../ResolveComponent"

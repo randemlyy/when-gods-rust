@@ -1,7 +1,7 @@
 class_name InteractComponent
 extends Node
 
-@onready var interact_area: Area3D = $"../InteractArea"
+@onready var interact_area: Area3D = $"../../InteractArea"
 
 
 func process(delta: float, IsInteractInput:bool) -> bool:

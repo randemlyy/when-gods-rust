@@ -33,9 +33,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ahkby"]
-viewport_path = NodePath("ResolveComponent/Resolve")
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8qorh"]
 radius = 0.9296875
 height = 2.8999023
@@ -2499,6 +2496,9 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_huo1t"]
 height = 1.8071289
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ahkby"]
+viewport_path = NodePath("ResolveComponent/Resolve")
+
 [node name="Player" type="CharacterBody3D" unique_id=1258498601 groups=["Player"]]
 script = ExtResource("1_dkbgn")
 canCombo = true
@@ -2507,69 +2507,6 @@ canStagger = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=62828141]
 shape = SubResource("CapsuleShape3D_fgv4r")
-
-[node name="AttackComponent" type="Node" parent="." unique_id=1641375664]
-script = ExtResource("28_6v10k")
-
-[node name="BlockComponent" type="Node" parent="." unique_id=2078383352]
-script = ExtResource("9_ahkby")
-block_resolve_cost = 15.0
-resolve_on_parry = 20.0
-
-[node name="InventoryComponent" type="Node" parent="." unique_id=332656653 node_paths=PackedStringArray("cWeapon")]
-script = ExtResource("2_vjlaq")
-cWeapon = NodePath("../Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand/TestWeapon")
-metadata/_custom_type_script = "uid://2ykk4lgaj6yg"
-
-[node name="InputComponent" type="Node" parent="." unique_id=287546714]
-script = ExtResource("1_fx4ke")
-
-[node name="MovementComponent" type="Node" parent="." unique_id=147245819]
-script = ExtResource("2_que7a")
-accel = 60.0
-deccel = 100.0
-speed = 4.5
-
-[node name="CameraComponent" type="Node" parent="." unique_id=1924322493]
-script = ExtResource("5_1mpnw")
-follow_smoothing = 26.0
-max_lock_on_camera_distance = 8.0
-metadata/_custom_type_script = "uid://c3q2bf4w8k2ae"
-
-[node name="HealthComponent" type="Node" parent="." unique_id=1763875352 node_paths=PackedStringArray("healthBar", "ghostHealthBar")]
-script = ExtResource("6_okieb")
-healthBar = NodePath("../CanvasLayer/Control/HealthBar")
-ghostHealthBar = NodePath("../CanvasLayer/Control/GhostHealthBar")
-
-[node name="StaggerComponent" type="Node" parent="." unique_id=593057376]
-script = ExtResource("7_vvvn2")
-
-[node name="ResolveComponent" type="Node" parent="." unique_id=378317454]
-script = ExtResource("7_8qorh")
-metadata/_custom_type_script = "uid://c6h2bauklbph"
-
-[node name="ResolveSprite" type="Sprite3D" parent="ResolveComponent" unique_id=1348298327]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.575, 0)
-billboard = 1
-texture = SubResource("ViewportTexture_ahkby")
-
-[node name="Resolve" type="SubViewport" parent="ResolveComponent" unique_id=1647124561]
-transparent_bg = true
-size = Vector2i(24, 120)
-
-[node name="ResolveBar" type="ProgressBar" parent="ResolveComponent/Resolve" unique_id=1458281759]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-fill_mode = 3
-show_percentage = false
-
-[node name="LoadMarker" type="ColorRect" parent="ResolveComponent/Resolve" unique_id=1769568357]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0.4117647, 0.2784314, 1)
 
 [node name="InteractArea" type="Area3D" parent="." unique_id=1817867001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -2884,34 +2821,6 @@ mesh = SubResource("ArrayMesh_cjjg1")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model2/WGR4" unique_id=331739740]
 libraries/ = SubResource("AnimationLibrary_rckwv")
 
-[node name="UpgradeComponent" type="Node" parent="." unique_id=1683946898]
-script = ExtResource("10_7anrw")
-arm_part = ExtResource("11_c1vle")
-core_part = ExtResource("12_taabd")
-owned_gears = Array[ExtResource("13_vbyrk")]([ExtResource("11_jep08"), ExtResource("12_eol4w")])
-
-[node name="ModifierComponent" type="Node" parent="." unique_id=2112585069]
-script = ExtResource("30_crioq")
-
-[node name="SpamPenaltyComponent" type="Node" parent="." unique_id=668005136]
-script = ExtResource("11_y8aiu")
-
-[node name="LoadPenaltyComponent" type="Node" parent="." unique_id=1063614118]
-script = ExtResource("18_vbyrk")
-
-[node name="AnimationComponent" type="Node" parent="." unique_id=1675244083]
-script = ExtResource("19_1cd4j")
-
-[node name="DodgeComponent" type="Node" parent="." unique_id=890325805 node_paths=PackedStringArray("body")]
-script = ExtResource("19_d4y3p")
-body = NodePath("..")
-step_speed = 16.0
-step_duration = 0.1
-metadata/_custom_type_script = "uid://ci65tdq6gqlvu"
-
-[node name="InteractComponent" type="Node" parent="." unique_id=750357832]
-script = ExtResource("21_jcpvw")
-
 [node name="CameraPivot" type="Node3D" parent="." unique_id=742428775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
@@ -2931,17 +2840,111 @@ collision_layer = 32768
 transform = Transform3D(1.575, 0, 0, 0, 1.575, 0, 0, 0, 1.575, 0, -0.15188599, 0)
 shape = SubResource("CapsuleShape3D_huo1t")
 
-[node name="RiposteComponent" type="Node" parent="." unique_id=530974712]
+[node name="Components" type="Node" parent="." unique_id=1816078033]
+
+[node name="AttackComponent" type="Node" parent="Components" unique_id=903142585]
+script = ExtResource("28_6v10k")
+
+[node name="BlockComponent" type="Node" parent="Components" unique_id=42291566]
+script = ExtResource("9_ahkby")
+block_resolve_cost = 15.0
+resolve_on_parry = 20.0
+
+[node name="InventoryComponent" type="Node" parent="Components" unique_id=12014375 node_paths=PackedStringArray("cWeapon")]
+script = ExtResource("2_vjlaq")
+cWeapon = NodePath("../../Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand/TestWeapon")
+metadata/_custom_type_script = "uid://2ykk4lgaj6yg"
+
+[node name="InputComponent" type="Node" parent="Components" unique_id=825523914]
+script = ExtResource("1_fx4ke")
+
+[node name="MovementComponent" type="Node" parent="Components" unique_id=1031075612 node_paths=PackedStringArray("body")]
+script = ExtResource("2_que7a")
+body = NodePath("../..")
+accel = 60.0
+deccel = 100.0
+speed = 4.5
+
+[node name="CameraComponent" type="Node" parent="Components" unique_id=1060610861]
+script = ExtResource("5_1mpnw")
+follow_smoothing = 26.0
+max_lock_on_camera_distance = 8.0
+metadata/_custom_type_script = "uid://c3q2bf4w8k2ae"
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=1546462781 node_paths=PackedStringArray("healthBar", "ghostHealthBar")]
+script = ExtResource("6_okieb")
+healthBar = NodePath("../../CanvasLayer/Control/HealthBar")
+ghostHealthBar = NodePath("../../CanvasLayer/Control/GhostHealthBar")
+
+[node name="StaggerComponent" type="Node" parent="Components" unique_id=2054691802]
+script = ExtResource("7_vvvn2")
+
+[node name="ResolveComponent" type="Node" parent="Components" unique_id=1157336607]
+script = ExtResource("7_8qorh")
+metadata/_custom_type_script = "uid://c6h2bauklbph"
+
+[node name="ResolveSprite" type="Sprite3D" parent="Components/ResolveComponent" unique_id=2114421167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.575, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_ahkby")
+
+[node name="Resolve" type="SubViewport" parent="Components/ResolveComponent" unique_id=1311787077]
+transparent_bg = true
+size = Vector2i(24, 120)
+
+[node name="ResolveBar" type="ProgressBar" parent="Components/ResolveComponent/Resolve" unique_id=1039296917]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 3
+show_percentage = false
+
+[node name="LoadMarker" type="ColorRect" parent="Components/ResolveComponent/Resolve" unique_id=725272332]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0.4117647, 0.2784314, 1)
+
+[node name="UpgradeComponent" type="Node" parent="Components" unique_id=2053562627]
+script = ExtResource("10_7anrw")
+arm_part = ExtResource("11_c1vle")
+core_part = ExtResource("12_taabd")
+owned_gears = Array[ExtResource("13_vbyrk")]([ExtResource("11_jep08"), ExtResource("12_eol4w")])
+
+[node name="ModifierComponent" type="Node" parent="Components" unique_id=153305593]
+script = ExtResource("30_crioq")
+
+[node name="SpamPenaltyComponent" type="Node" parent="Components" unique_id=122878104]
+script = ExtResource("11_y8aiu")
+
+[node name="LoadPenaltyComponent" type="Node" parent="Components" unique_id=510620504]
+script = ExtResource("18_vbyrk")
+
+[node name="AnimationComponent" type="Node" parent="Components" unique_id=1957646785]
+script = ExtResource("19_1cd4j")
+
+[node name="DodgeComponent" type="Node" parent="Components" unique_id=401373672 node_paths=PackedStringArray("body")]
+script = ExtResource("19_d4y3p")
+body = NodePath("../..")
+step_speed = 16.0
+step_duration = 0.1
+metadata/_custom_type_script = "uid://ci65tdq6gqlvu"
+
+[node name="InteractComponent" type="Node" parent="Components" unique_id=1403357684]
+script = ExtResource("21_jcpvw")
+
+[node name="RiposteComponent" type="Node" parent="Components" unique_id=1334702854]
 script = ExtResource("23_ety63")
 
-[node name="LockOnComponent" type="Node" parent="." unique_id=43707278]
+[node name="LockOnComponent" type="Node" parent="Components" unique_id=735855919]
 script = ExtResource("24_u05ug")
 
-[node name="PlayerUIController" type="Node" parent="." unique_id=643486419]
+[node name="PlayerUIController" type="Node" parent="Components" unique_id=714764151]
 script = ExtResource("25_850lv")
 
-[node name="PlayerHitResponse" type="Node" parent="." unique_id=146444018]
+[node name="PlayerHitResponse" type="Node" parent="Components" unique_id=1970822427]
 script = ExtResource("26_3p70t")
 
-[node name="ResolveUIController" type="Node" parent="." unique_id=1122146279]
+[node name="ResolveUIController" type="Node" parent="Components" unique_id=1855368025]
 script = ExtResource("27_6jq66")

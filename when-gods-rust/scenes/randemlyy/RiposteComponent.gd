@@ -24,8 +24,8 @@ enum Phase {
 @export var riposte_damage = 50
 @export var animation_name: StringName = &"Riposte"
 
-@onready var player: CharacterBody3D = get_parent() as CharacterBody3D
-@onready var anim: AnimationPlayer = $"../TestAnimPlayer"
+@onready var player: CharacterBody3D = get_parent().get_parent() as CharacterBody3D
+@onready var anim: AnimationPlayer = $"../../TestAnimPlayer"
 
 var targets: Dictionary = {}
 var buffer_left = 0.0

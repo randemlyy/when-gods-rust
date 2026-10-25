@@ -3,8 +3,8 @@ extends Node
 
 signal refill_heals_requested
 
-@onready var campfire_menu: CampfireMenu = $"../CanvasLayer/CampfireMenu"
-@onready var upgrade_menu: UpgradeMenu = $"../CanvasLayer/UpgradeMenu"
+@onready var campfire_menu: CampfireMenu = $"../../CanvasLayer/CampfireMenu"
+@onready var upgrade_menu: UpgradeMenu = $"../../CanvasLayer/UpgradeMenu"
 
 var is_menu_open: bool:
 	get:

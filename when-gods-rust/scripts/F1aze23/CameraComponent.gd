@@ -14,9 +14,9 @@ extends Node
 @export var push_in_time_left: float = 0.0
 @export var lock_pitch_degrees: float = -18.0
 
-@onready var spring_arm: SpringArm3D = $"../CameraPivot/SpringArm3D"
-@onready var pivot: Node3D = $"../CameraPivot"
-@onready var cam: Camera3D = $"../CameraPivot/SpringArm3D/ShakePivot/Camera3D"
+@onready var spring_arm: SpringArm3D = $"../../CameraPivot/SpringArm3D"
+@onready var pivot: Node3D = $"../../CameraPivot"
+@onready var cam: Camera3D = $"../../CameraPivot/SpringArm3D/ShakePivot/Camera3D"
 
 var yaw: float = 0.0
 var pitch: float = deg_to_rad(-15.0)
@@ -28,7 +28,7 @@ var shake_duration = 0.0
 var shake_strength = 0.0
 
 func start() -> void:
-	var body = get_parent() as Node3D
+	var body = get_parent().get_parent() as Node3D
 	spring_arm.add_excluded_object(body.get_rid())
 	
 	pivot.top_level = true

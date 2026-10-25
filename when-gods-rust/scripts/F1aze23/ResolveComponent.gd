@@ -4,7 +4,7 @@ extends Node
 signal resolve_changed(current: float, maximum: float)
 
 @onready var loadPenaltyC: LoadPenaltyComponent = $"../LoadPenaltyComponent"
-@onready var player: CharacterBody3D = get_parent() as CharacterBody3D
+@onready var player: CharacterBody3D = get_parent().get_parent() as CharacterBody3D
 
 @export var offset := Vector3(0, 1.8, 0)
 @export var maxResolve:float = 100.0

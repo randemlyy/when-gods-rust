@@ -4,7 +4,7 @@ extends Node
 @onready var upgradeC: UpgradeComponent = $"../UpgradeComponent"
 
 @export var cWeapon: Weapon
-@onready var hand: Node3D = $"../Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand"
+@onready var hand: Node3D = $"../../Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand"
 
 var Heals:int = 3
 

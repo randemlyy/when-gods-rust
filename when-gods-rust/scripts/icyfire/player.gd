@@ -3,27 +3,27 @@ extends CharacterBody3D
 
 signal parry_succeeded(target: Node3D, target_staggered: StaggerComponent)
 
-@onready var inputC: InputComponent = $InputComponent
-@onready var movementC: MovementComponent = $MovementComponent
-@onready var cameraC: CameraComponent = $CameraComponent
-@onready var healthC: HealthComponent = $HealthComponent
-@onready var staggerC: StaggerComponent = $StaggerComponent
-@onready var resolveC: ResolveComponent = $ResolveComponent
-@onready var inventoryC: InventoryComponent = $InventoryComponent
-@onready var blockC: BlockComponent = $BlockComponent
-@onready var animC: AnimationComponent = $AnimationComponent
+@onready var inputC: InputComponent = $Components/InputComponent
+@onready var movementC: MovementComponent = $Components/MovementComponent
+@onready var cameraC: CameraComponent = $Components/CameraComponent
+@onready var healthC: HealthComponent = $Components/HealthComponent
+@onready var staggerC: StaggerComponent = $Components/StaggerComponent
+@onready var resolveC: ResolveComponent = $Components/ResolveComponent
+@onready var inventoryC: InventoryComponent = $Components/InventoryComponent
+@onready var blockC: BlockComponent = $Components/BlockComponent
+@onready var animC: AnimationComponent = $Components/AnimationComponent
 @onready var anim: AnimationPlayer = $TestAnimPlayer
 @onready var iArea: Area3D = $InteractArea
-@onready var loadPenaltyC: LoadPenaltyComponent = $LoadPenaltyComponent
-@onready var dodgeC: DodgeComponent = $DodgeComponent
-@onready var upgradeC: UpgradeComponent = $UpgradeComponent
-@onready var interactC: InteractComponent = $InteractComponent
-@onready var riposteC: RiposteComponent = $RiposteComponent
+@onready var loadPenaltyC: LoadPenaltyComponent = $Components/LoadPenaltyComponent
+@onready var dodgeC: DodgeComponent = $Components/DodgeComponent
+@onready var upgradeC: UpgradeComponent = $Components/UpgradeComponent
+@onready var interactC: InteractComponent = $Components/InteractComponent
+@onready var riposteC: RiposteComponent = $Components/RiposteComponent
 @onready var label_4: Label = $CanvasLayer/Control/Label4
-@onready var lockOnC: LockOnComponent = $LockOnComponent
-@onready var uiC: PlayerUIController = $PlayerUIController
-@onready var hitReponse: PlayerHitResponse = $PlayerHitResponse
-@onready var attackC: AttackComponent = $AttackComponent
+@onready var lockOnC: LockOnComponent = $Components/LockOnComponent
+@onready var uiC: PlayerUIController = $Components/PlayerUIController
+@onready var hitReponse: PlayerHitResponse = $Components/PlayerHitResponse
+@onready var attackC: AttackComponent = $Components/AttackComponent
 
 
 

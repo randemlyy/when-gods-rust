@@ -5,7 +5,7 @@ extends Node
 @onready var modifierC: ModifierComponent = $"../ModifierComponent"
 @onready var animC: AnimationComponent = $"../AnimationComponent"
 
-@onready var test_anim_player: AnimationPlayer = $"../TestAnimPlayer"
+@onready var test_anim_player: AnimationPlayer = $"../../TestAnimPlayer"
 
 @onready var cWeapon: Weapon = inventoryC.cWeapon
 
