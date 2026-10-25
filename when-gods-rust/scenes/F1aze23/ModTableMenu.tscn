@@ -85,8 +85,8 @@ theme_override_font_sizes/font_size = 40
 
 [node name="Label2" type="Label" parent="CenterConainer/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1705999664]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "https://when-gods-rust-lnz87zaet-flaze-dev.vercel.app/"
+theme_override_font_sizes/font_size = 40
+text = "https://wgr.apps.dj"
 
 [node name="LineEdit" type="LineEdit" parent="CenterConainer/PanelContainer/HBoxContainer/VBoxContainer" unique_id=143139193]
 custom_minimum_size = Vector2(0, 50)
