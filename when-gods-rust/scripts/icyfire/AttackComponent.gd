@@ -10,23 +10,33 @@ extends Node
 @onready var cWeapon: Weapon = inventoryC.cWeapon
 
 var comboStep:int = 0
+var comboTime:float = 0
 
-func process():
-	
-	
-	
+var isAttacking:bool = false
+
+var attack1done:bool = false
+var attack2done:bool = false
+var attack3done:bool = false
+func process(delta:float) -> void:
+	#if not animC.IsAnimPlaying():
+	if comboStep == 1 and not attack1done:
+		isAttacking = true
+		await animC.play_anim("Attack1")
+		attack1done = true
+#		await get_tree().create_timer(0.2).timeouts
+	elif comboStep == 2 and not attack2done:
+		await animC.play_anim("Attack2")
+		attack2done = true
+	elif comboStep == 3 and not attack3done:
+		await animC.play_anim("Attack3")
+		attack1done = false
+		attack2done = false
+		comboStep = 0
+		isAttacking = false
 	pass
-
-
 func Attack():
-	match comboStep:
-		0:
-			animC.play_anim("Attack1")
-			comboStep += 1
-		1:
-			animC.play_anim("Attack2")
-			comboStep += 1
-		2:
-			animC.play_anim("Attack3")
-			comboStep = 0
+	if comboStep < 3 and not animC.animation_player.is_playing():
+		comboStep += 1
+	else:
+		comboStep = 0
 	pass

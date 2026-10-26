@@ -121,7 +121,7 @@ func _process(delta: float) -> void:
 		
 	resolveC.update(delta)
 	healthC.update(delta)
-
+	attackC.process(delta)
 	if inputC.use and not menu_open and healthC.current_health < healthC.max_health:
 		if inventoryC.Heals > 0:
 			healthC.heal(heal_amount)
@@ -193,9 +193,10 @@ func _physics_process(delta: float) -> void:
 
 	dodgeC.physics_update(delta)
 
-	if not dodgeC.is_dashing:
+	if not dodgeC.is_dashing and not attackC.isAttacking:
 		movementC.physics_update(delta, move_dir, self, not is_instance_valid(lockOnC.target))
-
+	elif attackC.isAttacking:
+		velocity = Vector3.ZERO
 
 	if is_instance_valid(lockOnC.target):
 		var to_target = lockOnC.target.global_position - global_position
