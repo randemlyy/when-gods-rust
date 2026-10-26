@@ -239,7 +239,7 @@ func _on_blocking_ended() -> void:
 		anim.play("Unblock")
 		
 func _weapon_is_attacking() -> bool:
-	return false
+	return attackC.isAttacking
 	#return is_instance_valid(inventoryC.cWeapon) and inventoryC.cWeapon.isAttacking
 
 func open_campfire_menu() -> void:

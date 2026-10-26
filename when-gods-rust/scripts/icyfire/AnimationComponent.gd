@@ -13,6 +13,9 @@ extends Node
 func play_anim(animName:String) -> void:
 	animation_player.play(animName)
 
+	while animation_player.is_playing() and animation_player.current_animation == animName:
+		await get_tree().process_frame
+
 func IsAnimPlaying() -> bool:
 	return animation_player.is_playing()
 

@@ -4,10 +4,11 @@ extends Node3D
 @export var hurtbox: Area3D
 @export var collider: CollisionShape3D
 @export var rawDamage: int = 10
+@export var hit_stagger_duration: float = 0.35
 
 func _ready() -> void:
 	deactivate_hurtbox()
-	
+
 func activate_weapon() -> void:
 	show()
 	deactivate_hurtbox()
@@ -17,9 +18,13 @@ func deactivate_weapon() -> void:
 	deactivate_hurtbox()
 
 func activate_hurtbox() -> void:
+	if hurtbox.has_method("begin_swing"):
+		hurtbox.call("begin_swing")
 	collider.disabled = false
+
 func deactivate_hurtbox() -> void:
 	collider.disabled = true
+
 
 #
 #var comboStep: int = 0
