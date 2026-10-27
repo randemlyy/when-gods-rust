@@ -25,6 +25,8 @@ func _ready() -> void:
 	if not is_instance_valid(inventoryC.cWeapon):
 		return
 	
+	inventoryC.cWeapon.modifierC = modifierC
+
 	var weapon_collider = inventoryC.cWeapon.hurtbox as WeaponCollider
 	if weapon_collider:
 		weapon_collider.hit_landed.connect(_on_weapon_hit_landed)
@@ -39,6 +41,10 @@ func Attack() -> void:
 
 	if isAttacking:
 		attack_queued = true
+
+		if comboStep < 3:
+			modifierC.register_attack_input()
+
 	elif comboStep == 0:
 		comboStep = 1
 	
@@ -56,6 +62,7 @@ func process(delta: float) -> void:
 			attack1Done = true
 			step_is_running = true
 			combo_hits[0] = false
+			modifierC.begin_attack()
 			await animC.play_anim(&"Attack1")
 			step_is_running = false
 			_finish_step(2)
@@ -67,6 +74,7 @@ func process(delta: float) -> void:
 			attack2Done = true
 			step_is_running = true
 			combo_hits[1] = false
+			modifierC.begin_attack()
 			await animC.play_anim(&"Attack2")
 			step_is_running = false
 			_finish_step(3)
@@ -78,6 +86,7 @@ func process(delta: float) -> void:
 			attack3Done = true
 			step_is_running = true
 			combo_hits[2] = false
+			modifierC.begin_attack()
 			await animC.play_anim(&"Attack3")
 			step_is_running = false
 
@@ -103,6 +112,7 @@ func _reset_combo() -> void:
 	attack1Done = false
 	attack2Done = false
 	attack3Done = false
+	modifierC.reset_attack_state()
 	combo_hits[0] = false
 	combo_hits[1] = false
 	combo_hits[2] = false

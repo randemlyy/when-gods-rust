@@ -21,10 +21,9 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	
 	var stagger = body.get_node_or_null("StaggerComponent") as StaggerComponent
-	var damage = test_weapon.rawDamage
 
-	if stagger and stagger.is_staggered:
-		damage = roundi(damage * 1.3)
+	var is_target_staggered = (stagger != null) and (stagger.is_staggered)
+	var damage = test_weapon.get_attack_damage(is_target_staggered)
 
 	hit_enemies_this_swing.append(body)
 	health.take_damage(damage)

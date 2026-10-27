@@ -7,9 +7,10 @@ extends Node
 @export var deccel: float
 @export var speed:float
 @export var air_control: float = 0.25
+@export var apply_gravity: bool = true
 
-var isWalking
-var grounded:bool
+var isWalking:bool = false
+var grounded:bool = false
 
 func physics_update(delta: float, movedir:Vector3, body:CharacterBody3D, rotate_to_move: bool = true) -> void:
 	grounded = body.is_on_floor()
@@ -32,23 +33,12 @@ func physics_update(delta: float, movedir:Vector3, body:CharacterBody3D, rotate_
 	body.velocity.z = horizontal_velocity.y
 	
 	if grounded:
-		rate = accel
-		if movedir.length_squared() < 0.001:
-			rate = deccel
-		horizontal_velocity = horizontal_velocity.move_toward(
-			Vector2(target_velocity.x, target_velocity.z),
-			rate * delta
-		)
-		body.velocity.x = horizontal_velocity.x
-		body.velocity.z = horizontal_velocity.y
 		body.velocity.y = -0.1
-	else:
+	elif apply_gravity:
 		body.velocity.y += body.get_gravity().y * delta
 		
-	if body.velocity.x != 0 and body.velocity.z != 0:
-		isWalking = true
-	else:
-		isWalking = false
+	isWalking = horizontal_velocity.length() > 0.1
+
 	if rotate_to_move:
 		var look_dir: Vector3 = movedir
 		look_dir.y = 0

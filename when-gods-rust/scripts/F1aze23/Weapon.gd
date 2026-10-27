@@ -1,10 +1,13 @@
 class_name Weapon
 extends Node3D
 
+@onready var modifierC: ModifierComponent
+
 @export var hurtbox: Area3D
 @export var collider: CollisionShape3D
 @export var rawDamage: int = 10
 @export var hit_stagger_duration: float = 0.35
+@export_range(1.0, 5.0, 0.05) var crit_damage_multiplier: float = 1.5
 
 func _ready() -> void:
 	deactivate_hurtbox()
@@ -25,6 +28,11 @@ func activate_hurtbox() -> void:
 func deactivate_hurtbox() -> void:
 	collider.disabled = true
 
+func get_attack_damage(target_is_staggered: bool) -> int:
+	if is_instance_valid(modifierC):
+		return modifierC.get_attack_damage(rawDamage, target_is_staggered, crit_damage_multiplier)
+	
+	return rawDamage
 
 #
 #var comboStep: int = 0
