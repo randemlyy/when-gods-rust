@@ -10,10 +10,14 @@ func _ready() -> void:
 	healthC.died.connect(queue_free)
 
 func _process(delta: float) -> void:
+	var next_anim = "Idle"
+
 	if isAttacking:
-		anim.play("Attack")
+		next_anim = "Attack"
 	elif movementC.isWalking:
-		anim.play("Walk")
-	else:
-		anim.play("Idle")
+		next_anim = "Walk"
+
+	if anim.current_animation != next_anim:
+		anim.play(next_anim)
+
 	healthC.update(delta)

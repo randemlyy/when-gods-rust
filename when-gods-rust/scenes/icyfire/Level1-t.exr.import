@@ -3,7 +3,7 @@
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://c1j8c07op4dr0"
-path.bptc="res://.godot/imported/Level1-t.exr-33ecc89b571c5c50123eff705a7832d6.bptc.ctexarray"
+path.bptc="res://.godot/imported/Level1-t.exr-b3c0933b62339580d027e054ae39e2a0.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/icyfire/Level1-t.exr"
-dest_files=["res://.godot/imported/Level1-t.exr-33ecc89b571c5c50123eff705a7832d6.bptc.ctexarray"]
+source_file="res://scenes/icyfire/Level1-t.exr"
+dest_files=["res://.godot/imported/Level1-t.exr-b3c0933b62339580d027e054ae39e2a0.bptc.ctexarray"]
 
 [params]
 

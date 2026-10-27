@@ -3,26 +3,28 @@ extends CharacterBody3D
 
 signal parry_succeeded(target: Node3D, target_staggered: StaggerComponent)
 
-@onready var inputC: InputComponent = $InputComponent
-@onready var movementC: MovementComponent = $MovementComponent
-@onready var cameraC: CameraComponent = $CameraComponent
-@onready var healthC: HealthComponent = $HealthComponent
-@onready var staggerC: StaggerComponent = $StaggerComponent
-@onready var resolveC: ResolveComponent = $ResolveComponent
-@onready var inventoryC: InventoryComponent = $InventoryComponent
-@onready var blockC: BlockComponent = $BlockComponent
-@onready var animC: AnimationComponent = $AnimationComponent
+@onready var inputC: InputComponent = $Components/InputComponent
+@onready var movementC: MovementComponent = $Components/MovementComponent
+@onready var cameraC: CameraComponent = $Components/CameraComponent
+@onready var healthC: HealthComponent = $Components/HealthComponent
+@onready var staggerC: StaggerComponent = $Components/StaggerComponent
+@onready var resolveC: ResolveComponent = $Components/ResolveComponent
+@onready var inventoryC: InventoryComponent = $Components/InventoryComponent
+@onready var blockC: BlockComponent = $Components/BlockComponent
+@onready var animC: AnimationComponent = $Components/AnimationComponent
 @onready var anim: AnimationPlayer = $TestAnimPlayer
 @onready var iArea: Area3D = $InteractArea
-@onready var loadPenaltyC: LoadPenaltyComponent = $LoadPenaltyComponent
-@onready var dodgeC: DodgeComponent = $DodgeComponent
-@onready var upgradeC: UpgradeComponent = $UpgradeComponent
-@onready var interactC: InteractComponent = $InteractComponent
-@onready var riposteC: RiposteComponent = $RiposteComponent
+@onready var loadPenaltyC: LoadPenaltyComponent = $Components/LoadPenaltyComponent
+@onready var dodgeC: DodgeComponent = $Components/DodgeComponent
+@onready var upgradeC: UpgradeComponent = $Components/UpgradeComponent
+@onready var interactC: InteractComponent = $Components/InteractComponent
+@onready var riposteC: RiposteComponent = $Components/RiposteComponent
 @onready var label_4: Label = $CanvasLayer/Control/Label4
-@onready var lockOnC: LockOnComponent = $LockOnComponent
-@onready var uiC: PlayerUIController = $PlayerUIController
-@onready var hitReponse: PlayerHitResponse = $PlayerHitResponse
+@onready var lockOnC: LockOnComponent = $Components/LockOnComponent
+@onready var uiC: PlayerUIController = $Components/PlayerUIController
+@onready var hitReponse: PlayerHitResponse = $Components/PlayerHitResponse
+@onready var attackC: AttackComponent = $Components/AttackComponent
+
 
 @export var canCombo:bool = false
 @export var canCrit:bool = false
@@ -52,26 +54,31 @@ func _ready() -> void:
 	riposteC.feedback_requested.connect(_on_riposte_feedback_requested)
 	lockOnC.target_changed.connect(cameraC.set_lock_on_target)
 	uiC.refill_heals_requested.connect(_on_refill_heals_pressed)
+	staggerC.stagger_started.connect(_on_stagger_started)
 	
 func _process(delta: float) -> void:
 	inputC.update(delta)
 	
 	uiC.handle_menu_input(inputC.upgrade_menu)
 
-	inventoryC.isEquip = false
-	
+	#inventoryC.isEquip = false
+	#
 	var menu_open = uiC.is_menu_open
+	#
+	#if inputC.interact and not menu_open:
+		#var handled := interactC.process(delta, true)
+		#if not handled:
+			#inventoryC.isEquip = true
+				#
+			#for item in iArea.get_overlapping_bodies():
+				#if item.is_in_group("Gear"):
+					#upgradeC.pickupGear(item.gearData)
+					#item.queue_free()
 	
+
 	if inputC.interact and not menu_open:
-		var handled := interactC.process(delta, true)
-		if not handled:
-			inventoryC.isEquip = true
-				
-			for item in iArea.get_overlapping_bodies():
-				if item.is_in_group("Gear"):
-					upgradeC.pickupGear(item.gearData)
-					item.queue_free()
-	
+		interactC.process(delta, inputC.interact)
+
 	menu_open = uiC.is_menu_open
 	
 	var can_block := (
@@ -97,13 +104,16 @@ func _process(delta: float) -> void:
 		not staggerC.is_staggered
 	)
 
-	inventoryC.isAttack = (inputC.attack and 
-		not menu_open and not dodgeC.is_dashing and 
-		not riposte_consumed_attack and 
-		not riposteC.is_active()
-	)
+	#inventoryC.isAttack = (inputC.attack and 
+		#not menu_open and not dodgeC.is_dashing and 
+		#not riposte_consumed_attack and 
+		#not riposteC.is_active()
+	#)
 		
-	inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
+	#inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
+
+	if inputC.attack and not menu_open and not riposte_consumed_attack:
+		attackC.Attack()
 
 	if inputC.lock_on and not menu_open:
 		lockOnC.toggle_target()
@@ -115,7 +125,7 @@ func _process(delta: float) -> void:
 		
 	resolveC.update(delta)
 	healthC.update(delta)
-
+	attackC.process(delta)
 	if inputC.use and not menu_open and healthC.current_health < healthC.max_health:
 		if inventoryC.Heals > 0:
 			healthC.heal(heal_amount)
@@ -174,6 +184,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		move_dir = cameraC.get_move_direction(move_input)
 	
+
+
+	# DODGING
 	if inputC.dodge and not _weapon_is_attacking() and not blockC.is_blocking:
 		var step_direction = move_dir
 
@@ -183,12 +196,34 @@ func _physics_process(delta: float) -> void:
 			else:
 				step_direction = global_basis.z
 
-		dodgeC.start_dash(step_direction)
+		if dodgeC.start_dash(step_direction):
+			var local_direction: Vector3 = global_basis.inverse() * step_direction
+			local_direction.y = 0.0
+
+			var dodge_anim: StringName = &"DodgeB"
+
+			if absf(local_direction.z) > absf(local_direction.x):
+				if local_direction.z < -0.25:
+					dodge_anim = &"DodgeF"
+			else:
+				if local_direction.x < -0.25:
+					dodge_anim = &"DodgeL"
+				elif local_direction.x > 0.25:
+					dodge_anim = &"DodgeR"
+			
+			animC.play_model_anim(dodge_anim)
 
 	dodgeC.physics_update(delta)
 
-	if not dodgeC.is_dashing:
+
+
+
+	if not dodgeC.is_dashing and not attackC.isAttacking:
 		movementC.physics_update(delta, move_dir, self, not is_instance_valid(lockOnC.target))
+	elif attackC.isAttacking:
+		velocity = Vector3.ZERO
+
+
 
 
 	if is_instance_valid(lockOnC.target):
@@ -199,14 +234,35 @@ func _physics_process(delta: float) -> void:
 			var target_yaw := atan2(-to_target.x, -to_target.z)
 			rotation.y = rotate_toward(rotation.y, target_yaw, 16.0 * delta)
 	
+	
 
-
-	if inputC.dir != Vector2.ZERO:
-		animC.process(true, false)
-	else:
-		animC.process(false, false)
+	#if inputC.dir != Vector2.ZERO:
+		#animC.process(true, false)
+	#else:
+		#animC.process(false, false)
 
 	move_and_slide()
+
+	# HANDLING WALK AND IDLE ANIMS
+
+	var dodge_anim_playing = (animC.model_animation_player.is_playing() and str(animC.model_animation_player.current_animation).begins_with("Dodge"))
+
+	if (
+		not attackC.isAttacking
+		and not blockC.is_blocking
+		and not dodgeC.is_dashing
+		and not staggerC.is_staggered
+		and not dodge_anim_playing
+	):
+		var movement_anim: StringName = &"Idle"
+
+		if move_dir.length_squared() > 0.01:
+			movement_anim = &"Walk"
+		
+		animC.play_model_anim(movement_anim)
+
+	####
+
 	
 func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vector3 = Vector3.LEFT, attacker: Node3D = null, hit_collider: Node3D = null) -> void:
 	await hitReponse.take_hit(damage, hit_stagger_duration, hit_direction, attacker, hit_collider)
@@ -224,15 +280,20 @@ func try_dodge_graze(attack: String) -> bool:
 func finish_dodge_graze_attack(attack_id: String) -> void:
 	grazed_attacks.erase(attack_id)
 
+func _on_stagger_started() -> void:
+	animC.play_model_anim(&"Stagger")
+
 func _on_blocking_started() -> void:
 	anim.play("Block")
-	
+	animC.play_model_anim(&"Block")
+
 func _on_blocking_ended() -> void:
 	if anim.current_animation == "Block":
 		anim.play("Unblock")
 		
 func _weapon_is_attacking() -> bool:
-	return is_instance_valid(inventoryC.cWeapon) and inventoryC.cWeapon.isAttacking
+	return attackC.isAttacking
+	#return is_instance_valid(inventoryC.cWeapon) and inventoryC.cWeapon.isAttacking
 
 func open_campfire_menu() -> void:
 	uiC.open_campfire_menu()
@@ -259,3 +320,8 @@ func onDeath():
 	print("changed")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_packed(load("uid://o73v2cty65b6")) 
+	
+func activate_hurtbox() -> void:
+	inventoryC.cWeapon.activate_hurtbox()
+func deactivate_hurtbox() -> void:
+	inventoryC.cWeapon.deactivate_hurtbox()

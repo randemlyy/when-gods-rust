@@ -13,7 +13,7 @@ extends Node
 @onready var world_sprite: Sprite3D = $"../ResolveComponent/ResolveSprite"
 @onready var world_viewport: SubViewport = $"../ResolveComponent/Resolve"
 @onready var world_bar: ProgressBar = $"../ResolveComponent/Resolve/ResolveBar"
-@onready var hud_bar: ProgressBar = $"../CanvasLayer/Control/ResolveBar"
+@onready var hud_bar: ProgressBar = $"../../CanvasLayer/Control/ResolveBar"
 @onready var load_marker: ColorRect = $"../ResolveComponent/Resolve/LoadMarker"
 
 var target_resolve = 0.0

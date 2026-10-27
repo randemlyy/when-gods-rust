@@ -3,7 +3,7 @@ extends Control
 
 signal back_pressed
 
-@onready var upgradeC: UpgradeComponent = get_node("../../UpgradeComponent")
+@onready var upgradeC: UpgradeComponent = $"../../Components/UpgradeComponent"
 @onready var gear_list: VBoxContainer = $CenterContainer/PanelContainer/HBoxContainer/InventoryColumn/ScrollContainer/GearList
 @onready var arm_sockets: VBoxContainer = $CenterContainer/PanelContainer/HBoxContainer/ArmColumn/ArmSockets
 @onready var core_sockets: VBoxContainer = $CenterContainer/PanelContainer/HBoxContainer/CoreColumn/CoreSockets

@@ -1,7 +1,7 @@
 class_name InteractComponent
 extends Node
 
-@onready var interact_area: Area3D = $"../InteractArea"
+@onready var interact_area: Area3D = $"../../InteractArea"
 
 
 func process(delta: float, IsInteractInput:bool) -> bool:
@@ -15,7 +15,10 @@ func process(delta: float, IsInteractInput:bool) -> bool:
 			target = target.get_parent()
 		
 		if target.has_method("interact"):
-			target.interact(get_parent())
+			var player = get_parent().get_parent() as Node3D
+			if player == null:
+				return false
+			target.interact(player)
 			return true
 	
 	return false
