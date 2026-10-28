@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 HitStop="*uid://b1spu6sk5a6ml"
+MusicManager="*uid://dtb4w7b6lc0pp"
 
 [display]
 

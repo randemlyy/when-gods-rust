@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cawg511y1mhfx"]
+
+[ext_resource type="Script" uid="uid://dtb4w7b6lc0pp" path="res://scripts/randem/MusicManager.gd" id="1_1s0sp"]
+[ext_resource type="AudioStream" uid="uid://c3x34esfpm7ye" path="res://Assets/Audio/Music/Pil_gram.ogg" id="2_dqo1r"]
+[ext_resource type="AudioStream" uid="uid://oyan3d1jrh6c" path="res://Assets/Audio/Music/New_Boot.ogg" id="3_0xcmy"]
+
+[node name="MusicManager" type="Node" unique_id=241385842]
+script = ExtResource("1_1s0sp")
+menu_music = ExtResource("2_dqo1r")
+gameplay_music = ExtResource("3_0xcmy")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1392748213]
