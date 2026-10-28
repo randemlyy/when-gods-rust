@@ -48,6 +48,11 @@ func update(delta):
 			attack_started = false
 
 	dir = (nav.get_next_path_position() - body.global_position).normalized()
+
+func physics_update(delta:float):
+	if not body.is_inside_tree():
+		return
+	
 	movementC.physics_update(delta, dir, body)
 	body.move_and_slide()
 	

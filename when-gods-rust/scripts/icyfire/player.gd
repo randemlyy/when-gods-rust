@@ -74,7 +74,7 @@ func _process(delta: float) -> void:
 				#if item.is_in_group("Gear"):
 					#upgradeC.pickupGear(item.gearData)
 					#item.queue_free()
-	
+
 
 	if inputC.interact and not menu_open:
 		interactC.process(delta, inputC.interact)
@@ -112,7 +112,9 @@ func _process(delta: float) -> void:
 		
 	#inventoryC.update(resolveC, anim, canStagger, canCombo, canCrit)
 
-	if inputC.attack and not menu_open and not riposte_consumed_attack:
+	var can_start_attack = not menu_open and not blockC.is_blocking and not dodgeC.is_dashing and not staggerC.is_staggered
+
+	if inputC.attack and can_start_attack and not riposte_consumed_attack:
 		attackC.Attack()
 
 	if inputC.lock_on and not menu_open:
@@ -133,9 +135,12 @@ func _process(delta: float) -> void:
 			
 	label_4.text = str(inventoryC.Heals)
 	
+
+
 func _physics_process(delta: float) -> void:
 	if uiC.is_menu_open:
 		dodgeC.cancel_dash()
+		movementC.cancel_attack_lunge()
 		velocity = Vector3.ZERO
 		return
 
@@ -153,6 +158,7 @@ func _physics_process(delta: float) -> void:
 
 	if staggerC.is_staggered:
 		dodgeC.cancel_dash()
+		movementC.cancel_attack_lunge()
 		velocity.x = 0.0
 		velocity.z = 0.0
 		move_and_slide()
@@ -216,10 +222,17 @@ func _physics_process(delta: float) -> void:
 	dodgeC.physics_update(delta)
 
 
+	# MOVEMENT
+	if not dodgeC.is_dashing:
+		var dir_wanted = move_dir
+		var should_rotate = not is_instance_valid(lockOnC.target)
 
+		if attackC.isAttacking:
+			dir_wanted = Vector3.ZERO
+			should_rotate = false
+		
+		movementC.physics_update(delta, dir_wanted, self, should_rotate)
 
-	if not dodgeC.is_dashing and not attackC.isAttacking:
-		movementC.physics_update(delta, move_dir, self, not is_instance_valid(lockOnC.target))
 	elif attackC.isAttacking:
 		velocity = Vector3.ZERO
 

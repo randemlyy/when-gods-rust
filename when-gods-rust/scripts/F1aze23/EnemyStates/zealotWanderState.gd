@@ -1,4 +1,5 @@
 extends state
+
 var rDir: Vector3
 var mDir: Vector3
 
@@ -6,6 +7,7 @@ var mDir: Vector3
 @export var body:CharacterBody3D
 @onready var movementC: MovementComponent = $"../../MovementComponent"
 @onready var nav: NavigationAgent3D = $"../../NavigationAgent3D"
+
 var player:CharacterBody3D
 var wait = false
 @export var attackDist:=7
@@ -18,20 +20,31 @@ func enter():
 func update(delta:float):
 	if !is_inside_tree():
 		return
+
 	if player == null or not is_instance_valid(player):
 		return
+
 	if body.global_position.distance_to(player.global_position) <= attackDist:
+		mDir = Vector3.ZERO
 		sm.change_state("Attack")
 		return
+
 	if wait:
-		movementC.physics_update(delta, Vector3.ZERO, body)
+		mDir = Vector3.ZERO
 		return
+
 	if nav.is_navigation_finished():
 		randomDir()
+		mDir = Vector3.ZERO
+		return
 
 	var nextPathPosition: Vector3 = nav.get_next_path_position()
 	mDir = (nextPathPosition - body.global_position).normalized()
 
+func physics_update(delta:float):
+	if not is_inside_tree():
+		return
+	
 	movementC.physics_update(delta, mDir, body)
 	body.move_and_slide()
 
