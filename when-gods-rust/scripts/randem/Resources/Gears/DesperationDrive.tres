@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="GearData" format=3 uid="uid://der75u5qbf61u"]
+
+[ext_resource type="Script" uid="uid://bn3kidu2kb068" path="res://scripts/randem/GearEffectData.gd" id="1_1cqpn"]
+[ext_resource type="Script" uid="uid://dv000kh7jx7rr" path="res://scripts/randem/Gear Effects/ResolveDeficitEffect.gd" id="2_b2pp4"]
+[ext_resource type="Script" uid="uid://b66etc2t5rsau" path="res://scripts/randem/StatModifierData.gd" id="3_62bvw"]
+[ext_resource type="Script" uid="uid://o1qk5pbh6kq6" path="res://scripts/randem/GearData.gd" id="4_vv3y7"]
+
+[sub_resource type="Resource" id="Resource_t46vt"]
+script = ExtResource("2_b2pp4")
+damage_percent_per_deficit = 1.0
+metadata/_custom_type_script = "uid://dv000kh7jx7rr"
+
+[resource]
+script = ExtResource("4_vv3y7")
+gear_name = "Desperation Drive"
+description = "Gain 0.5% normal attack damage for every Resolve point below Load. Load penalties are 1.5x stronger"
+slot = 1
+load = 40.0
+effects = Array[ExtResource("1_1cqpn")]([SubResource("Resource_t46vt")])
+metadata/_custom_type_script = "uid://o1qk5pbh6kq6"

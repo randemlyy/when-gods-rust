@@ -16,7 +16,11 @@ func get_deficit_ratio() -> float:
 	return clampf(deficit / resolveC.maxResolve, 0.0, 1.0)
 
 func damage_taken_mult() -> float:
-	return 1.0 + max_damage_increase_percent / 100.0 * get_deficit_ratio()
+	var penalty = max_damage_increase_percent / 100.0
+	penalty *= get_deficit_ratio() * upgradeC.get_load_penalty_multiplier()
+	return 1.0 + penalty
 
 func resolve_drain_mult() -> float:
-	return 1.0 + max_resolve_drain_percent / 100.0 * get_deficit_ratio()
+	var penalty = max_damage_increase_percent / 100.0
+	penalty *= get_deficit_ratio() * upgradeC.get_load_penalty_multiplier()
+	return 1.0 + penalty

@@ -151,6 +151,36 @@ func _apply_gear_effects(gear: GearData, equipping: bool) -> void:
 		else:
 			effect.unequipped(player)
 
+func get_effect_stat_bonus(stat: StatModifierData.Stat) -> float:
+	var player = get_parent().get_parent()
+	var total = 0.0
+
+	for sockets in [arm_sockets, core_sockets]:
+		for gear in sockets:
+			if gear == null:
+				continue
+			
+			for effect in gear.effects:
+				if effect != null:
+					total += effect.get_stat_bonus(stat, player)
+	
+	return total
+
+func get_load_penalty_multiplier() -> float:
+	var player = get_parent().get_parent()
+	var multiplier = 1.0
+
+	for sockets in [arm_sockets, core_sockets]:
+		for gear in sockets:
+			if gear == null:
+				continue
+			
+			for effect in gear.effects:
+				if effect != null:
+					multiplier *= effect.get_load_penalty_multiplier(player)
+
+	return multiplier
+
 func _install_into(sockets: Array[GearData], gear: GearData, socket_index: int) -> bool:
 	if socket_index < 0 or socket_index >= sockets.size():
 		return false

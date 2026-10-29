@@ -9,7 +9,7 @@ signal resolve_changed(current: float, maximum: float)
 
 @export var offset := Vector3(0, 1.8, 0)
 @export var maxResolve:float = 100.0
-@export var cResolve:float = 100.0
+@export var cResolve:float = 5.0
 @export var resolveDecay:float = 0.03
 
 var canDecay:bool = true 
