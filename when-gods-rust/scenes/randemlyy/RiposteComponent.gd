@@ -26,6 +26,8 @@ enum Phase {
 
 @onready var player: CharacterBody3D = get_parent().get_parent() as CharacterBody3D
 @onready var anim: AnimationPlayer = $"../../TestAnimPlayer"
+@onready var modifierC: ModifierComponent = $"../ModifierComponent"
+
 
 var targets: Dictionary = {}
 var buffer_left = 0.0
@@ -187,7 +189,7 @@ func _hit() -> void:
 	phase_left = recovery_time
 
 	feedback_requested.emit(&"riposte_hit", enemy)
-	health.take_damage(riposte_damage)
+	health.take_damage(modifierC.get_riposte_damage(riposte_damage))
 
 func _find_target() -> Node3D:
 	var best: Node3D

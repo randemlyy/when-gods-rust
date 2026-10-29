@@ -46,3 +46,12 @@ func get_attack_damage(base_damage: int, target_is_staggered: bool, weapon_crit_
 		damage_multiplier *= staggered_damage_multiplier
 
 	return roundi(base_damage * damage_multiplier)
+
+func get_riposte_damage(base_damage: int) -> int:
+	var damage_multiplier = 1.0
+
+	if upgrade_component:
+		var bonus = upgrade_component.get_stat_percent(StatModifierData.Stat.RIPOSTE_DAMAGE)
+		damage_multiplier *= 1.0 + bonus / 100.0
+	
+	return roundi(base_damage * damage_multiplier)

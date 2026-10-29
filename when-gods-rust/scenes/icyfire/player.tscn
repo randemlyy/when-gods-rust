@@ -13,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://b8ccocassarbd" path="res://scenes/randemlyy/UpgradeMenu.tscn" id="10_taabd"]
 [ext_resource type="Resource" uid="uid://53cnmwlkucl1" path="res://scripts/randem/Resources/StarterArm.tres" id="11_c1vle"]
 [ext_resource type="PackedScene" uid="uid://bk73iiws550cg" path="res://scenes/randemlyy/CampfireMenu.tscn" id="11_huo1t"]
-[ext_resource type="Resource" uid="uid://n2jh37nkpt5m" path="res://scripts/randem/Resources/Gears/TestArmGear.tres" id="11_jep08"]
 [ext_resource type="Script" uid="uid://oshbw25w75od" path="res://scripts/randem/SpamPenaltyComponent.gd" id="11_y8aiu"]
-[ext_resource type="Resource" uid="uid://b8h8cieynl118" path="res://scripts/randem/Resources/Gears/TestCoreGear.tres" id="12_eol4w"]
 [ext_resource type="Resource" uid="uid://53kot2lsjgh" path="res://scripts/randem/Resources/StarterCore.tres" id="12_taabd"]
 [ext_resource type="PackedScene" uid="uid://ddkuk1on7vabs" path="res://scenes/F1aze23/TestWeapon.tscn" id="13_crioq"]
 [ext_resource type="Script" uid="uid://o1qk5pbh6kq6" path="res://scripts/randem/GearData.gd" id="13_vbyrk"]
+[ext_resource type="Resource" uid="uid://f0rju8fh5rig" path="res://scripts/randem/Resources/Gears/ExecutionersEdge.tres" id="16_6v10k"]
+[ext_resource type="Resource" uid="uid://wtr6f0pj2wbf" path="res://scripts/randem/Resources/Gears/ReactorDampner.tres" id="17_jvadc"]
 [ext_resource type="Script" uid="uid://dk366pulvy7f7" path="res://scripts/randem/LoadPenaltyComponent.gd" id="18_vbyrk"]
 [ext_resource type="Script" uid="uid://cym6bodw36out" path="res://scripts/icyfire/AnimationComponent.gd" id="19_1cd4j"]
 [ext_resource type="Script" uid="uid://ci65tdq6gqlvu" path="res://scripts/F1aze23/DodgeComponent.gd" id="19_d4y3p"]
@@ -3005,7 +3005,7 @@ color = Color(1, 0.4117647, 0.2784314, 1)
 script = ExtResource("10_7anrw")
 arm_part = ExtResource("11_c1vle")
 core_part = ExtResource("12_taabd")
-owned_gears = Array[ExtResource("13_vbyrk")]([ExtResource("11_jep08"), ExtResource("12_eol4w")])
+owned_gears = Array[ExtResource("13_vbyrk")]([ExtResource("16_6v10k"), ExtResource("17_jvadc")])
 
 [node name="ModifierComponent" type="Node" parent="Components" unique_id=153305593]
 script = ExtResource("30_crioq")

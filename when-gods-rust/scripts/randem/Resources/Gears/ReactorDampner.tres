@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="GearData" format=3 uid="uid://wtr6f0pj2wbf"]
+
+[ext_resource type="Script" uid="uid://bn3kidu2kb068" path="res://scripts/randem/GearEffectData.gd" id="1_a22oh"]
+[ext_resource type="Script" uid="uid://b66etc2t5rsau" path="res://scripts/randem/StatModifierData.gd" id="2_4ftvb"]
+[ext_resource type="Script" uid="uid://o1qk5pbh6kq6" path="res://scripts/randem/GearData.gd" id="3_766vu"]
+
+[sub_resource type="Resource" id="Resource_a22oh"]
+script = ExtResource("2_4ftvb")
+stat = 3
+percent = -20.0
+metadata/_custom_type_script = "uid://b66etc2t5rsau"
+
+[sub_resource type="Resource" id="Resource_4ftvb"]
+script = ExtResource("2_4ftvb")
+stat = 4
+percent = -30.0
+metadata/_custom_type_script = "uid://b66etc2t5rsau"
+
+[resource]
+script = ExtResource("3_766vu")
+gear_name = "Reactor Dampner"
+description = "-20% Resolve Loss. -30% Resolve Gain."
+slot = 1
+load = 30.0
+modifiers = Array[ExtResource("2_4ftvb")]([SubResource("Resource_a22oh"), SubResource("Resource_4ftvb")])
+metadata/_custom_type_script = "uid://o1qk5pbh6kq6"
