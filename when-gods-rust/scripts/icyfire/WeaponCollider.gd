@@ -21,6 +21,11 @@ func _on_body_entered(body: Node3D) -> void:
 	_try_hit(body)
 
 func _try_hit(body: Node3D) -> void:
+
+	var attacker = test_weapon.get_owner()
+	if attacker and attacker.staggerC.is_staggered:
+		return
+
 	if not body.is_in_group("Enemy"):
 		return
 	

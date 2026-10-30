@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 	inputC.update(delta)
 	
 	uiC.handle_menu_input(inputC.upgrade_menu)
-
+	uiC.handle_inventory_input(inputC.inv_menu)
 	#inventoryC.isEquip = false
 	#
 	var menu_open = uiC.is_menu_open

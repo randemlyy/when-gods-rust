@@ -383,7 +383,7 @@ bones/20/rotation = Quaternion(5.3385087e-08, 0.7071068, -0.7071068, -5.3385087e
 bones/20/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Zealot/Skeleton3D" unique_id=2137977702]
-transform = Transform3D(-0.2827534, 0.9440051, 0.17001294, -0.5221894, -0.30017272, 0.79825664, 0.80459183, 0.1369311, 0.5778248, 0.3733965, 1.4488442, 0.69658506)
+transform = Transform3D(-0.2827534, 0.9440051, 0.17001294, -0.5221894, -0.30017272, 0.79825664, 0.80459183, 0.1369311, 0.5778248, 0.31314903, 1.5544062, 0.71875155)
 bone_name = "Hand.R"
 bone_idx = 10
 
@@ -414,6 +414,11 @@ ExtResource("13_8do7w"): 50.0,
 ExtResource("14_byday"): 40.0
 }
 body = NodePath("..")
+scrap_min = 50
+scrap_max = 50
+bonus_resource_name = "Cog Shard"
+bonus_drop_chance = 100.0
+bonus_max = 3
 metadata/_custom_type_script = "uid://chrslpr65wig4"
 
 [connection signal="timeout" from="wTimer" to="StateMachine/Wander" method="randomDir"]

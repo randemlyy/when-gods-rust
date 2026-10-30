@@ -1,6 +1,8 @@
 class_name GearEffectData
 extends Resource
 
+# future use for abilities(effects)
+
 func equipped(_player: Node) -> void:
     pass
 

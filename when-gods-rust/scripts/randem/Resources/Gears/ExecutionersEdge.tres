@@ -12,13 +12,13 @@ metadata/_custom_type_script = "uid://b66etc2t5rsau"
 
 [sub_resource type="Resource" id="Resource_w55hm"]
 script = ExtResource("2_w55hm")
-percent = -15.0
+percent = -20.0
 metadata/_custom_type_script = "uid://b66etc2t5rsau"
 
 [resource]
 script = ExtResource("3_erhae")
 gear_name = "Executioner's Edge"
-description = "+30% Riposte Damage. -15% Normal Attack Damage."
+description = "+30% Riposte Damage. -20% Normal Attack Damage."
 load = 30.0
 modifiers = Array[ExtResource("2_w55hm")]([SubResource("Resource_vuwfd"), SubResource("Resource_w55hm")])
 metadata/_custom_type_script = "uid://o1qk5pbh6kq6"

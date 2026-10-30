@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
 [ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
 [ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
+[ext_resource type="PackedScene" uid="uid://ytpcv5a8gtwd" path="res://scenes/randemlyy/InventoryMenu.tscn" id="4_cjjg1"]
 [ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
 [ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
 [ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
@@ -2690,6 +2691,8 @@ text = "0"
 visible = false
 
 [node name="CampfireMenu" parent="CanvasLayer" unique_id=180815333 instance=ExtResource("11_huo1t")]
+
+[node name="InventoryMenu" parent="CanvasLayer" unique_id=834883796 instance=ExtResource("4_cjjg1")]
 
 [node name="Model2" type="Node3D" parent="." unique_id=1454625070]
 

@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var staggerC: StaggerComponent = $StaggerComponent
 @export var isAttacking:=false
 @onready var lootC: LootComponent = $LootComponent
+# @onready var lootC: LootComponent = $LootComponent
 
 func _ready() -> void:
 	healthC.start()
@@ -27,5 +28,5 @@ func _process(delta: float) -> void:
 	healthC.update(delta)
 	
 func death():
-	lootC.spawnLoot()
+	lootC.grant_resources()
 	queue_free()

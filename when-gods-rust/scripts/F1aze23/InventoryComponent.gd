@@ -1,58 +1,35 @@
 class_name InventoryComponent
 extends Node
 
-@onready var upgradeC: UpgradeComponent = $"../UpgradeComponent"
+signal inventory_changed
 
 @export var cWeapon: Weapon
-@onready var hand: Node3D = $"../../Model2/WGR4/Armature/Skeleton3D/Bone_004_R/Hand"
+@export var iArea:Area3D
+@export var resources: Dictionary = {}
 
-var Heals:int = 3
+var Heals: int = 3
 
 
 func UseHeal() -> void:
-	if Heals > 0:
-		Heals -= 1
-#
-#@onready var upgradeC: UpgradeComponent = $"../UpgradeComponent"
-#
-#@export var hand_slot: Node3D
-@export var iArea:Area3D
-#@export var anim: AnimationPlayer
-#@onready var label_4: Label = $"../CanvasLayer/Control/Label4"
-#
-#var cWeapon:Weapon = null
-#var isEquip:bool = false
-#var isAttack:bool = false
-#
+	if Heals <= 0:
+		return
+	
+	Heals -= 1
+	inventory_changed.emit()
 
-#func update(resolve:ResolveComponent, anim:AnimationPlayer, canStagger:bool, canCombo:bool, canCrit:bool):
-	#if is_instance_valid(cWeapon):
-		#if isAttack:
-			#cWeapon.Attack(resolve, anim)
-		#cWeapon.canCombo = canCombo
-		#cWeapon.canCrit = canCrit
-		#cWeapon.canStagger = canStagger
-	#if not isEquip or iArea == null:
-		#return
-	#for item in iArea.get_overlapping_bodies():
-		#if not item.has_node("ItemWeapon"):
-			#continue
-		#equip(item.get_node("ItemWeapon"))
-		#item.queue_free()
-		#return
-#
-#func equip(itemWeapon:Node):
-	#if not itemWeapon or not itemWeapon.Weapon or itemWeapon is not ItemWeapon:
-		#return
-	#if is_instance_valid(cWeapon):
-		#drop()
-	#var new_weapon = itemWeapon.Weapon.instantiate() as Weapon
-	#new_weapon.upgradeC = upgradeC
-	#hand_slot.add_child(new_weapon)
-	#cWeapon = new_weapon
-	#print(cWeapon)
-#
-#func drop():
-	#cWeapon.queue_free()
-	##Imma do this for now ill implement drop logic later
-#
+func add_resource(resource_name: String, amount: int) -> void:
+	if resource_name.is_empty() or amount <= 0:
+		return
+	resources[resource_name] = resources.get(resource_name, 0) + amount
+	inventory_changed.emit()
+
+func remove_resource(resource_name: String, amount: int) -> bool:
+	if resource_name.is_empty() or amount <= 0:
+		return false
+	var current: int = resources.get(resource_name, 0)
+	if current < amount:
+		return false
+
+	resources[resource_name] = current - amount
+	inventory_changed.emit()
+	return true

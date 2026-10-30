@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ytpcv5a8gtwd"]
+
+[ext_resource type="Script" uid="uid://b41t7lihb8uu1" path="res://scripts/randem/InventoryMenu.gd" id="1_f544t"]
+
+[node name="InventoryMenu" type="Control" unique_id=834883796]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f544t")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=391114542]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1222914086]
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=2145366098]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=356913469]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1107503294]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Gears" type="ScrollContainer" parent="CenterContainer/PanelContainer/VBoxContainer/TabContainer" unique_id=1133352727]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="GearList" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/TabContainer/Gears" unique_id=375463967]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Resources" type="ScrollContainer" parent="CenterContainer/PanelContainer/VBoxContainer/TabContainer" unique_id=1956459341]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ResourceList" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/TabContainer/Resources" unique_id=105758835]
+layout_mode = 2
+size_flags_horizontal = 3

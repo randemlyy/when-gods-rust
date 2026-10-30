@@ -7,13 +7,13 @@
 [sub_resource type="Resource" id="Resource_a22oh"]
 script = ExtResource("2_4ftvb")
 stat = 3
-percent = -20.0
+percent = -15.0
 metadata/_custom_type_script = "uid://b66etc2t5rsau"
 
 [sub_resource type="Resource" id="Resource_4ftvb"]
 script = ExtResource("2_4ftvb")
 stat = 4
-percent = -30.0
+percent = -25.0
 metadata/_custom_type_script = "uid://b66etc2t5rsau"
 
 [resource]

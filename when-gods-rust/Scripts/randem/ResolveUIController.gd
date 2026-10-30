@@ -26,6 +26,7 @@ func _ready() -> void:
 	world_bar.max_value = resolveC.maxResolve
 	hud_bar.max_value = 100.0
 	world_sprite.global_position = _get_world_bar_position()
+	world_sprite.render_priority = 1000
 	_on_resolve_changed(resolveC.cResolve, resolveC.maxResolve)
 	_on_load_changed(upgradeC.get_current_load(), resolveC.maxResolve)
 	call_deferred("_assign_viewport_texture")

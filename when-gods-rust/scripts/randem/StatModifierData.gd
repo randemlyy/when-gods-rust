@@ -1,6 +1,8 @@
 class_name StatModifierData
 extends Resource
 
+# Assigns a percent increase/decrease for each one the stats in (Stat)
+
 enum Stat {
 	NORMAL_ATTACK_DAMAGE,
 	RIPOSTE_DAMAGE,
