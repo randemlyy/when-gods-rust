@@ -3,6 +3,7 @@ extends Node
 
 signal load_changed(current_load: float, max_load: float)
 signal loadout_changed
+signal gear_added(gear: GearData)
 
 @onready var resolveC: ResolveComponent = $"../ResolveComponent"
 
@@ -100,6 +101,7 @@ func pickupGear(gear: GearData) -> void:
 		return
 	
 	owned_gears.append(gear)
+	gear_added.emit(gear)
 	_notify_loadout_changed()
 
 func _notify_loadout_changed() -> void:
@@ -114,18 +116,8 @@ func _recalculate_final_stats() -> void:
 	_add_gear_modifiers(core_sockets)
 
 	attack_damage_bonus = get_stat_percent(StatModifierData.Stat.NORMAL_ATTACK_DAMAGE)
-
 	block_resolve_cost_reduction = -get_stat_percent(StatModifierData.Stat.BLOCK_RESOLVE_COST) / 100.0
-
-	for gear in arm_sockets:
-		if gear != null:
-			attack_damage_bonus += gear.attack_damage_bonus
-			block_resolve_cost_reduction += gear.block_resolve_cost_reduction
 	
-	for gear in core_sockets:
-		if gear != null:
-			attack_damage_bonus += gear.attack_damage_bonus
-			block_resolve_cost_reduction += gear.block_resolve_cost_reduction
 
 func _add_gear_modifiers(sockets: Array[GearData]) -> void:
 	for gear in sockets:

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
 [ext_resource type="PackedScene" uid="uid://ytpcv5a8gtwd" path="res://scenes/randemlyy/InventoryMenu.tscn" id="4_cjjg1"]
 [ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://dgdif8frdanbk" path="res://scripts/randem/PickupFeed.gd" id="5_rckwv"]
 [ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
 [ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
 [ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
@@ -2693,6 +2694,23 @@ visible = false
 [node name="CampfireMenu" parent="CanvasLayer" unique_id=180815333 instance=ExtResource("11_huo1t")]
 
 [node name="InventoryMenu" parent="CanvasLayer" unique_id=834883796 instance=ExtResource("4_cjjg1")]
+
+[node name="PickupFeed" type="Control" parent="CanvasLayer" unique_id=22013528]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 100)
+script = ExtResource("5_rckwv")
+
+[node name="Messages" type="VBoxContainer" parent="CanvasLayer/PickupFeed" unique_id=52186150]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Model2" type="Node3D" parent="." unique_id=1454625070]
 

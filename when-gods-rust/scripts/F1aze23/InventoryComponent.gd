@@ -2,6 +2,7 @@ class_name InventoryComponent
 extends Node
 
 signal inventory_changed
+signal resource_added(resource_name: String, amount: int)
 
 @export var cWeapon: Weapon
 @export var iArea:Area3D
@@ -21,6 +22,7 @@ func add_resource(resource_name: String, amount: int) -> void:
 	if resource_name.is_empty() or amount <= 0:
 		return
 	resources[resource_name] = resources.get(resource_name, 0) + amount
+	resource_added.emit(resource_name, amount)
 	inventory_changed.emit()
 
 func remove_resource(resource_name: String, amount: int) -> bool:
