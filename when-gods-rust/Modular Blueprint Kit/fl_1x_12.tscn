@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bu3ngmaq02ek3"]
+
+[ext_resource type="PackedScene" uid="uid://3yy0b00ka4xo" path="res://Modular Blueprint Kit/glTF/FL_1X1.gltf" id="1_2uyx4"]
+[ext_resource type="Texture2D" uid="uid://c0xw1dufdwhnh" path="res://Modular Blueprint Kit/_textures/GREEN_prototype_grid_floor.png" id="2_caikw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e300p"]
+albedo_texture = ExtResource("2_caikw")
+
+[node name="FL_1X12" unique_id=1037311253 instance=ExtResource("1_2uyx4")]
+
+[node name="FL_1X1" parent="." index="0" unique_id=583659237]
+material_override = SubResource("StandardMaterial3D_e300p")
