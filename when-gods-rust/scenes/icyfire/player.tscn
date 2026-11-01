@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
 [ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
 [ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="2_ehogs"]
+[ext_resource type="AudioStream" uid="uid://d1ajseub6sc41" path="res://Assets/icyfire/u_xjrmmgxfru-sword-slash-05-266312.mp3" id="2_lmyqo"]
 [ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
 [ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
+[ext_resource type="AudioStream" uid="uid://ck0x151desoek" path="res://Assets/icyfire/u_xjrmmgxfru-sword-slash-02-266315.mp3" id="3_2tecw"]
 [ext_resource type="PackedScene" uid="uid://ytpcv5a8gtwd" path="res://scenes/randemlyy/InventoryMenu.tscn" id="4_cjjg1"]
+[ext_resource type="AudioStream" uid="uid://dasxgvbd510ur" path="res://Assets/icyfire/dragon-studio-sword-slice-393847.mp3" id="4_gpnog"]
 [ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
 [ext_resource type="Script" uid="uid://dgdif8frdanbk" path="res://scripts/randem/PickupFeed.gd" id="5_rckwv"]
 [ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
@@ -109,6 +112,21 @@ tracks/3/keys = {
 "clips": PackedStringArray("Attack1"),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.46,
+"start_offset": 0.0,
+"stream": ExtResource("2_lmyqo")
+}],
+"times": PackedFloat32Array(0.33333334)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_crioq"]
 resource_name = "Attack2"
@@ -171,6 +189,21 @@ tracks/3/keys = {
 "clips": PackedStringArray("Attack2"),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.53,
+"start_offset": 0.0,
+"stream": ExtResource("3_2tecw")
+}],
+"times": PackedFloat32Array(0.23333333)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_4l44k"]
 resource_name = "Attack3"
@@ -233,6 +266,21 @@ tracks/3/keys = {
 "clips": PackedStringArray("Attack3"),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 1.32,
+"start_offset": 0.0,
+"stream": ExtResource("4_gpnog")
+}],
+"times": PackedFloat32Array(0.23333333)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vjlaq"]
 resource_name = "Attack_1"
@@ -2694,7 +2742,7 @@ offset_bottom = 40.0
 [node name="Model2" type="Node3D" parent="." unique_id=1454625070]
 
 [node name="WGR5" type="Node3D" parent="Model2" unique_id=1973122261]
-transform = Transform3D(-0.12, 0, -1.0490733e-08, 0, 0.12, 0, 1.0490733e-08, 0, -0.12, 0, 0, 0)
+transform = Transform3D(-0.12, 0, -1.0490733e-08, 0, 0.12, 0, 1.0490733e-08, 0, -0.12, 8.881784e-16, 0.16361615, 0.12725711)
 
 [node name="Armature" type="Node3D" parent="Model2/WGR5" unique_id=393829700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.053913116, 0.08526738, 1.0255194)
@@ -3043,3 +3091,14 @@ script = ExtResource("26_3p70t")
 
 [node name="ResolveUIController" type="Node" parent="Components" unique_id=1855368025]
 script = ExtResource("27_6jq66")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=958205726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32996154, -0.38487265)
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." unique_id=1908068090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.67003846, -0.38487265)
+volume_db = -9.072
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="." unique_id=224814900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.67003846, -0.38487265)
+volume_db = -9.072

@@ -25,6 +25,9 @@ signal parry_succeeded(target: Node3D, target_staggered: StaggerComponent)
 @onready var hitReponse: PlayerHitResponse = $Components/PlayerHitResponse
 @onready var attackC: AttackComponent = $Components/AttackComponent
 
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var audio_stream_player_3d_2: AudioStreamPlayer3D = $AudioStreamPlayer3D2
+@onready var audio_stream_player_3d_3: AudioStreamPlayer3D = $AudioStreamPlayer3D3
 
 @export var canCombo:bool = false
 @export var canCrit:bool = false
@@ -36,6 +39,12 @@ signal parry_succeeded(target: Node3D, target_staggered: StaggerComponent)
 @export var max_heals = 4
 @export var dodge_graze_resolve: float = 15
 @export var heal_amount: int = 25
+
+const BlockSFX:AudioStream = preload("uid://bhuu48qesxmhi")
+const ParrySFX:AudioStream = preload("uid://bnoccq8fqad1w")
+const RiposteSFX:AudioStream = preload("uid://dgwmcje68yx6g")
+const WalkSFX:AudioStream = preload("uid://dlq7lvgkxs5qb")
+const HitSFX:AudioStream = preload("uid://p0nki0mu0n6k")
 
 var TimeSinceDmg:float = 0
 var DmgTime:float = 1
@@ -56,6 +65,9 @@ func _ready() -> void:
 	uiC.refill_heals_requested.connect(_on_refill_heals_pressed)
 	staggerC.stagger_started.connect(_on_stagger_started)
 	
+	audio_stream_player_3d_2.stream = WalkSFX
+	audio_stream_player_3d_2.pitch_scale = 1.5
+	audio_stream_player_3d_3.stream = HitSFX
 func _process(delta: float) -> void:
 	inputC.update(delta)
 	
@@ -171,7 +183,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		move_input = Vector2(inputC.dir.y * invertControlsY, inputC.dir.x * invertControlsX)
 		
-	var move_dir: Vector3	
+	var move_dir: Vector3
 	
 
 	# LOCKING ON ENEMY
@@ -232,7 +244,10 @@ func _physics_process(delta: float) -> void:
 			should_rotate = false
 		
 		movementC.physics_update(delta, dir_wanted, self, should_rotate)
-
+		
+		if !movementC.isWalking:
+			audio_stream_player_3d_2.play()
+		
 	elif attackC.isAttacking:
 		velocity = Vector3.ZERO
 
@@ -294,11 +309,14 @@ func finish_dodge_graze_attack(attack_id: String) -> void:
 	grazed_attacks.erase(attack_id)
 
 func _on_stagger_started() -> void:
+	audio_stream_player_3d_3.play()
 	animC.play_model_anim(&"Stagger")
 
 func _on_blocking_started() -> void:
 	anim.play("Block")
 	animC.play_model_anim(&"Block")
+	audio_stream_player_3d.stream = BlockSFX
+	audio_stream_player_3d.play()
 
 func _on_blocking_ended() -> void:
 	if anim.current_animation == "Block":
@@ -315,12 +333,15 @@ func _on_refill_heals_pressed() -> void:
 	inventoryC.Heals = max_heals 
 
 func _on_hit_response_parry_succeeded(target: Node3D, target_staggered: StaggerComponent) -> void:
+	audio_stream_player_3d.stream = ParrySFX
+	audio_stream_player_3d.play()
 	parry_succeeded.emit(target, target_staggered)
 
 func _on_riposte_feedback_requested(effect: StringName, target: Node3D) -> void:
 	if effect != &"riposte_hit":
 		return
-	
+	audio_stream_player_3d.stream = RiposteSFX
+	audio_stream_player_3d.play()
 	HitStop.request(0.12, 0.6)
 	cameraC.push_in(0.7, 0.16)
 	cameraC.shake(0.24, 0.18)
