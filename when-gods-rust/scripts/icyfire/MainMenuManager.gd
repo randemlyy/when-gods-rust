@@ -1,12 +1,13 @@
 extends Node
 
 const TEST_LEVEL := preload("res://scenes/randemlyy/THEtestlevel.tscn")
+@onready var music_manager: Node = $"../../MusicManager"
 
 func _ready() -> void:
-	MusicManager.play_menu_music()
+	music_manager.play_menu_music()
 
 func _on_button_button_down() -> void:
-	MusicManager.play_gameplay_music()
+	music_manager.play_gameplay_music()
 	get_tree().change_scene_to_packed(TEST_LEVEL)
 
 func _on_button_2_button_down() -> void:

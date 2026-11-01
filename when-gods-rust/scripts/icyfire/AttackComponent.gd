@@ -116,6 +116,3 @@ func _reset_combo() -> void:
 	combo_hits[0] = false
 	combo_hits[1] = false
 	combo_hits[2] = false
-
-
-

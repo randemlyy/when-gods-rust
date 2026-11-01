@@ -46,5 +46,3 @@ func _try_hit(body: Node3D) -> void:
 
 	if stagger != null and health.current_health > 0:
 		stagger.apply_stagger(test_weapon.hit_stagger_duration)
-
-

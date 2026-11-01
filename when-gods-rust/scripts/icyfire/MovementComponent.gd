@@ -36,7 +36,7 @@ func physics_update(delta: float, movedir:Vector3, body:CharacterBody3D, rotate_
 	grounded = body.is_on_floor()
 
 	if grounded:
-		body.velocity.y = -0.1
+		body.velocity.y = 0
 	elif apply_gravity:
 		body.velocity.y += body.get_gravity().y * delta
 	
@@ -63,7 +63,7 @@ func physics_update(delta: float, movedir:Vector3, body:CharacterBody3D, rotate_
 	)
 	
 	body.velocity.x = horizontal_velocity.x
-	body.velocity.z = horizontal_velocity.y		
+	body.velocity.z = horizontal_velocity.y
 	isWalking = horizontal_velocity.length() > 0.1
 
 	if rotate_to_move:

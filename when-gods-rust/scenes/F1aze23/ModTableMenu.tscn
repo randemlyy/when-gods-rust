@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cp7fkkxkmsicp"]
 
-[ext_resource type="Script" uid="uid://bcco8bdx6pahu" path="res://Scripts/F1aze23/ModTableMenu.gd" id="1_3n2fj"]
+[ext_resource type="Script" uid="uid://bcco8bdx6pahu" path="res://scripts/F1aze23/ModTableMenu.gd" id="1_3n2fj"]
 
 [node name="ModTableMenu" type="Control" unique_id=1789373367 node_paths=PackedStringArray("modCode", "codeInput", "outputText")]
 layout_mode = 3

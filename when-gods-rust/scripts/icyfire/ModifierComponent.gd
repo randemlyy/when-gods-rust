@@ -55,6 +55,3 @@ func get_riposte_damage(base_damage: int) -> int:
 		damage_multiplier *= 1.0 + bonus / 100.0
 	
 	return roundi(base_damage * damage_multiplier)
-
-
-

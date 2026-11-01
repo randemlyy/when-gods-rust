@@ -2,7 +2,7 @@ class_name AnimationComponent
 extends Node
 
 @onready var animation_player: AnimationPlayer = $"../../TestAnimPlayer"
-@onready var model_animation_player: AnimationPlayer = $"../../Model2/WGR4/AnimationPlayer"
+@onready var model_animation_player: AnimationPlayer = $"../../Model2/WGR5/AnimationPlayer"
 
 
 #func process(is_moving: bool, is_staggered: bool) -> void:
