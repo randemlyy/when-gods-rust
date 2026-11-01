@@ -1,38 +1,39 @@
 [gd_scene format=4 uid="uid://d2i164qcqw4na"]
 
-[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://scripts/icyfire/player.gd" id="1_dkbgn"]
-[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="2_que7a"]
-[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
-[ext_resource type="PackedScene" uid="uid://ytpcv5a8gtwd" path="res://scenes/randemlyy/InventoryMenu.tscn" id="4_cjjg1"]
-[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
-[ext_resource type="Script" uid="uid://dgdif8frdanbk" path="res://scripts/randem/PickupFeed.gd" id="5_rckwv"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_okieb"]
-[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
-[ext_resource type="Script" uid="uid://baudgajyg4pmb" path="res://scripts/randem/BlockComponent.gd" id="9_ahkby"]
-[ext_resource type="Script" uid="uid://cmxokty7h552d" path="res://scripts/randem/UpgradeComponent.gd" id="10_7anrw"]
-[ext_resource type="PackedScene" uid="uid://b8ccocassarbd" path="res://scenes/randemlyy/UpgradeMenu.tscn" id="10_taabd"]
-[ext_resource type="Resource" uid="uid://53cnmwlkucl1" path="res://scripts/randem/Resources/StarterArm.tres" id="11_c1vle"]
-[ext_resource type="PackedScene" uid="uid://bk73iiws550cg" path="res://scenes/randemlyy/CampfireMenu.tscn" id="11_huo1t"]
-[ext_resource type="Script" uid="uid://oshbw25w75od" path="res://scripts/randem/SpamPenaltyComponent.gd" id="11_y8aiu"]
-[ext_resource type="Resource" uid="uid://53kot2lsjgh" path="res://scripts/randem/Resources/StarterCore.tres" id="12_taabd"]
-[ext_resource type="PackedScene" uid="uid://ddkuk1on7vabs" path="res://scenes/F1aze23/TestWeapon.tscn" id="13_crioq"]
-[ext_resource type="Script" uid="uid://o1qk5pbh6kq6" path="res://scripts/randem/GearData.gd" id="13_vbyrk"]
-[ext_resource type="Resource" uid="uid://f0rju8fh5rig" path="res://scripts/randem/Resources/Gears/ExecutionersEdge.tres" id="16_6v10k"]
-[ext_resource type="Resource" uid="uid://wtr6f0pj2wbf" path="res://scripts/randem/Resources/Gears/ReactorDampner.tres" id="17_jvadc"]
-[ext_resource type="Script" uid="uid://dk366pulvy7f7" path="res://scripts/randem/LoadPenaltyComponent.gd" id="18_vbyrk"]
-[ext_resource type="Script" uid="uid://cym6bodw36out" path="res://scripts/icyfire/AnimationComponent.gd" id="19_1cd4j"]
-[ext_resource type="Script" uid="uid://ci65tdq6gqlvu" path="res://scripts/F1aze23/DodgeComponent.gd" id="19_d4y3p"]
-[ext_resource type="Resource" uid="uid://der75u5qbf61u" path="res://scripts/randem/Resources/Gears/DesperationDrive.tres" id="20_4l44k"]
-[ext_resource type="Script" uid="uid://dihlsl8jcher0" path="res://scripts/icyfire/InteractComponent.gd" id="21_jcpvw"]
-[ext_resource type="Script" uid="uid://b5h1cv4lg5ont" path="res://scenes/randemlyy/RiposteComponent.gd" id="23_ety63"]
-[ext_resource type="Script" uid="uid://df673tn7qmw3r" path="res://scripts/randem/LockOnComponent.gd" id="24_u05ug"]
-[ext_resource type="Script" uid="uid://drcrnaa3iusy1" path="res://scripts/randem/PlayerUIController.gd" id="25_850lv"]
-[ext_resource type="Script" uid="uid://bweu12mxk2cot" path="res://scripts/randem/PlayerHitResponse.gd" id="26_3p70t"]
-[ext_resource type="Script" uid="uid://dmgedsuko4rgm" path="res://scripts/randem/ResolveUIController.gd" id="27_6jq66"]
-[ext_resource type="Script" uid="uid://diob31wnjpyrh" path="res://scripts/icyfire/AttackComponent.gd" id="28_6v10k"]
-[ext_resource type="Script" uid="uid://dpwf5l0ln4dx3" path="res://scripts/icyfire/ModifierComponent.gd" id="30_crioq"]
+[ext_resource type="Script" uid="uid://choj0y3mf2iix" path="res://Scripts/icyfire/player.gd" id="1_dkbgn"]
+[ext_resource type="Script" uid="uid://b6rlibesv2u6e" path="res://Scripts/icyfire/InputComponent.gd" id="1_fx4ke"]
+[ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="2_ehogs"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="2_que7a"]
+[ext_resource type="Script" uid="uid://2ykk4lgaj6yg" path="res://Scripts/F1aze23/InventoryComponent.gd" id="2_vjlaq"]
+[ext_resource type="PackedScene" uid="uid://ytpcv5a8gtwd" path="res://Scenes/randemlyy/InventoryMenu.tscn" id="4_cjjg1"]
+[ext_resource type="Script" uid="uid://c3q2bf4w8k2ae" path="res://Scripts/F1aze23/CameraComponent.gd" id="5_1mpnw"]
+[ext_resource type="Script" uid="uid://dgdif8frdanbk" path="res://Scripts/randem/PickupFeed.gd" id="5_rckwv"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="6_okieb"]
+[ext_resource type="Script" uid="uid://c6h2bauklbph" path="res://Scripts/F1aze23/ResolveComponent.gd" id="7_8qorh"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="7_vvvn2"]
+[ext_resource type="Script" uid="uid://baudgajyg4pmb" path="res://Scripts/randem/BlockComponent.gd" id="9_ahkby"]
+[ext_resource type="Script" uid="uid://cmxokty7h552d" path="res://Scripts/randem/UpgradeComponent.gd" id="10_7anrw"]
+[ext_resource type="PackedScene" uid="uid://b8ccocassarbd" path="res://Scenes/randemlyy/UpgradeMenu.tscn" id="10_taabd"]
+[ext_resource type="Resource" uid="uid://53cnmwlkucl1" path="res://Scripts/randem/Resources/StarterArm.tres" id="11_c1vle"]
+[ext_resource type="PackedScene" uid="uid://bk73iiws550cg" path="res://Scenes/randemlyy/CampfireMenu.tscn" id="11_huo1t"]
+[ext_resource type="Script" uid="uid://oshbw25w75od" path="res://Scripts/randem/SpamPenaltyComponent.gd" id="11_y8aiu"]
+[ext_resource type="Resource" uid="uid://53kot2lsjgh" path="res://Scripts/randem/Resources/StarterCore.tres" id="12_taabd"]
+[ext_resource type="PackedScene" uid="uid://ddkuk1on7vabs" path="res://Scenes/F1aze23/TestWeapon.tscn" id="13_crioq"]
+[ext_resource type="Script" uid="uid://o1qk5pbh6kq6" path="res://Scripts/randem/GearData.gd" id="13_vbyrk"]
+[ext_resource type="Resource" uid="uid://f0rju8fh5rig" path="res://Scripts/randem/Resources/Gears/ExecutionersEdge.tres" id="16_6v10k"]
+[ext_resource type="Resource" uid="uid://wtr6f0pj2wbf" path="res://Scripts/randem/Resources/Gears/ReactorDampner.tres" id="17_jvadc"]
+[ext_resource type="Script" uid="uid://dk366pulvy7f7" path="res://Scripts/randem/LoadPenaltyComponent.gd" id="18_vbyrk"]
+[ext_resource type="Script" uid="uid://cym6bodw36out" path="res://Scripts/icyfire/AnimationComponent.gd" id="19_1cd4j"]
+[ext_resource type="Script" uid="uid://ci65tdq6gqlvu" path="res://Scripts/F1aze23/DodgeComponent.gd" id="19_d4y3p"]
+[ext_resource type="Resource" uid="uid://der75u5qbf61u" path="res://Scripts/randem/Resources/Gears/DesperationDrive.tres" id="20_4l44k"]
+[ext_resource type="Script" uid="uid://dihlsl8jcher0" path="res://Scripts/icyfire/InteractComponent.gd" id="21_jcpvw"]
+[ext_resource type="Script" uid="uid://b5h1cv4lg5ont" path="res://Scenes/randemlyy/RiposteComponent.gd" id="23_ety63"]
+[ext_resource type="Script" uid="uid://df673tn7qmw3r" path="res://Scripts/randem/LockOnComponent.gd" id="24_u05ug"]
+[ext_resource type="Script" uid="uid://drcrnaa3iusy1" path="res://Scripts/randem/PlayerUIController.gd" id="25_850lv"]
+[ext_resource type="Script" uid="uid://bweu12mxk2cot" path="res://Scripts/randem/PlayerHitResponse.gd" id="26_3p70t"]
+[ext_resource type="Script" uid="uid://dmgedsuko4rgm" path="res://Scripts/randem/ResolveUIController.gd" id="27_6jq66"]
+[ext_resource type="Script" uid="uid://diob31wnjpyrh" path="res://Scripts/icyfire/AttackComponent.gd" id="28_6v10k"]
+[ext_resource type="Script" uid="uid://dpwf5l0ln4dx3" path="res://Scripts/icyfire/ModifierComponent.gd" id="30_crioq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgv4r"]
 
@@ -2624,6 +2625,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_ehogs")
 
 [node name="ResolveBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=1692755755]
 layout_mode = 0
@@ -2705,6 +2707,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 pivot_offset = Vector2(0, 100)
+theme = ExtResource("2_ehogs")
 script = ExtResource("5_rckwv")
 
 [node name="Messages" type="VBoxContainer" parent="CanvasLayer/PickupFeed" unique_id=52186150]

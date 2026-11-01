@@ -36,7 +36,9 @@ func _refresh_menu() -> void:
 	for gear in upgradeC.owned_gears:
 		var button = GearInventoryButton.new()
 		button.gear = gear
+		button.custom_minimum_size.x = 350
 		button.text = "%s | Load: %s" % [gear.gear_name, gear.load]
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		gear_list.add_child(button)
 	
 	
@@ -49,6 +51,7 @@ func _add_socket_buttons(container: VBoxContainer, sockets: Array[GearData], par
 		button.upgradeC = upgradeC
 		button.slot_type = slot_type
 		button.socket_index = i
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		var gear : GearData = sockets[i]
 		
 		if gear == null:

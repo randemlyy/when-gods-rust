@@ -1,19 +1,17 @@
 [gd_scene format=4 uid="uid://cf6amcblndo4i"]
 
-[ext_resource type="Script" uid="uid://bjjc3prpxfcdt" path="res://scripts/F1aze23/zealot.gd" id="1_8v36v"]
-[ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://scripts/F1aze23/StateMachine.gd" id="1_q00h4"]
-[ext_resource type="Script" uid="uid://d0uwgok04xqcf" path="res://scripts/F1aze23/EnemyStates/zealotWanderState.gd" id="2_d7kfn"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="4_8jpi8"]
-[ext_resource type="Script" uid="uid://c4sb3mq5mcq2a" path="res://scripts/F1aze23/EnemyStates/zealotAttackState.gd" id="4_it8qr"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="6_74sap"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="7_gcpxs"]
+[ext_resource type="Script" uid="uid://bjjc3prpxfcdt" path="res://Scripts/F1aze23/zealot.gd" id="1_8v36v"]
+[ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://Scripts/F1aze23/StateMachine.gd" id="1_q00h4"]
+[ext_resource type="Script" uid="uid://d0uwgok04xqcf" path="res://Scripts/F1aze23/EnemyStates/zealotWanderState.gd" id="2_d7kfn"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="4_8jpi8"]
+[ext_resource type="Script" uid="uid://c4sb3mq5mcq2a" path="res://Scripts/F1aze23/EnemyStates/zealotAttackState.gd" id="4_it8qr"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="6_74sap"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="7_gcpxs"]
 [ext_resource type="Texture2D" uid="uid://dsk8f78uvnwx7" path="res://Assets/F1aze23/Zealot-WGR_image.png" id="8_kqtf2"]
 [ext_resource type="Animation" uid="uid://c23lms7mqslly" path="res://Assets/F1aze23/Anims/ZealotAttack.tres" id="9_hfppt"]
 [ext_resource type="Animation" uid="uid://drvud3l85vd1x" path="res://Assets/F1aze23/Anims/ZealotIdle.tres" id="10_38ql3"]
 [ext_resource type="Animation" uid="uid://d0fuvrogk866m" path="res://Assets/F1aze23/Anims/ZealotWalk.tres" id="11_8do7w"]
-[ext_resource type="Script" uid="uid://chrslpr65wig4" path="res://scripts/F1aze23/LootComponent.gd" id="12_hfppt"]
-[ext_resource type="PackedScene" uid="uid://grg0vrqqiqc6" path="res://scenes/F1aze23/Gears/ReducedBlockCost.tscn" id="13_8do7w"]
-[ext_resource type="PackedScene" uid="uid://pb5jox1hybs7" path="res://scenes/F1aze23/Gears/IncreasedAttack.tscn" id="14_byday"]
+[ext_resource type="Script" uid="uid://chrslpr65wig4" path="res://Scripts/F1aze23/LootComponent.gd" id="12_hfppt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kqtf2"]
 size = Vector3(1.3704834, 1.3842773, 1)
@@ -407,13 +405,8 @@ libraries/ = SubResource("AnimationLibrary_p0wiw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15656853, 0)
 target_position = Vector3(0, 0, -0.62)
 
-[node name="LootComponent" type="Node" parent="." unique_id=1689106634 node_paths=PackedStringArray("body")]
+[node name="LootComponent" type="Node" parent="." unique_id=1689106634]
 script = ExtResource("12_hfppt")
-lootTable = {
-ExtResource("13_8do7w"): 50.0,
-ExtResource("14_byday"): 40.0
-}
-body = NodePath("..")
 scrap_min = 50
 scrap_max = 50
 bonus_resource_name = "Cog Shard"

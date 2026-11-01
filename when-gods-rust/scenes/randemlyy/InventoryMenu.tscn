@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ytpcv5a8gtwd"]
 
-[ext_resource type="Script" uid="uid://b41t7lihb8uu1" path="res://scripts/randem/InventoryMenu.gd" id="1_f544t"]
+[ext_resource type="Script" uid="uid://b41t7lihb8uu1" path="res://Scripts/randem/InventoryMenu.gd" id="1_f544t"]
+[ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="1_vvkvu"]
 
 [node name="InventoryMenu" type="Control" unique_id=834883796]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_vvkvu")
 script = ExtResource("1_f544t")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=391114542]

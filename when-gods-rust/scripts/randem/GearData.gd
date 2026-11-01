@@ -21,3 +21,7 @@ enum Slot {
 # Unique effects
 @export_group("Special Effects")
 @export var effects: Array[GearEffectData] = []
+
+#Recipe
+@export_group("Crafting Recipe")
+@export var recipe: Dictionary

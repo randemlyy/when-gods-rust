@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bk73iiws550cg"]
 
-[ext_resource type="Script" uid="uid://dg08yqugle78u" path="res://scripts/randem/CampfireMenu.gd" id="1_oterd"]
+[ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="1_i8nc7"]
+[ext_resource type="Script" uid="uid://dg08yqugle78u" path="res://Scripts/randem/CampfireMenu.gd" id="1_oterd"]
 
 [node name="CampfireMenu" type="Control" unique_id=180815333]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_i8nc7")
 script = ExtResource("1_oterd")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1635680664]

@@ -1,0 +1,230 @@
+{
+ "button_normal": [
+  4,
+  7,
+  4,
+  8
+ ],
+ "save_slot_normal": [
+  6,
+  12,
+  6,
+  13
+ ],
+ "button_hover": [
+  4,
+  7,
+  4,
+  8
+ ],
+ "save_slot_hover": [
+  6,
+  12,
+  6,
+  13
+ ],
+ "button_pressed": [
+  4,
+  7,
+  4,
+  8
+ ],
+ "save_slot_pressed": [
+  6,
+  12,
+  6,
+  13
+ ],
+ "button_disabled": [
+  4,
+  7,
+  4,
+  8
+ ],
+ "save_slot_disabled": [
+  6,
+  12,
+  6,
+  13
+ ],
+ "focus": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "menu_band": [
+  4,
+  6,
+  16,
+  7
+ ],
+ "panel": [
+  5,
+  5,
+  5,
+  5
+ ],
+ "window": [
+  5,
+  18,
+  5,
+  5
+ ],
+ "line_edit": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "slot": [
+  5,
+  18,
+  5,
+  19
+ ],
+ "slot_selected": [
+  5,
+  18,
+  5,
+  19
+ ],
+ "slot_equipped": [
+  5,
+  18,
+  5,
+  19
+ ],
+ "examine": [
+  12,
+  12,
+  12,
+  12
+ ],
+ "dialogue": [
+  12,
+  4,
+  12,
+  4
+ ],
+ "monitor": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "map_room": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "map_room_items": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "map_room_current": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "map_room_unknown": [
+  3,
+  3,
+  3,
+  3
+ ],
+ "document": [
+  6,
+  12,
+  6,
+  12
+ ],
+ "divider": [
+  8,
+  0,
+  8,
+  0
+ ],
+ "tooltip": [
+  4,
+  4,
+  4,
+  4
+ ],
+ "slider": [
+  3,
+  2,
+  3,
+  2
+ ],
+ "slider_fill": [
+  3,
+  2,
+  3,
+  2
+ ],
+ "progress_bg": [
+  4,
+  3,
+  4,
+  3
+ ],
+ "progress_fill": [
+  3,
+  2,
+  3,
+  2
+ ],
+ "tab_selected": [
+  4,
+  4,
+  4,
+  1
+ ],
+ "tab_unselected": [
+  4,
+  5,
+  4,
+  2
+ ],
+ "tab_hover": [
+  4,
+  5,
+  4,
+  2
+ ],
+ "scroll": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "scroll_grabber": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "scroll_grabber_hover": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "scroll_grabber_pressed": [
+  2,
+  2,
+  2,
+  2
+ ],
+ "menu_hover": [
+  2,
+  2,
+  2,
+  2
+ ]
+}

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://8ki1um74b20t" path="res://Scenes/F1aze23/TestWeaponItem.tscn" id="4_inmm5"]
 [ext_resource type="PackedScene" uid="uid://yuqms0gt7djj" path="res://Scenes/icyfire/campfire.tscn" id="4_lupdm"]
 [ext_resource type="Script" uid="uid://bo6mdnv4kfwx3" path="res://Scripts/icyfire/control.gd" id="5_j6wm6"]
+[ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="7_6kyh8"]
 [ext_resource type="PackedScene" uid="uid://bf3v16yeoptno" path="res://Scenes/F1aze23/ModTable.tscn" id="9_dcf07"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_inmm5"]
@@ -48,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_6kyh8")
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.54509807)
 
 [node name="Label" type="Label" parent="PauseMenu" unique_id=1485513582]
@@ -55,6 +57,7 @@ offset_left = 522.0
 offset_top = 184.0
 offset_right = 634.0
 offset_bottom = 207.0
+theme = ExtResource("7_6kyh8")
 text = "GAME PAUSED"
 
 [node name="cont" type="Button" parent="PauseMenu" unique_id=1453458869]
@@ -62,6 +65,7 @@ offset_left = 508.0
 offset_top = 248.0
 offset_right = 653.0
 offset_bottom = 315.0
+theme = ExtResource("7_6kyh8")
 text = "CONTINUE"
 
 [node name="quit" type="Button" parent="PauseMenu" unique_id=1177452988]
@@ -69,6 +73,7 @@ offset_left = 510.0
 offset_top = 400.0
 offset_right = 655.0
 offset_bottom = 467.0
+theme = ExtResource("7_6kyh8")
 text = "QUIT"
 
 [node name="Campfire" parent="PauseMenu" unique_id=928643603 node_paths=PackedStringArray("playerPos") instance=ExtResource("4_lupdm")]
@@ -85,6 +90,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_6kyh8")
 script = ExtResource("5_j6wm6")
 
 [node name="Label" type="Label" parent="Instructions" unique_id=916836974]

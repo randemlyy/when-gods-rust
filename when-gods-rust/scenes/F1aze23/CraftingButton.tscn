@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ci3jlq47cxxwe"]
+
+[ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="1_mdsgy"]
+[ext_resource type="Script" uid="uid://bt7fhff6tcwvj" path="res://Scripts/F1aze23/CraftingButton.gd" id="2_ag5ad"]
+
+[node name="CraftingButton" type="Control" unique_id=1904442286]
+custom_minimum_size = Vector2(1000, 120)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mdsgy")
+script = ExtResource("2_ag5ad")
+
+[node name="Button" type="Button" parent="." unique_id=599563636]
+custom_minimum_size = Vector2(1000, 80)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "fkdshgsdmjhf"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1880718068]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2

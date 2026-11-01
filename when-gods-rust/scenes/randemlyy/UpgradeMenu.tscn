@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8ccocassarbd"]
 
-[ext_resource type="Script" uid="uid://dba8jh5n3kn4w" path="res://scripts/randem/UpgradeMenu.gd" id="1_57dm1"]
+[ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="1_1yynv"]
+[ext_resource type="Script" uid="uid://dba8jh5n3kn4w" path="res://Scripts/randem/UpgradeMenu.gd" id="1_57dm1"]
 
 [node name="UpgradeMenu" type="Control" unique_id=1609659467]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1yynv")
 script = ExtResource("1_57dm1")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=309912497]
@@ -29,11 +31,12 @@ custom_minimum_size = Vector2(250, 300)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/HBoxContainer/InventoryColumn" unique_id=2063770840]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 text = "Available Gears"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/HBoxContainer/InventoryColumn" unique_id=337482520]
-custom_minimum_size = Vector2(250, 250)
+custom_minimum_size = Vector2(350, 250)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -41,6 +44,7 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/HBoxContainer/InventoryColumn" unique_id=1030370873]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 text = "Back"
 
@@ -48,6 +52,7 @@ text = "Back"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/HBoxContainer/ArmColumn" unique_id=963251628]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Arm"
 
@@ -58,6 +63,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/HBoxContainer/CoreColumn" unique_id=1773061993]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Core"
 

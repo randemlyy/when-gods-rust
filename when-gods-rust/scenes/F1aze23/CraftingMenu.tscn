@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b5luqc31myjy4"]
+
+[ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="1_ujaxr"]
+[ext_resource type="Script" uid="uid://b3ctfq5ghlyru" path="res://Scripts/F1aze23/CraftingMenu.gd" id="2_1ish6"]
+[ext_resource type="Script" uid="uid://o1qk5pbh6kq6" path="res://Scripts/randem/GearData.gd" id="3_lmq70"]
+[ext_resource type="Resource" uid="uid://wtr6f0pj2wbf" path="res://Scripts/randem/Resources/Gears/ReactorDampner.tres" id="4_rw2ds"]
+[ext_resource type="Resource" uid="uid://f0rju8fh5rig" path="res://Scripts/randem/Resources/Gears/ExecutionersEdge.tres" id="5_7u76h"]
+
+[node name="Crafting" type="Control" unique_id=1660620062]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ujaxr")
+script = ExtResource("2_1ish6")
+recipePool = Array[ExtResource("3_lmq70")]([ExtResource("4_rw2ds"), ExtResource("5_7u76h")])
+
+[node name="Panel" type="Panel" parent="." unique_id=2124592927]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=380425495]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1165158329]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Crafting Menu"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=1066036270]
+custom_minimum_size = Vector2(1152, 600)
+layout_mode = 2

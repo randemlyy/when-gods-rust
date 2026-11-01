@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bii06j8p28bls"
+path="res://.godot/imported/psx_horror_ui_font.fnt-3e8d5eca91301f424594a218b5d43952.fontdata"
+
+[deps]
+
+source_file="res://addons/psx_horror_ui/font/psx_horror_ui_font.fnt"
+dest_files=["res://.godot/imported/psx_horror_ui_font.fnt-3e8d5eca91301f424594a218b5d43952.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
