@@ -1,6 +1,6 @@
 extends Node
 
-const TEST_LEVEL := preload("res://scenes/randemlyy/THEtestlevel.tscn")
+const TEST_LEVEL := preload("uid://bj4s2hn8pbd5d")
 @onready var music_manager: Node = $"../../MusicManager"
 
 func _ready() -> void:
