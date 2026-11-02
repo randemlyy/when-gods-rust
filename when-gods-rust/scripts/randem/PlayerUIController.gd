@@ -6,6 +6,7 @@ signal refill_heals_requested
 @onready var campfire_menu: CampfireMenu = $"../../CanvasLayer/CampfireMenu"
 @onready var upgrade_menu: UpgradeMenu = $"../../CanvasLayer/UpgradeMenu"
 @onready var inventory_menu: InventoryMenu = $"../../CanvasLayer/InventoryMenu"
+@onready var crafting_menu: Control = $"../../CanvasLayer/CraftingMenu"
 
 var is_menu_open: bool:
 	get:
@@ -16,6 +17,8 @@ func _ready() -> void:
 	campfire_menu.refill_heals_pressed.connect(_on_refill_heals_pressed)
 	campfire_menu.exit_pressed.connect(campfire_menu.close)
 	upgrade_menu.back_pressed.connect(_on_upgrade_back_pressed)
+	crafting_menu.crafting_table_back_pressed.connect(_on_crafting_table_back_pressed)
+	campfire_menu.crafting_table_pressed.connect(_on_crafting_table_pressed)
 
 func handle_menu_input(toggle_pressed: bool) -> void:
 	if not toggle_pressed:
@@ -47,4 +50,11 @@ func _on_refill_heals_pressed() -> void:
 
 func _on_upgrade_back_pressed() -> void:
 	upgrade_menu.toggle_menu()
+	campfire_menu.open()
+
+func _on_crafting_table_pressed():
+	crafting_menu.toggle_menu()
+	
+func _on_crafting_table_back_pressed():
+	crafting_menu.toggle_menu()
 	campfire_menu.open()

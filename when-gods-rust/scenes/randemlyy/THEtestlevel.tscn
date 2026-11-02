@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dl2k5j6m74c31" path="res://Modular Blueprint Kit/glTF/WL_1X4.gltf" id="1_e3ydj"]
 [ext_resource type="Script" uid="uid://5afi4tpjl066" path="res://Scripts/icyfire/GameManager.gd" id="2_kxya2"]
-[ext_resource type="PackedScene" uid="uid://cf6amcblndo4i" path="res://Scenes/F1aze23/Zealot.tscn" id="2_lupdm"]
 [ext_resource type="PackedScene" uid="uid://dqs54vd1wxvh0" path="res://Scenes/F1aze23/Monoculus.tscn" id="3_j6wm6"]
 [ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://Scenes/icyfire/player.tscn" id="3_ugkgb"]
 [ext_resource type="PackedScene" uid="uid://8ki1um74b20t" path="res://Scenes/F1aze23/TestWeaponItem.tscn" id="4_inmm5"]
@@ -10,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bo6mdnv4kfwx3" path="res://Scripts/icyfire/control.gd" id="5_j6wm6"]
 [ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="7_6kyh8"]
 [ext_resource type="PackedScene" uid="uid://bf3v16yeoptno" path="res://Scenes/F1aze23/ModTable.tscn" id="9_dcf07"]
+[ext_resource type="PackedScene" uid="uid://d02usftbc1kii" path="res://Scenes/F1aze23/spawner.tscn" id="10_6kyh8"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_inmm5"]
 vertices = PackedVector3Array(12.353998, 0.25999165, 15.969997, 12.853998, 0.25999165, 17.219997, 17.103998, 0.25999165, 17.219997, -16.396002, 0.25999165, 7.7199974, -5.396002, 0.25999165, 7.7199974, -5.146002, 0.25999165, 6.7199974, -16.396002, 0.25999165, -18.530003, -3.3960018, 0.25999165, 6.7199974, -3.1460018, 0.25999165, 8.469997, 9.353998, 0.25999165, 16.719997, 17.103998, 0.25999165, -18.530003, -5.396002, 0.25999165, 8.719997, -4.146002, 0.25999165, 8.969997, -16.396002, 0.25999165, 26.469997, -4.146002, 0.25999165, 26.469997, 10.103998, 0.25999165, 26.469997, 10.103998, 0.25999165, 18.469997, 8.853998, 0.25999165, 17.969997, 8.853998, 0.25999165, 16.969997, -3.3960018, 0.25999165, 8.969997, 12.603998, 0.25999165, 18.219997, 17.103998, 0.25999165, 26.469997)
@@ -23,9 +23,6 @@ navigation_mesh = SubResource("NavigationMesh_inmm5")
 
 [node name="WL_1X47" parent="NavigationRegion3D" unique_id=1332275326 instance=ExtResource("1_e3ydj")]
 transform = Transform3D(-5.0224384e-07, -11.49, 0, 11.49, -5.0224384e-07, 0, 0, 0, 11.49, 17.574, 0, -19.03)
-
-[node name="Zealot" parent="NavigationRegion3D" unique_id=1378631121 instance=ExtResource("2_lupdm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.824953, 1.0834845, 17.533386)
 
 [node name="Monoculus" parent="NavigationRegion3D" unique_id=242683207 instance=ExtResource("3_j6wm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.080237, -1.4905573, -2.3260975)
@@ -180,8 +177,8 @@ light_bake_mode = 1
 shadow_enabled = true
 omni_range = 19.0
 
-[node name="Monoculus" parent="." unique_id=962075755 instance=ExtResource("3_j6wm6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.432132, 1.7926259, -15.605846)
-
 [node name="ModTable" parent="." unique_id=757975161 instance=ExtResource("9_dcf07")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32914495, 8.394963)
+
+[node name="Spawner" parent="." unique_id=692444278 instance=ExtResource("10_6kyh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.713731, 0.6406822, -11.3824625)

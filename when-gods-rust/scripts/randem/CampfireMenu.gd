@@ -4,6 +4,7 @@ extends Control
 signal set_gears_pressed
 signal refill_heals_pressed
 signal exit_pressed
+signal crafting_table_pressed
 
 @onready var SetGearsButton: Button = $CenterContainer/PanelContainer/VBoxContainer/SetGearsButton
 @onready var RefillHealsButton: Button = $CenterContainer/PanelContainer/VBoxContainer/RefillHealsButton
@@ -29,6 +30,9 @@ func _on_set_gears_pressed() -> void:
 
 func _on_heals_refill_pressed() -> void:
 	refill_heals_pressed.emit()
+	
+func _on_crafting_table_pressed() -> void:
+	crafting_table_pressed.emit()
 
 func _on_exit_pressed() -> void:
 	exit_pressed.emit()

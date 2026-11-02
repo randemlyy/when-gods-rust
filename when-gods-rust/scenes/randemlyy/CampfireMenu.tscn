@@ -44,6 +44,13 @@ custom_minimum_size = Vector2(420, 64)
 layout_mode = 2
 text = "Refill Heals"
 
+[node name="CraftingTableButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=819783075]
+custom_minimum_size = Vector2(420, 64)
+layout_mode = 2
+text = "Crafting Table"
+
 [node name="ExitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=217028848]
 layout_mode = 2
 text = "Leave Campfire"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/CraftingTableButton" to="." method="_on_crafting_table_pressed"]
