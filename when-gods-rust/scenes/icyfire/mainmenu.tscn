@@ -8,9 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dl2k5j6m74c31" path="res://Modular Blueprint Kit/glTF/WL_1X4.gltf" id="7_t32y1"]
 [ext_resource type="PackedScene" uid="uid://b7sadam5n46oq" path="res://Modular Blueprint Kit/glTF/WL_1X1.gltf" id="8_psc5c"]
 [ext_resource type="PackedScene" uid="uid://bhi0he40muhkk" path="res://Modular Blueprint Kit/glTF/RP_1X2.gltf" id="9_hogf6"]
-[ext_resource type="Script" uid="uid://dtb4w7b6lc0pp" path="res://scripts/randem/MusicManager.gd" id="9_wrtqi"]
-[ext_resource type="AudioStream" uid="uid://oyan3d1jrh6c" path="res://Assets/Audio/Music/New_Boot.ogg" id="10_t32y1"]
-[ext_resource type="AudioStream" uid="uid://c3x34esfpm7ye" path="res://Assets/Audio/Music/Pil_gram.ogg" id="11_psc5c"]
+[ext_resource type="PackedScene" uid="uid://cawg511y1mhfx" path="res://scenes/randemlyy/MusicManager.tscn" id="9_wrtqi"]
 
 [sub_resource type="Gradient" id="Gradient_kigpr"]
 
@@ -294,13 +292,7 @@ transform = Transform3D(9.537486, -0.06698719, -2.825918, 2.1434285e-07, 0.96592
 transform = Transform3D(0.99761254, 0, 0.06906003, 0, 1, 0, -0.06906002, 0, 0.99761254, 36.952785, 3.7634978, 4.5413)
 fov = 77.22333
 
-[node name="MusicManager" type="Node" parent="." unique_id=2046728219 node_paths=PackedStringArray("music_player")]
-script = ExtResource("9_wrtqi")
-menu_music = ExtResource("10_t32y1")
-gameplay_music = ExtResource("11_psc5c")
-music_player = NodePath("AudioStreamPlayer")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicManager" unique_id=685590509]
+[node name="MusicManager" parent="." unique_id=241385842 instance=ExtResource("9_wrtqi")]
 
 [connection signal="button_down" from="CanvasLayer/Control/Button" to="CanvasLayer/Control" method="_on_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/Control/Button2" to="CanvasLayer/Control" method="_on_button_2_button_down"]

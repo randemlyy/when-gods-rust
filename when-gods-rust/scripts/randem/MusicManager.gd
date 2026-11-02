@@ -2,8 +2,13 @@ extends Node
 
 @export var menu_music: AudioStream
 @export var gameplay_music: AudioStream
-@export var music_player: AudioStreamPlayer
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
+#func _process(delta: float) -> void:
+	#await get_tree().create_timer(1).timeout
+	#if music_player.stream != null:
+		#print(music_player.stream)
+	
 func play_music(track: AudioStream) -> void:
 	if track == null:
 		return

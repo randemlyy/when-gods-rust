@@ -1,6 +1,6 @@
 extends Node3D
-@export var camPos: Node3D
-@export var playerPos: Node3D
+#@export var camPos: Node3D
+#@export var playerPos: Node3D
 
 func interact(player:Node3D) -> void:
 	var health = player.get_node("Components/HealthComponent") as HealthComponent

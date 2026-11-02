@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bk73iiws550cg"]
 
 [ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="1_i8nc7"]
-[ext_resource type="Script" uid="uid://dg08yqugle78u" path="res://Scripts/randem/CampfireMenu.gd" id="1_oterd"]
+[ext_resource type="Script" uid="uid://dg08yqugle78u" path="res://scripts/randem/CampfireMenu.gd" id="1_oterd"]
 
 [node name="CampfireMenu" type="Control" unique_id=180815333]
 layout_mode = 3
@@ -31,7 +31,7 @@ theme_override_constants/separation = 20
 
 [node name="CampfireText" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=798223650]
 layout_mode = 2
-text = "Campfire"
+text = "Upgrade Station"
 horizontal_alignment = 1
 
 [node name="SetGearsButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2028173550]
@@ -51,6 +51,6 @@ text = "Crafting Table"
 
 [node name="ExitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=217028848]
 layout_mode = 2
-text = "Leave Campfire"
+text = "Leave Station"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/CraftingTableButton" to="." method="_on_crafting_table_pressed"]

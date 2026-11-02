@@ -36,7 +36,7 @@ signal parry_succeeded(target: Node3D, target_staggered: StaggerComponent)
 @export var invertControlsX:float = 1
 @export var invertControlsY:float = 1
 @export var SwitchControlAxes:bool = false
-@export var max_heals = 4
+@export var max_heals:int = 4
 @export var dodge_graze_resolve: float = 15
 @export var heal_amount: int = 25
 
@@ -328,9 +328,11 @@ func _weapon_is_attacking() -> bool:
 
 func open_campfire_menu() -> void:
 	uiC.open_campfire_menu()
+	animC.animation_player.stop()
+	audio_stream_player_3d_2.stop()
 
 func _on_refill_heals_pressed() -> void:
-	inventoryC.Heals = max_heals 
+	inventoryC.Heals = max_heals
 
 func _on_hit_response_parry_succeeded(target: Node3D, target_staggered: StaggerComponent) -> void:
 	audio_stream_player_3d.stream = ParrySFX

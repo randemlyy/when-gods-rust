@@ -8,7 +8,7 @@ signal resource_added(resource_name: String, amount: int)
 @export var iArea:Area3D
 @export var resources: Dictionary = {}
 
-var Heals: int = 3
+@export var Heals: int = 3
 
 
 func UseHeal() -> void:

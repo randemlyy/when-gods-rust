@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func CreateButton(dict:Dictionary, name:String, gear:GearData):
-	var button = load("res://Scenes/F1aze23/CraftingButton.tscn").instantiate()
+	var button = load("res://scenes/F1aze23/CraftingButton.tscn").instantiate()
 	vBoxC.add_child(button)
 	button.upgradeC = upgradeC
 	button.inv = inv

@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://yuqms0gt7djj"]
 
 [ext_resource type="Script" uid="uid://cv45qec3l5g6d" path="res://scripts/icyfire/campfire.gd" id="1_ccaea"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_6b5mn"]
+[ext_resource type="PackedScene" uid="uid://b7ytx2m61anbh" path="res://Assets/icyfire/UpgradeStation.glb" id="2_4lftc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ccaea"]
 size = Vector3(1.4306641, 2, 1.2548828)
@@ -10,13 +9,10 @@ size = Vector3(1.4306641, 2, 1.2548828)
 [node name="Campfire" type="Node3D" unique_id=928643603 groups=["Checkpoint"]]
 script = ExtResource("1_ccaea")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1763528951]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_6b5mn")
-
-[node name="PlayerSpawnPos" type="Node3D" parent="." unique_id=515640734]
-
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=59277319 groups=["Checkpoint"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1137294549]
 shape = SubResource("BoxShape3D_ccaea")
+
+[node name="UpgradeStation" parent="." unique_id=1365881517 instance=ExtResource("2_4lftc")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, -0.49071008, 0)

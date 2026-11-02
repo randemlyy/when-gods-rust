@@ -2867,7 +2867,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260, -40, -54)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260, -40, -55)
 
 [node name="Player" parent="." unique_id=1258498601 instance=ExtResource("6_4rs6u")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.841427, 1, -1.0096121)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.676008, 1, -1.0980499)
 
 [node name="Light" type="Node3D" parent="." unique_id=428446071]
 
@@ -3075,9 +3075,8 @@ offset_right = 655.0
 offset_bottom = 467.0
 text = "QUIT"
 
-[node name="Campfire" parent="." unique_id=1505865794 node_paths=PackedStringArray("playerPos") instance=ExtResource("22_26go8")]
+[node name="Campfire" parent="." unique_id=1505865794 instance=ExtResource("22_26go8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206, -34, -78)
-playerPos = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Campfire" unique_id=25774166]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
