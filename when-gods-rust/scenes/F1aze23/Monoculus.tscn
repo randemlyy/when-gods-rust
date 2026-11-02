@@ -1,16 +1,17 @@
 [gd_scene format=4 uid="uid://dqs54vd1wxvh0"]
 
 [ext_resource type="Texture2D" uid="uid://bow7hpnlw1qiu" path="res://Assets/F1aze23/Monoculus-WGR_image.png" id="1_2weai"]
-[ext_resource type="Script" uid="uid://cce6pry73ov0t" path="res://scripts/F1aze23/monoculus.gd" id="1_8sw4b"]
+[ext_resource type="Script" uid="uid://cce6pry73ov0t" path="res://Scripts/F1aze23/monoculus.gd" id="1_8sw4b"]
 [ext_resource type="Animation" uid="uid://cc74ql0i2f48a" path="res://Assets/F1aze23/Anims/MonoculusAttack.tres" id="2_y8wtm"]
 [ext_resource type="Animation" uid="uid://ccqjwrxnc86sd" path="res://Assets/F1aze23/Anims/MonoculusIdle.tres" id="3_qj2md"]
 [ext_resource type="Animation" uid="uid://bfadh4e8ma114" path="res://Assets/F1aze23/Anims/MonoculusWalk.tres" id="4_8sw4b"]
-[ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://scripts/F1aze23/StateMachine.gd" id="5_uiwkw"]
-[ext_resource type="Script" uid="uid://bl7b0imb17qhy" path="res://scripts/F1aze23/EnemyStates/monoculusWanderState.gd" id="7_oy3ji"]
-[ext_resource type="Script" uid="uid://b3tkhxo21qwu1" path="res://scripts/F1aze23/EnemyStates/monoculusAttackState.gd" id="8_uiwkw"]
-[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="8_y8wtm"]
-[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="9_qj2md"]
-[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="11_uiwkw"]
+[ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://Scripts/F1aze23/StateMachine.gd" id="5_uiwkw"]
+[ext_resource type="Script" uid="uid://bl7b0imb17qhy" path="res://Scripts/F1aze23/EnemyStates/monoculusWanderState.gd" id="7_oy3ji"]
+[ext_resource type="Script" uid="uid://b3tkhxo21qwu1" path="res://Scripts/F1aze23/EnemyStates/monoculusAttackState.gd" id="8_uiwkw"]
+[ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://Scripts/randem/StaggerComponent.gd" id="8_y8wtm"]
+[ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://Scripts/icyfire/MovementComponent.gd" id="9_qj2md"]
+[ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://Scripts/randem/HealthComponent.gd" id="11_uiwkw"]
+[ext_resource type="Script" uid="uid://chrslpr65wig4" path="res://Scripts/F1aze23/LootComponent.gd" id="12_audfn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xr4bb"]
 radius = 0.27197266
@@ -440,3 +441,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LootComponent" type="Node" parent="." unique_id=45572122]
+script = ExtResource("12_audfn")
+scrap_min = 40
+scrap_max = 60
+bonus_resource_name = "Cog Shard"
+bonus_drop_chance = 60.0
+bonus_max = 5
+metadata/_custom_type_script = "uid://chrslpr65wig4"

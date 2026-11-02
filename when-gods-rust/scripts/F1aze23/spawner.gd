@@ -4,6 +4,7 @@ var spawnPoints:Array[Transform3D] = []
 @onready var spawnPointsHolder: Node3D = $SpawnPoints
 var zealot = "res://Scenes/F1aze23/Zealot.tscn"
 var monoculus = "res://Scenes/F1aze23/Monoculus.tscn"
+const FINISHSCREEN = preload("uid://b13krcvbxuyu0")
 @onready var spawns: Node3D = $Spawns
 var canSpawn = true
 
@@ -32,5 +33,6 @@ func _process(delta: float) -> void:
 	await get_tree().create_timer(15).timeout
 
 func interact(_player:CharacterBody3D):
-	canSpawn = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_packed(FINISHSCREEN)
 	
