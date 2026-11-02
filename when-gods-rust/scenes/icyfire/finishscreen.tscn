@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b13krcvbxuyu0"]
 
-[ext_resource type="PackedScene" uid="uid://cawg511y1mhfx" path="res://scenes/randemlyy/MusicManager.tscn" id="1_oxi8h"]
 [ext_resource type="PackedScene" uid="uid://cv110r5rurna0" path="res://Assets/Randemlyy/ParrySpark.tscn" id="2_ahude"]
 [ext_resource type="Script" uid="uid://oe0nin6c2r7t" path="res://scripts/icyfire/MainMenuManager.gd" id="3_swdfa"]
 [ext_resource type="FontFile" uid="uid://dvqu0jxnsxmf0" path="res://addons/psx_horror_ui/font/psx_horror_ui_font_2x.fnt" id="4_oxi8h"]
@@ -15,8 +14,6 @@ font = ExtResource("4_oxi8h")
 font_size = 32
 
 [node name="Mainmenu" type="Node" unique_id=1457896708]
-
-[node name="MusicManager" parent="." unique_id=241385842 instance=ExtResource("1_oxi8h")]
 
 [node name="ParrySpark" parent="." unique_id=1536669526 instance=ExtResource("2_ahude")]
 
