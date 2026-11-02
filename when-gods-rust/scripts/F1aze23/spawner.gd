@@ -5,6 +5,7 @@ var spawnPoints:Array[Transform3D] = []
 var zealot = "res://Scenes/F1aze23/Zealot.tscn"
 var monoculus = "res://Scenes/F1aze23/Monoculus.tscn"
 @onready var spawns: Node3D = $Spawns
+var canSpawn = true
 
 func _ready() -> void:
 	for i in spawnPointsHolder.get_children():
@@ -21,9 +22,15 @@ func spawn(rand:int, pos:Transform3D):
 		spawn.global_transform = pos
 		
 func _process(delta: float) -> void:
+	if !canSpawn:
+		return
 	if spawns.get_children() != []:
 		return
 	for i in spawnPoints:
 		var rand = randi_range(1, 2)
 		spawn(rand, i)
 	await get_tree().create_timer(15).timeout
+
+func interact(_player:CharacterBody3D):
+	canSpawn = false
+	

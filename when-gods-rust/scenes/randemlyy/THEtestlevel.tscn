@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://d02usftbc1kii" path="res://Scenes/F1aze23/spawner.tscn" id="10_6kyh8"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_inmm5"]
-vertices = PackedVector3Array(12.353998, 0.25999165, 15.969997, 12.853998, 0.25999165, 17.219997, 17.103998, 0.25999165, 17.219997, -16.396002, 0.25999165, 7.7199974, -5.396002, 0.25999165, 7.7199974, -5.146002, 0.25999165, 6.7199974, -16.396002, 0.25999165, -18.530003, -3.3960018, 0.25999165, 6.7199974, -3.1460018, 0.25999165, 8.469997, 9.353998, 0.25999165, 16.719997, 17.103998, 0.25999165, -18.530003, -5.396002, 0.25999165, 8.719997, -4.146002, 0.25999165, 8.969997, -16.396002, 0.25999165, 26.469997, -4.146002, 0.25999165, 26.469997, 10.103998, 0.25999165, 26.469997, 10.103998, 0.25999165, 18.469997, 8.853998, 0.25999165, 17.969997, 8.853998, 0.25999165, 16.969997, -3.3960018, 0.25999165, 8.969997, 12.603998, 0.25999165, 18.219997, 17.103998, 0.25999165, 26.469997)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 0), PackedInt32Array(7, 5, 6), PackedInt32Array(0, 7, 2), PackedInt32Array(2, 7, 10), PackedInt32Array(10, 7, 6), PackedInt32Array(3, 4, 11), PackedInt32Array(11, 12, 3), PackedInt32Array(3, 12, 14), PackedInt32Array(3, 14, 13), PackedInt32Array(15, 17, 16), PackedInt32Array(19, 8, 18), PackedInt32Array(18, 8, 9), PackedInt32Array(19, 17, 12), PackedInt32Array(12, 17, 15), PackedInt32Array(12, 15, 14), PackedInt32Array(19, 18, 17), PackedInt32Array(2, 20, 1), PackedInt32Array(15, 16, 20), PackedInt32Array(2, 21, 20), PackedInt32Array(20, 21, 15)]
+vertices = PackedVector3Array(-16.396002, 0.25999165, 7.7199974, -5.396002, 0.25999165, 7.7199974, -5.146002, 0.25999165, 6.7199974, -16.396002, 0.25999165, -18.530003, -3.3960018, 0.25999165, 6.7199974, -3.1460018, 0.25999165, 7.7199974, 17.103998, 0.25999165, 7.7199974, 17.103998, 0.25999165, -18.530003, -5.396002, 0.25999165, 8.719997, -4.146002, 0.25999165, 8.969997, -16.396002, 0.25999165, 26.469997, -4.146002, 0.25999165, 26.469997, -3.1460018, 0.25999165, 8.719997, 17.103998, 0.25999165, 26.469997)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 3), PackedInt32Array(4, 2, 3), PackedInt32Array(0, 1, 8), PackedInt32Array(8, 9, 0), PackedInt32Array(0, 9, 11), PackedInt32Array(0, 11, 10), PackedInt32Array(9, 12, 11), PackedInt32Array(11, 12, 13), PackedInt32Array(13, 12, 6), PackedInt32Array(12, 5, 6)]
 geometry_parsed_geometry_type = 0
 
 [node name="Node3D" type="Node3D" unique_id=1211164968]
@@ -29,6 +29,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.080237, -1.4905573, -2.326
 
 [node name="TestWeaponItem" parent="NavigationRegion3D" unique_id=102225822 instance=ExtResource("4_inmm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1999474, 0.4999987, 7.962166)
+
+[node name="Spawner" parent="NavigationRegion3D" unique_id=692444278 instance=ExtResource("10_6kyh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.713731, 0.6406822, -11.3824625)
 
 [node name="GameManager" type="Node" parent="." unique_id=173124850]
 process_mode = 3
@@ -179,6 +182,3 @@ omni_range = 19.0
 
 [node name="ModTable" parent="." unique_id=757975161 instance=ExtResource("9_dcf07")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32914495, 8.394963)
-
-[node name="Spawner" parent="." unique_id=692444278 instance=ExtResource("10_6kyh8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.713731, 0.6406822, -11.3824625)

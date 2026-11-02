@@ -38,6 +38,7 @@ func onClick():
 			button.text = "Not enough resources"
 			await get_tree().create_timer(2).timeout
 			button.text = text
+			print("NO resource")
 			return
 		if resources[i] < recipe[i]:
 			var text = button.text
