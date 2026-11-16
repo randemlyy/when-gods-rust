@@ -12,8 +12,8 @@ func get_stat_bonus(stat: StatModifierData.Stat, player: Node) -> float:
     if stat != StatModifierData.Stat.NORMAL_ATTACK_DAMAGE:
         return 0.0
     
-    var upgradeC = player.get_node_or_null("UpgradeComponent") as UpgradeComponent
-    var resolveC = player.get_node_or_null("ResolveComponent") as ResolveComponent
+    var upgradeC = player.get_node_or_null("Components/UpgradeComponent") as UpgradeComponent
+    var resolveC = player.get_node_or_null("Components/ResolveComponent") as ResolveComponent
 
     if upgradeC == null or resolveC == null:
         return 0.0

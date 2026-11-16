@@ -245,8 +245,11 @@ func _physics_process(delta: float) -> void:
 		
 		movementC.physics_update(delta, dir_wanted, self, should_rotate)
 		
-		if !movementC.isWalking:
-			audio_stream_player_3d_2.play()
+		if movementC.isWalking:
+			if not audio_stream_player_3d_2.playing:
+				audio_stream_player_3d_2.play()
+		elif audio_stream_player_3d_2.playing:
+			audio_stream_player_3d_2.stop()
 		
 	elif attackC.isAttacking:
 		velocity = Vector3.ZERO

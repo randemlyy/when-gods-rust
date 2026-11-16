@@ -37,7 +37,9 @@ func get_attack_damage(base_damage: int, target_is_staggered: bool, weapon_crit_
 	var damage_multiplier = 1.0
 
 	if upgrade_component:
-		damage_multiplier *= 1.0 + upgrade_component.get_effect_stat_bonus(StatModifierData.Stat.NORMAL_ATTACK_DAMAGE) / 100.0
+		var gear_bonus := upgrade_component.get_stat_percent(StatModifierData.Stat.NORMAL_ATTACK_DAMAGE)
+		var effect_bonus := upgrade_component.get_effect_stat_bonus(StatModifierData.Stat.NORMAL_ATTACK_DAMAGE)
+		damage_multiplier *= maxf(1.0 + (gear_bonus + effect_bonus) / 100.0, 0.0)
 
 	if is_current_attack_crit:
 		damage_multiplier *= weapon_crit_multiplier
@@ -51,7 +53,8 @@ func get_riposte_damage(base_damage: int) -> int:
 	var damage_multiplier = 1.0
 
 	if upgrade_component:
-		var bonus = upgrade_component.get_stat_percent(StatModifierData.Stat.RIPOSTE_DAMAGE)
-		damage_multiplier *= 1.0 + bonus / 100.0
+		var bonus := upgrade_component.get_stat_percent(StatModifierData.Stat.RIPOSTE_DAMAGE)
+		bonus += upgrade_component.get_effect_stat_bonus(StatModifierData.Stat.RIPOSTE_DAMAGE)
+		damage_multiplier *= maxf(1.0 + bonus / 100.0, 0.0)
 	
 	return roundi(base_damage * damage_multiplier)

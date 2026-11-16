@@ -122,11 +122,11 @@ func _recalculate_final_stats() -> void:
 func _add_gear_modifiers(sockets: Array[GearData]) -> void:
 	for gear in sockets:
 		if gear == null:
-			return
+			continue
 		
 		for modifier in gear.modifiers:
 			if modifier == null:
-				return
+				continue
 			
 			var current = get_stat_percent(modifier.stat)
 			stat_percents[modifier.stat] = current + modifier.percent
