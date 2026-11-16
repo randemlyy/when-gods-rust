@@ -76,7 +76,7 @@ func _on_crafting_table_back_pressed():
 	crafting_menu.toggle_menu()
 	campfire_menu.open()
 
-func _build_feedback_layer() -> void:
+func _build_feedback_label() -> void:
 	_feedback_layer = CanvasLayer.new()
 	_feedback_layer.name = "CombatFeedbackLayer"
 	_feedback_layer.layer = 10

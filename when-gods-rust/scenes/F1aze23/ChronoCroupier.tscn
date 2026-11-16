@@ -40,22 +40,26 @@ transparency = 1
 albedo_color = Color(1, 0, 0, 0.6392157)
 
 [node name="ChronoCroupier" type="CharacterBody3D" unique_id=295014865]
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=126715902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CapsuleShape3D_bsnpc")
 
-[node name="Model" type="MeshInstance3D" parent="." unique_id=1301964661]
+[node name="ModelPivot" type="Node3D" parent="." unique_id=1802994550]
+
+[node name="Model" type="MeshInstance3D" parent="ModelPivot" unique_id=1301964661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("CapsuleMesh_6acxo")
 surface_material_override/0 = SubResource("StandardMaterial3D_t48ij")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=552979780]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelPivot/Model" unique_id=552979780]
 transform = Transform3D(1.4012698, 0, 0, 0, 0.62925303, 0, 0, 0, 1.826148, 0, 0.9244603, -0.31696337)
 mesh = SubResource("BoxMesh_ts7fx")
 surface_material_override/0 = SubResource("StandardMaterial3D_jbuow")
 
-[node name="StateMachine" type="Node" parent="." unique_id=286786227 node_paths=PackedStringArray("iState", "staggerC")]
+[node name="StateMachine" type="Node" parent="." unique_id=286786227 node_paths=PackedStringArray("staggerC")]
 script = ExtResource("1_1t2ud")
-iState = NodePath("KingOfClubs")
 staggerC = NodePath("../StaggerComponent")
 metadata/_custom_type_script = "uid://dyp3dlym7cmbv"
 
@@ -81,8 +85,9 @@ metadata/_custom_type_script = "uid://cpwwu1gw7sj85"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1560469738]
 
-[node name="MovementComponent" type="Node" parent="." unique_id=1748195717]
+[node name="MovementComponent" type="Node" parent="." unique_id=1748195717 node_paths=PackedStringArray("body")]
 script = ExtResource("4_xc4l3")
+body = NodePath("..")
 accel = 100.0
 deccel = 60.0
 speed = 5.0
@@ -90,11 +95,13 @@ metadata/_custom_type_script = "uid://dtnjxw1vua83h"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1874844479 node_paths=PackedStringArray("healthBar")]
 script = ExtResource("5_woblf")
+max_health = 720
+current_health = 720
 healthBar = NodePath("Sprite3D/SubViewport/HealthBar")
 metadata/_custom_type_script = "uid://dq71svuwl2njr"
 
 [node name="Sprite3D" type="Sprite3D" parent="HealthComponent" unique_id=1503083468]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4915757, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, 0)
 flip_h = true
 texture = SubResource("ViewportTexture_wjn5g")
 
@@ -124,5 +131,3 @@ shape = SubResource("CylinderShape3D_7jwx7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("CylinderMesh_73nya")
 surface_material_override/0 = SubResource("StandardMaterial3D_73nya")
-
-[connection signal="body_entered" from="Shockwave" to="StateMachine/KingOfClubs" method="_on_shockwave_body_entered"]
