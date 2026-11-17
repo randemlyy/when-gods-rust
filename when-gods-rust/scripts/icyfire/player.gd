@@ -295,8 +295,8 @@ func _physics_process(delta: float) -> void:
 	####
 
 	
-func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vector3 = Vector3.LEFT, attacker: Node3D = null, hit_collider: Node3D = null) -> void:
-	await hitReponse.take_hit(damage, hit_stagger_duration, hit_direction, attacker, hit_collider)
+func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction:Vector3 = Vector3.LEFT, attacker: Node3D = null, hit_collider: Node3D = null, unblockable: bool = false) -> void:
+	await hitReponse.take_hit(damage, hit_stagger_duration, hit_direction, attacker, hit_collider, unblockable)
 	
 func try_dodge_graze(attack: String) -> bool:
 	if not dodgeC.can_graze_attack():

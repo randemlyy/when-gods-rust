@@ -213,7 +213,15 @@ func _find_target() -> Node3D:
 		offset.y = 0.0
 		var distance = offset.length()
 
-		if distance <= 0.01 or distance > riposte_range:
+		if distance <= 0.01:
+			continue
+		
+		var allowed_range = riposte_range
+		var range_override = enemy.get("riposte_range_override")
+		if typeof(range_override) == TYPE_FLOAT and float(range_override) > 0.0:
+			allowed_range = float(range_override)
+		
+		if distance > allowed_range:
 			continue
 
 		var forward = -player.global_basis.z

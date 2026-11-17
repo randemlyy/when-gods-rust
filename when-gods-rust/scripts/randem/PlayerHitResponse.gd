@@ -17,36 +17,43 @@ const PARRY_SPARK = preload("res://Assets/Randemlyy/ParrySpark.tscn")
 @onready var animationC: AnimationComponent = $"../AnimationComponent"
 @onready var dodgeC: DodgeComponent = $"../DodgeComponent"
 
-func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction: Vector3 = Vector3.LEFT, attacker: Node3D = null, hit_collider: Node3D = null) -> void:
+func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction: Vector3 = Vector3.LEFT, attacker: Node3D = null, hit_collider: Node3D = null, unblockable: bool = false) -> void:
 	var impact_time = float(Time.get_ticks_usec()) / 1_000_000
 	var was_blocking = blockC.is_blocking
 
 	if dodgeC.has_iframes():
-		return
+			return
 
-	await get_tree().create_timer(blockC.late_parry_window).timeout
-	await get_tree().process_frame
+	if not unblockable:
+		await get_tree().create_timer(blockC.late_parry_window).timeout
+		await get_tree().process_frame
 
-	if not is_inside_tree():
-		return
-	
-	if blockC.check_parry_press(impact_time):
-		resolveC.gainResolve(blockC.resolve_on_parry)
+		if not is_inside_tree():
+			return
 
-		if is_instance_valid(attacker):
-			var enemy_stagger = attacker.get_node_or_null("StaggerComponent") as StaggerComponent
-			if enemy_stagger:
-				enemy_stagger.apply_stagger(parry_stagger_duration)
-				parry_succeeded.emit(attacker, enemy_stagger)
-		
-		HitStop.request(0.1, 0.3)
-		_spawn_parry_spark(attacker)
-		cameraC.shake(0.16, 0.12)
-		return
-	
-	if was_blocking and blockC.spend_for_block():
-		return
-	
+		if blockC.check_parry_press(impact_time):
+			resolveC.gainResolve(blockC.resolve_on_parry)
+
+			if is_instance_valid(attacker):
+				var enemy_stagger = attacker.get_node_or_null("StaggerComponent") as StaggerComponent
+				if enemy_stagger:
+					var dur: float = parry_stagger_duration
+					var override_value = attacker.get("parry_stagger_duration_override")
+					if typeof(override_value) == TYPE_FLOAT and float(override_value) > 0.0:
+						dur = float(override_value)
+					enemy_stagger.apply_stagger(parry_stagger_duration)
+					parry_succeeded.emit(attacker, enemy_stagger)
+
+			HitStop.request(0.1, 0.3)
+			_spawn_parry_spark(attacker)
+			cameraC.shake(0.16, 0.12)
+			return
+
+		if was_blocking and blockC.spend_for_block():
+			return
+	else:
+		blockC.last_block_press_time = -1.0e20
+
 	var final_damage = roundi(damage * load_penaltyC.damage_taken_mult())
 	healthC.take_damage(final_damage)
 	cameraC.shake(0.12, 0.18)
@@ -62,5 +69,5 @@ func _spawn_parry_spark(target: Node3D) -> void:
 		spark.global_position = player.global_position.lerp(target.global_position, 0.5) + Vector3.UP * 0.8
 	else:
 		spark.global_position = player.global_position + Vector3.UP
-	
+
 	spark.restart()

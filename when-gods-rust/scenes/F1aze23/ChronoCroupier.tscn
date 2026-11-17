@@ -39,6 +39,12 @@ height = 1.0
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.6392157)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_front"]
+size = Vector3(3.2, 2.6, 3.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wide"]
+size = Vector3(6, 2.6, 2.4)
+
 [node name="ChronoCroupier" type="CharacterBody3D" unique_id=295014865]
 collision_layer = 5
 
@@ -131,3 +137,19 @@ shape = SubResource("CylinderShape3D_7jwx7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("CylinderMesh_73nya")
 surface_material_override/0 = SubResource("StandardMaterial3D_73nya")
+
+[node name="FrontHitbox" type="Area3D" parent="." unique_id=1174829915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+collision_layer = 0
+collision_mask = 32769
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontHitbox" unique_id=1643550283]
+shape = SubResource("BoxShape3D_front")
+
+[node name="WideHitbox" type="Area3D" parent="." unique_id=2088155467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.8)
+collision_layer = 0
+collision_mask = 32769
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WideHitbox" unique_id=1995120777]
+shape = SubResource("BoxShape3D_wide")
