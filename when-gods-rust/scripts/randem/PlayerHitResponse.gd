@@ -41,7 +41,7 @@ func take_hit(damage: int, hit_stagger_duration: float = 0.8, hit_direction: Vec
 					var override_value = attacker.get("parry_stagger_duration_override")
 					if typeof(override_value) == TYPE_FLOAT and float(override_value) > 0.0:
 						dur = float(override_value)
-					enemy_stagger.apply_stagger(parry_stagger_duration)
+					enemy_stagger.apply_stagger(dur)
 					parry_succeeded.emit(attacker, enemy_stagger)
 
 			HitStop.request(0.1, 0.3)

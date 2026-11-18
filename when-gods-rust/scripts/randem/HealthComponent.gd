@@ -10,6 +10,7 @@ signal died
 @export var healthBar: ProgressBar
 @export var ghostHealthBar: ProgressBar
 @export var health_follow_delay: float = 0.35
+@export var invulnerable: bool = false
 
 var _health_follow_delay_left: float = 0.0
 
@@ -45,7 +46,7 @@ func update(delta: float) -> void:
 		)
 		
 func take_damage(amount: int) -> void:
-	if amount <= 0 or current_health <= 0:
+	if invulnerable or amount <= 0 or current_health <= 0:
 		return
 	current_health = max(current_health - amount, 0)
 	_health_follow_delay_left = health_follow_delay

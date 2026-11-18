@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://eapa1kt7w17j"]
 
 [ext_resource type="Script" uid="uid://dyp3dlym7cmbv" path="res://scripts/F1aze23/StateMachine.gd" id="1_1t2ud"]
-[ext_resource type="Script" uid="uid://hanm45w65igs" path="res://scripts/F1aze23/EnemyStates/kingOfClubs.gd" id="2_73nya"]
+[ext_resource type="Script" uid="uid://hanm45w65igs" path="res://scripts/F1aze23/EnemyStates/ChronoCroupier/kingOfClubs.gd" id="2_73nya"]
 [ext_resource type="Script" uid="uid://cpwwu1gw7sj85" path="res://scripts/F1aze23/state.gd" id="3_e85m6"]
+[ext_resource type="Script" uid="uid://qfogh54lm61o" path="res://scripts/F1aze23/EnemyStates/ChronoCroupier/queenOfSpades.gd" id="4_nrr0p"]
 [ext_resource type="Script" uid="uid://dtnjxw1vua83h" path="res://scripts/icyfire/MovementComponent.gd" id="4_xc4l3"]
 [ext_resource type="Script" uid="uid://dq71svuwl2njr" path="res://scripts/randem/HealthComponent.gd" id="5_woblf"]
 [ext_resource type="Script" uid="uid://c5yf8bxmdfcr5" path="res://scripts/randem/StaggerComponent.gd" id="6_73nya"]
+[ext_resource type="Script" uid="uid://bdv54m08nkamg" path="res://scripts/randem/ChronoCroupier.gd" id="7_croupier"]
+[ext_resource type="Script" uid="uid://d03ijaugrciv5" path="res://scripts/randem/BossHUD.gd" id="9_hud"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bsnpc"]
 radius = 1.0
@@ -27,13 +30,13 @@ albedo_color = Color(0.82786953, 0.0005211598, 0.82416326, 1)
 viewport_path = NodePath("HealthComponent/Sprite3D/SubViewport")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7jwx7"]
-height = 1.0
-radius = 8.0
+height = 3.0
+radius = 4.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_73nya"]
-top_radius = 8.0
-bottom_radius = 8.0
-height = 1.0
+top_radius = 4.5
+bottom_radius = 4.5
+height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73nya"]
 transparency = 1
@@ -45,8 +48,28 @@ size = Vector3(3.2, 2.6, 3.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wide"]
 size = Vector3(6, 2.6, 2.4)
 
-[node name="ChronoCroupier" type="CharacterBody3D" unique_id=295014865]
-collision_layer = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.05, 0.05, 0.06, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.25, 0.28, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.62, 0.07, 0.07, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="ChronoCroupier" type="CharacterBody3D" unique_id=295014865 groups=["Boss", "Enemy"]]
+collision_layer = 3
+script = ExtResource("7_croupier")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=126715902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -69,16 +92,22 @@ script = ExtResource("1_1t2ud")
 staggerC = NodePath("../StaggerComponent")
 metadata/_custom_type_script = "uid://dyp3dlym7cmbv"
 
-[node name="KingOfClubs" type="Node" parent="StateMachine" unique_id=1130240204 node_paths=PackedStringArray("body", "nav", "movementC", "shockwave")]
+[node name="KingOfClubs" type="Node" parent="StateMachine" unique_id=1130240204 node_paths=PackedStringArray("shockwave", "body", "movementC", "front_hitbox", "wide_hitbox")]
 script = ExtResource("2_73nya")
-body = NodePath("../..")
-nav = NodePath("../../NavigationAgent3D")
-movementC = NodePath("../../MovementComponent")
 shockwave = NodePath("../../Shockwave")
+body = NodePath("../..")
+movementC = NodePath("../../MovementComponent")
+front_hitbox = NodePath("../../FrontHitbox")
+wide_hitbox = NodePath("../../WideHitbox")
+move_speed = 2.8
+decision_time = 1.0
 metadata/_custom_type_script = "uid://cpwwu1gw7sj85"
 
-[node name="QueenOfSpades" type="Node" parent="StateMachine" unique_id=229917858]
-script = ExtResource("3_e85m6")
+[node name="QueenOfSpades" type="Node" parent="StateMachine" unique_id=229917858 node_paths=PackedStringArray("body", "movementC", "wide_hitbox")]
+script = ExtResource("4_nrr0p")
+body = NodePath("../..")
+movementC = NodePath("../../MovementComponent")
+wide_hitbox = NodePath("../../WideHitbox")
 metadata/_custom_type_script = "uid://cpwwu1gw7sj85"
 
 [node name="AceOfDiamonds" type="Node" parent="StateMachine" unique_id=426641383]
@@ -101,8 +130,8 @@ metadata/_custom_type_script = "uid://dtnjxw1vua83h"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1874844479 node_paths=PackedStringArray("healthBar")]
 script = ExtResource("5_woblf")
-max_health = 720
-current_health = 720
+max_health = 320
+current_health = 320
 healthBar = NodePath("Sprite3D/SubViewport/HealthBar")
 metadata/_custom_type_script = "uid://dq71svuwl2njr"
 
@@ -127,14 +156,15 @@ script = ExtResource("6_73nya")
 metadata/_custom_type_script = "uid://c5yf8bxmdfcr5"
 
 [node name="Shockwave" type="Area3D" parent="." unique_id=1293463263]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shockwave" unique_id=370343830]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46118164, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_7jwx7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Shockwave" unique_id=6232409]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 mesh = SubResource("CylinderMesh_73nya")
 surface_material_override/0 = SubResource("StandardMaterial3D_73nya")
 
@@ -153,3 +183,73 @@ collision_mask = 32769
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WideHitbox" unique_id=1995120777]
 shape = SubResource("BoxShape3D_wide")
+
+[node name="BossHUD" type="CanvasLayer" parent="." unique_id=2140250254]
+layer = 10
+script = ExtResource("9_hud")
+
+[node name="Root" type="Control" parent="BossHUD" unique_id=541348052]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="IntroName" type="Label" parent="BossHUD/Root" unique_id=898227519]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.3
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "THE CHRONOCROUPIER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BarBox" type="Control" parent="BossHUD/Root" unique_id=1378464134]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -88.0
+offset_right = 400.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="BarName" type="Label" parent="BossHUD/Root/BarBox" unique_id=226844922]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 18
+text = "THE CHRONOCROUPIER"
+
+[node name="Bar" type="ProgressBar" parent="BossHUD/Root/BarBox" unique_id=377654894]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 26.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+max_value = 720.0
+value = 720.0
+show_percentage = false

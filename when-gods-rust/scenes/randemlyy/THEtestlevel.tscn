@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://5sh5qtoayu8u"]
 
 [ext_resource type="PackedScene" uid="uid://dl2k5j6m74c31" path="res://Modular Blueprint Kit/glTF/WL_1X4.gltf" id="1_e3ydj"]
-[ext_resource type="Script" uid="uid://5afi4tpjl066" path="res://Scripts/icyfire/GameManager.gd" id="2_kxya2"]
-[ext_resource type="PackedScene" uid="uid://dqs54vd1wxvh0" path="res://Scenes/F1aze23/Monoculus.tscn" id="3_j6wm6"]
-[ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://Scenes/icyfire/player.tscn" id="3_ugkgb"]
-[ext_resource type="PackedScene" uid="uid://8ki1um74b20t" path="res://Scenes/F1aze23/TestWeaponItem.tscn" id="4_inmm5"]
-[ext_resource type="PackedScene" uid="uid://yuqms0gt7djj" path="res://Scenes/icyfire/campfire.tscn" id="4_lupdm"]
-[ext_resource type="Script" uid="uid://bo6mdnv4kfwx3" path="res://Scripts/icyfire/control.gd" id="5_j6wm6"]
+[ext_resource type="Script" uid="uid://5afi4tpjl066" path="res://scripts/icyfire/GameManager.gd" id="2_kxya2"]
+[ext_resource type="PackedScene" uid="uid://dqs54vd1wxvh0" path="res://scenes/F1aze23/Monoculus.tscn" id="3_j6wm6"]
+[ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://scenes/icyfire/player.tscn" id="3_ugkgb"]
+[ext_resource type="PackedScene" uid="uid://8ki1um74b20t" path="res://scenes/F1aze23/TestWeaponItem.tscn" id="4_inmm5"]
+[ext_resource type="PackedScene" uid="uid://yuqms0gt7djj" path="res://scenes/icyfire/campfire.tscn" id="4_lupdm"]
+[ext_resource type="Script" uid="uid://bo6mdnv4kfwx3" path="res://scripts/icyfire/control.gd" id="5_j6wm6"]
 [ext_resource type="Theme" uid="uid://d1dhull4d4pkk" path="res://addons/psx_horror_ui/themes/fog.tres" id="7_6kyh8"]
-[ext_resource type="PackedScene" uid="uid://bf3v16yeoptno" path="res://Scenes/F1aze23/ModTable.tscn" id="9_dcf07"]
-[ext_resource type="PackedScene" uid="uid://d02usftbc1kii" path="res://Scenes/F1aze23/spawner.tscn" id="10_6kyh8"]
+[ext_resource type="PackedScene" uid="uid://bf3v16yeoptno" path="res://scenes/F1aze23/ModTable.tscn" id="9_dcf07"]
+[ext_resource type="PackedScene" uid="uid://d02usftbc1kii" path="res://scenes/F1aze23/spawner.tscn" id="10_6kyh8"]
+[ext_resource type="PackedScene" uid="uid://eapa1kt7w17j" path="res://scenes/F1aze23/ChronoCroupier.tscn" id="11_12ekm"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_inmm5"]
 vertices = PackedVector3Array(-16.396002, 0.25999165, 7.7199974, -5.396002, 0.25999165, 7.7199974, -5.146002, 0.25999165, 6.7199974, -16.396002, 0.25999165, -18.530003, -3.3960018, 0.25999165, 6.7199974, -3.1460018, 0.25999165, 7.7199974, 17.103998, 0.25999165, 7.7199974, 17.103998, 0.25999165, -18.530003, -5.396002, 0.25999165, 8.719997, -4.146002, 0.25999165, 8.969997, -16.396002, 0.25999165, 26.469997, -4.146002, 0.25999165, 26.469997, -3.1460018, 0.25999165, 8.719997, 17.103998, 0.25999165, 26.469997)
@@ -76,9 +77,8 @@ offset_bottom = 467.0
 theme = ExtResource("7_6kyh8")
 text = "QUIT"
 
-[node name="Campfire" parent="PauseMenu" unique_id=928643603 node_paths=PackedStringArray("playerPos") instance=ExtResource("4_lupdm")]
+[node name="Campfire" parent="PauseMenu" unique_id=928643603 instance=ExtResource("4_lupdm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.927942, 0.9885185, 10.168537)
-playerPos = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="PauseMenu/Campfire" unique_id=1533567626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -182,3 +182,6 @@ omni_range = 19.0
 
 [node name="ModTable" parent="." unique_id=757975161 instance=ExtResource("9_dcf07")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32914495, 8.394963)
+
+[node name="ChronoCroupier" parent="." unique_id=295014865 instance=ExtResource("11_12ekm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.926284, -3.071886e-06, 16.01401)

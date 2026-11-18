@@ -33,6 +33,5 @@ func _process(delta: float) -> void:
 	await get_tree().create_timer(15).timeout
 
 func interact(_player:CharacterBody3D):
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().change_scene_to_packed(FINISHSCREEN)
+	pass
 	

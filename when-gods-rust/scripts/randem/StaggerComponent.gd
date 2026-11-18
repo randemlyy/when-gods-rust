@@ -5,7 +5,7 @@ signal stagger_started
 signal stagger_ended
 
 @export var stagger_threshold: float = 0.0
-@export var stagger_immumne: bool = false
+@export var stagger_immune: bool = false
 
 var time_left: float = 0.0
 
@@ -14,7 +14,7 @@ var is_staggered: bool:
 		return time_left > 0.0
 
 func apply_stagger(duration: float) -> void:
-	if stagger_immumne:
+	if stagger_immune:
 		return
 	if duration <= 0.0:
 		return
