@@ -304,3 +304,4 @@ fov = 77.22333
 
 [connection signal="button_down" from="CanvasLayer/Control/Button" to="CanvasLayer/Control" method="_on_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/Control/Button2" to="CanvasLayer/Control" method="_on_button_2_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/Button3" to="CanvasLayer/Control" method="_on_button_3_button_down"]
