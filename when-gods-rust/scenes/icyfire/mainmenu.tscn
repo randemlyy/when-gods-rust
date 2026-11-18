@@ -50,6 +50,14 @@ offset_right = 946.0
 offset_bottom = 575.0
 text = "QUIT"
 
+[node name="Button3" type="Button" parent="CanvasLayer/Control" unique_id=1714523389]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 172.0
+offset_right = 977.0
+offset_bottom = 223.0
+text = "BOSS FIGHT"
+
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=733518344]
 visible = false
 offset_left = 70.0

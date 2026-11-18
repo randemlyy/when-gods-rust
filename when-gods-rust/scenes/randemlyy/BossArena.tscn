@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://w3uq2niaxnxq" path="res://scripts/randem/BossArena.gd" id="1_34jp6"]
 [ext_resource type="PackedScene" uid="uid://d2i164qcqw4na" path="res://scenes/icyfire/player.tscn" id="2_isco5"]
 [ext_resource type="PackedScene" uid="uid://eapa1kt7w17j" path="res://scenes/F1aze23/ChronoCroupier.tscn" id="3_78h6y"]
+[ext_resource type="Script" uid="uid://5afi4tpjl066" path="res://scripts/icyfire/GameManager.gd" id="4_78h6y"]
 
 [sub_resource type="Environment" id="Environment_ee3n3"]
 background_mode = 1
@@ -103,3 +104,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20.17598)
 
 [node name="ChronoCroupier" parent="." unique_id=295014865 instance=ExtResource("3_78h6y")]
 auto_activate = false
+
+[node name="GameManager" type="Node" parent="." unique_id=616213427]
+process_mode = 3
+script = ExtResource("4_78h6y")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1350398504]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=1652068102]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.54509807)
+
+[node name="Label" type="Label" parent="PauseMenu" unique_id=1339993205]
+offset_left = 522.0
+offset_top = 184.0
+offset_right = 634.0
+offset_bottom = 207.0
+text = "GAME PAUSED"
+
+[node name="cont" type="Button" parent="PauseMenu" unique_id=1367298260]
+offset_left = 508.0
+offset_top = 248.0
+offset_right = 653.0
+offset_bottom = 315.0
+text = "CONTINUE"
+
+[node name="quit" type="Button" parent="PauseMenu" unique_id=2081328732]
+offset_left = 510.0
+offset_top = 400.0
+offset_right = 655.0
+offset_bottom = 467.0
+text = "QUIT"
