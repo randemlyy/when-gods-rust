@@ -24,3 +24,9 @@ Esc - Pause
 Right Click - Parry
 
 Left Click - Attack
+
+**HOW TO RUN**
+
+Go to https://icyfirejosh4252.itch.io/when-gods-rust
+
+You can play the game directly in the browser or download "poop.zip", extract and run the executable
